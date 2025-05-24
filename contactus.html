@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="تواصل معنا - متجر أحمد عبدة للأزياء">
+
+    <title>أحمد عبدة | تواصل معنا</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex justify-content-center justify-content-md-between align-items-center flex-wrap">
+              <p class="announcement-text mb-0 mx-3 mx-md-0">توصيل مجاني للطلبات فوق ٥٠٠ جنيه</p>
+              <div class="d-flex">
+                <a href="#" class="announcement-link mx-2">تتبع طلبك</a>
+                <span class="mx-1">|</span>
+                <a href="contactus.html" class="announcement-link mx-2">تواصل معنا</a>
+                <span class="mx-1">|</span>
+                <a href="#" class="announcement-link mx-2">English</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg py-3">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+              <span class="brand-name">أحمد عبدة</span>
+            </a>
+            <div class="d-flex d-lg-none ms-auto me-2">
+              <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
+              <a href="cart.html" class="nav-icon mx-2 position-relative">
+                <i class="bi bi-bag"></i>
+                <span class="cart-badge">3</span>
+              </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="men.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    الرجال
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="men.html?category=shirts">قمصان</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=pants">بناطيل</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=shoes">أحذية</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=accessories">إكسسوارات</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="women.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    النساء
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="women.html?category=dresses">فساتين</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=blouses">بلوزات</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=pants">بناطيل</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=bags">حقائب</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="kids.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    الأطفال
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="kids.html?category=boys">ملابس أولاد</a></li>
+                    <li><a class="dropdown-item" href="kids.html?category=girls">ملابس بنات</a></li>
+                    <li><a class="dropdown-item" href="kids.html?category=shoes">أحذية</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="offers.html">العروض</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contactus.html">تواصل معنا</a>
+                </li>
+              </ul>
+              <div class="d-none d-lg-flex">
+                <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
+                <a href="cart.html" class="nav-icon mx-2 position-relative">
+                  <i class="bi bi-bag"></i>
+                  <span class="cart-badge">3</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Contact Hero Section -->
+      <section class="contact-hero py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+              <h1 class="section-title mb-3">تواصل معنا</h1>
+              <p class="section-desc mb-4">نحن هنا لمساعدتك. يمكنك التواصل معنا عبر أي من الوسائل التالية أو ملء النموذج أدناه.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Information -->
+      <section class="contact-info py-5">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="contact-card text-center">
+                <div class="contact-icon mb-3">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <h4 class="contact-title">العنوان</h4>
+                <p class="contact-text">شارع التحرير، القاهرة، مصر</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="contact-card text-center">
+                <div class="contact-icon mb-3">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <h4 class="contact-title">الهاتف</h4>
+                <p class="contact-text">+20 123 456 7890</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="contact-card text-center">
+                <div class="contact-icon mb-3">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <h4 class="contact-title">البريد الإلكتروني</h4>
+                <p class="contact-text">info@alnile.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form -->
+      <section class="contact-form py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 mx-auto">
+              <div class="form-wrapper bg-white p-4 rounded shadow-sm">
+                <h3 class="form-title text-center mb-4">أرسل لنا رسالة</h3>
+                <form id="contactForm">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="name" class="form-label">الاسم</label>
+                        <input type="text" class="form-control" id="name" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" class="form-control" id="email" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="subject" class="form-label">الموضوع</label>
+                        <input type="text" class="form-control" id="subject" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="message" class="form-label">الرسالة</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary btn-lg w-100">إرسال الرسالة</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Map Section -->
+      <section class="map-section">
+        <div class="container-fluid p-0">
+          <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3418.0940461667!2d31.235774!3d30.044420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAyJzM5LjkiTiAzMcKwMTQnMDguOCJF!5e0!3m2!1sen!2seg!4v1635959877964!5m2!1sen!2seg" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer pt-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4 col-lg-3">
+            <div class="footer-info">
+              <h5 class="footer-title">أحمد عبدة</h5>
+              <p class="footer-desc">متجر الأزياء المصرية الرائد، نقدم أحدث صيحات الموضة بجودة عالية وأسعار منافسة.</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <h5 class="footer-title">تسوق</h5>
+            <ul class="footer-links">
+              <li><a href="men.html">الرجال</a></li>
+              <li><a href="women.html">النساء</a></li>
+              <li><a href="kids.html">الأطفال</a></li>
+              <li><a href="offers.html">العروض</a></li>
+              <li><a href="#">الجديد</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <h5 class="footer-title">معلومات</h5>
+            <ul class="footer-links">
+              <li><a href="#">من نحن</a></li>
+              <li><a href="#">سياسة الخصوصية</a></li>
+              <li><a href="#">الشروط والأحكام</a></li>
+              <li><a href="#">سياسة الإرجاع</a></li>
+              <li><a href="#">الأسئلة المتكررة</a></li>
+            </ul>
+          </div>
+          <div class="col-md-12 col-lg-5">
+            <div class="row">
+              <div class="col-md-6">
+                <h5 class="footer-title">اتصل بنا</h5>
+                <ul class="footer-contact">
+                  <li><i class="bi bi-geo-alt"></i> شارع التحرير، القاهرة، مصر</li>
+                  <li><i class="bi bi-telephone"></i> +20 123 456 7890</li>
+                  <li><i class="bi bi-envelope"></i> info@alnile.com</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h5 class="footer-title">وسائل الدفع</h5>
+                <div class="payment-methods">
+                  <img src="images/icons/Fawr.webp" alt="فوري" class="payment-icon" title="فوري">
+                  <img src="images/icons/vodafone.png" alt="فودافون كاش" class="payment-icon" title="فودافون كاش">
+                  <img src="images/icons/Instapay" alt="انستا باي" class="payment-icon" title="انستا باي">
+                  <img src="images/icons/e& UAE.jpeg" alt="اتصالات كاش" class="payment-icon" title="اتصالات كاش">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom mt-5 py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p class="mb-0">© 2023 أحمد عبدة - جميع الحقوق محفوظة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="js/main.js"></script>
+  </body>
+</html> 

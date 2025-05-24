@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="اكتشف تشكيلة الأزياء الرجالية العصرية من أحمد عبدة بجودة عالية وأسعار مميزة. تسوق الآن قمصان، بناطيل، أحذية وإكسسوارات.">
+
+    <title>أحمد عبدة | متجر الأزياء المصرية</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex justify-content-center justify-content-md-between align-items-center flex-wrap">
+              <p class="announcement-text mb-0 mx-3 mx-md-0">توصيل مجاني للطلبات فوق ٥٠٠ جنيه</p>
+              <div class="d-flex">
+                <a href="#" class="announcement-link mx-2">تتبع طلبك</a>
+                <span class="mx-1">|</span>
+                <a href="contactus.html" class="announcement-link mx-2">تواصل معنا</a>
+                <span class="mx-1">|</span>
+                <a href="#" class="announcement-link mx-2">English</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg py-3">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+              <span class="brand-name">أحمد عبدة</span>
+            </a>
+            <div class="d-flex d-lg-none ms-auto me-2">
+              <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
+              <a href="cart.html" class="nav-icon mx-2 position-relative">
+                <i class="bi bi-bag"></i>
+                <span class="cart-badge">3</span>
+              </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="men.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    الرجال
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="men.html?category=shirts">قمصان</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=pants">بناطيل</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=shoes">أحذية</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=accessories">إكسسوارات</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="women.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    النساء
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="women.html?category=dresses">فساتين</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=blouses">بلوزات</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=pants">بناطيل</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=bags">حقائب</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="kids.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    الأطفال
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="kids.html?category=boys">ملابس أولاد</a></li>
+                    <li><a class="dropdown-item" href="kids.html?category=girls">ملابس بنات</a></li>
+                    <li><a class="dropdown-item" href="kids.html?category=shoes">أحذية</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="offers.html">العروض</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contactus.html">تواصل معنا</a>
+                </li>
+              </ul>
+              <div class="d-none d-lg-flex">
+                <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
+                <a href="cart.html" class="nav-icon mx-2 position-relative">
+                  <i class="bi bi-bag"></i>
+                  <span class="cart-badge">3</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Banner -->
+      <section class="hero-slider">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="hero-slide slide-1">
+                <div class="container">
+                  <div class="row align-items-center justify-content-start h-100">
+                    <div class="col-12 col-md-6">
+                      <div class="hero-content">
+                        <span class="hero-subtitle">مجموعة جديدة</span>
+                        <h1 class="hero-title">تشكيلة خريف ٢٠٢٣</h1>
+                        <p class="hero-text">اكتشف أحدث صيحات الموضة المصرية بتصاميم عصرية مستوحاة من التراث</p>
+                        <div class="hero-features mb-4">
+                          <div class="hero-feature">
+                            <i class="bi bi-truck"></i>
+                            <span>توصيل مجاني</span>
+                          </div>
+                          <div class="hero-feature">
+                            <i class="bi bi-shield-check"></i>
+                            <span>ضمان الجودة</span>
+                          </div>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-lg">تسوق الآن</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="hero-slide slide-2">
+                <div class="container">
+                  <div class="row align-items-center justify-content-end h-100">
+                    <div class="col-12 col-md-6">
+                      <div class="hero-content">
+                        <span class="hero-subtitle">خصومات حصرية</span>
+                        <h1 class="hero-title">خصم حتى ٥٠٪</h1>
+                        <p class="hero-text">تسوق أفضل العروض على تشكيلة واسعة من الملابس والإكسسوارات</p>
+                        <div class="hero-features mb-4">
+                          <div class="hero-feature">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                            <span>استبدال مجاني</span>
+                          </div>
+                          <div class="hero-feature">
+                            <i class="bi bi-credit-card"></i>
+                            <span>دفع آمن</span>
+                          </div>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-lg">اكتشف العروض</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="hero-slide slide-3">
+                <div class="container">
+                  <div class="row align-items-center justify-content-start h-100">
+                    <div class="col-12 col-md-6">
+                      <div class="hero-content">
+                        <span class="hero-subtitle">تشكيلة الأطفال</span>
+                        <h1 class="hero-title">أزياء الأطفال</h1>
+                        <p class="hero-text">اكتشف تشكيلة متنوعة من ملابس الأطفال العصرية والمريحة</p>
+                        <div class="hero-features mb-4">
+                          <div class="hero-feature">
+                            <i class="bi bi-stars"></i>
+                            <span>جودة عالية</span>
+                          </div>
+                          <div class="hero-feature">
+                            <i class="bi bi-heart"></i>
+                            <span>تصاميم مريحة</span>
+                          </div>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-lg">تسوق للأطفال</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">السابق</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">التالي</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Categories -->
+      <section class="categories-section py-5">
+        <div class="container">
+          <div class="section-header text-center mb-5">
+            <h2 class="section-title">تسوق حسب الفئة</h2>
+            <div class="decorative-line"></div>
+          </div>
+          <div class="row g-4">
+            <div class="col-6 col-md-3">
+              <a href="men.html" class="category-card">
+                <div class="category-img-container">
+                  <img src="https://images.pexels.com/photos/1342609/pexels-photo-1342609.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="الرجال" class="img-fluid">
+                </div>
+                <div class="category-overlay">
+                  <h3 class="category-title">الرجال</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-3">
+              <a href="women.html" class="category-card">
+                <div class="category-img-container">
+                  <img src="https://images.pexels.com/photos/949670/pexels-photo-949670.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="النساء" class="img-fluid">
+                </div>
+                <div class="category-overlay">
+                  <h3 class="category-title">النساء</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-3">
+              <a href="kids.html" class="category-card">
+                <div class="category-img-container">
+                  <img src="https://images.pexels.com/photos/5559986/pexels-photo-5559986.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="الأطفال" class="img-fluid">
+                </div>
+                <div class="category-overlay">
+                  <h3 class="category-title">الأطفال</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-3">
+              <a href="offers.html" class="category-card">
+                <div class="category-img-container">
+                  <img src="https://images.pexels.com/photos/5872361/pexels-photo-5872361.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="العروض" class="img-fluid">
+                </div>
+                <div class="category-overlay">
+                  <h3 class="category-title">العروض</h3>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Products -->
+      <section class="products-section py-5 bg-light">
+        <div class="container">
+          <div class="section-header text-center mb-5">
+            <h2 class="section-title">منتجات مميزة</h2>
+            <div class="decorative-line"></div>
+          </div>
+          
+          <div class="product-filter mb-4">
+            <ul class="nav nav-pills justify-content-center" id="productTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">الكل</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="men-tab" data-bs-toggle="pill" data-bs-target="#men" type="button" role="tab" aria-controls="men" aria-selected="false">رجالي</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="women-tab" data-bs-toggle="pill" data-bs-target="#women" type="button" role="tab" aria-controls="women" aria-selected="false">نسائي</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="kids-tab" data-bs-toggle="pill" data-bs-target="#kids" type="button" role="tab" aria-controls="kids" aria-selected="false">أطفال</button>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="tab-content" id="productTabsContent">
+            <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+              <div class="row g-4" id="productsGrid">
+                <!-- Products will be loaded from JavaScript -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="men" role="tabpanel" aria-labelledby="men-tab">
+              <div class="row g-4">
+                <!-- Men's products will be loaded from JavaScript -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="women" role="tabpanel" aria-labelledby="women-tab">
+              <div class="row g-4">
+                <!-- Women's products will be loaded from JavaScript -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="kids" role="tabpanel" aria-labelledby="kids-tab">
+              <div class="row g-4">
+                <!-- Kids' products will be loaded from JavaScript -->
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-5">
+            <a href="#" class="btn btn-outline-primary btn-lg">عرض المزيد</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Banner -->
+      <section class="promo-banner py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-4 mb-md-0">
+              <div class="promo-card promo-card-1">
+                <div class="promo-content">
+                  <h3 class="promo-title">قمصان قطنية فاخرة</h3>
+                  <p class="promo-text">صنع في مصر من أجود أنواع القطن المصري</p>
+                  <a href="#" class="btn btn-outline-light">اكتشف المجموعة</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="promo-card promo-card-2">
+                <div class="promo-content">
+                  <h3 class="promo-title">مجموعة الخريف الجديدة</h3>
+                  <p class="promo-text">تصاميم عصرية بألوان الخريف الدافئة</p>
+                  <a href="#" class="btn btn-outline-light">تسوق الآن</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials-section py-5">
+        <div class="container">
+          <div class="section-header text-center mb-5">
+            <h2 class="section-title">آراء عملائنا</h2>
+            <div class="decorative-line"></div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-8 mx-auto">
+              <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="testimonial-card text-center">
+                      <div class="testimonial-img">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="أحمد محمد" class="rounded-circle">
+                      </div>
+                      <div class="testimonial-content">
+                        <p class="testimonial-text">"جودة القمصان ممتازة والقطن المصري فعلاً يستحق السعر. سأعود للتسوق مرة أخرى بالتأكيد."</p>
+                        <h5 class="testimonial-name">أحمد محمد</h5>
+                        <div class="testimonial-rating">
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="testimonial-card text-center">
+                      <div class="testimonial-img">
+                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="سارة أحمد" class="rounded-circle">
+                      </div>
+                      <div class="testimonial-content">
+                        <p class="testimonial-text">"الفساتين ذات تصميم رائع وخامة ممتازة. التوصيل كان سريع جدًا وفريق خدمة العملاء متعاون للغاية."</p>
+                        <h5 class="testimonial-name">سارة أحمد</h5>
+                        <div class="testimonial-rating">
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div class="testimonial-card text-center">
+                      <div class="testimonial-img">
+                        <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="محمود علي" class="rounded-circle">
+                      </div>
+                      <div class="testimonial-content">
+                        <p class="testimonial-text">"أحب التصاميم المصرية المعاصرة، تجمع بين الأصالة والحداثة بشكل رائع. سعيد جدًا بتجربتي."</p>
+                        <h5 class="testimonial-name">محمود علي</h5>
+                        <div class="testimonial-rating">
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-fill"></i>
+                          <i class="bi bi-star-half"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">السابق</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">التالي</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="newsletter-section py-5 bg-light">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+              <div class="newsletter-content">
+                <h2 class="newsletter-title">اشترك في نشرتنا البريدية</h2>
+                <p class="newsletter-text">اشترك ليصلك أحدث العروض والمنتجات الجديدة</p>
+                <form class="newsletter-form">
+                  <div class="input-group">
+                    <input type="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" aria-label="البريد الإلكتروني">
+                    <button class="btn btn-primary" type="submit">اشترك</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+   <!-- Footer -->
+    <footer class="footer pt-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4 col-lg-3">
+            <div class="footer-info">
+              <h5 class="footer-title">أحمد عبدة</h5>
+              <p class="footer-desc">متجر الأزياء المصرية الرائد، نقدم أحدث صيحات الموضة بجودة عالية وأسعار منافسة.</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <h5 class="footer-title">تسوق</h5>
+            <ul class="footer-links">
+              <li><a href="men.html">الرجال</a></li>
+              <li><a href="women.html">النساء</a></li>
+              <li><a href="kids.html">الأطفال</a></li>
+              <li><a href="offers.html">العروض</a></li>
+              <li><a href="#">الجديد</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <h5 class="footer-title">معلومات</h5>
+            <ul class="footer-links">
+              <li><a href="#">من نحن</a></li>
+              <li><a href="#">سياسة الخصوصية</a></li>
+              <li><a href="#">الشروط والأحكام</a></li>
+              <li><a href="#">سياسة الإرجاع</a></li>
+              <li><a href="#">الأسئلة المتكررة</a></li>
+            </ul>
+          </div>
+          <div class="col-md-12 col-lg-5">
+            <div class="row">
+              <div class="col-md-6">
+                <h5 class="footer-title">اتصل بنا</h5>
+                <ul class="footer-contact">
+                  <li><i class="bi bi-geo-alt"></i> شارع التحرير، القاهرة، مصر</li>
+                  <li><i class="bi bi-telephone"></i> +20 123 456 7890</li>
+                  <li><i class="bi bi-envelope"></i> info@alnile.com</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h5 class="footer-title">وسائل الدفع</h5>
+                <div class="payment-methods">
+                  <img src="images/icons/Fawr.webp" alt="فوري" class="payment-icon" title="فوري">
+                  <img src="images/icons/vodafone.png" alt="فودافون كاش" class="payment-icon" title="فودافون كاش">
+                  <img src="images/icons/Instapay" alt="انستا باي" class="payment-icon" title="انستا باي">
+                  <img src="images/icons/e& UAE.jpeg" alt="اتصالات كاش" class="payment-icon" title="اتصالات كاش">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom mt-5 py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p class="mb-0">© 2023 أحمد عبدة - جميع الحقوق محفوظة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="quickViewModalLabel">عرض سريع</h5>
+            <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <img id="modalProductImage" src="" alt="Product" class="img-fluid rounded">
+              </div>
+              <div class="col-md-6">
+                <h4 id="modalProductName" class="mb-3"></h4>
+                <div class="product-price mb-3">
+                  <span id="modalProductPrice" class="current-price"></span>
+                  <span id="modalProductOldPrice" class="old-price"></span>
+                </div>
+                <div class="product-rating mb-3">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <span class="rating-count">(24)</span>
+                </div>
+                <p id="modalProductDescription" class="mb-4"></p>
+                <div class="product-size mb-4">
+                  <h6>المقاس:</h6>
+                  <div class="size-options">
+                    <button class="size-btn">S</button>
+                    <button class="size-btn active">M</button>
+                    <button class="size-btn">L</button>
+                    <button class="size-btn">XL</button>
+                  </div>
+                </div>
+                <div class="product-color mb-4">
+                  <h6>اللون:</h6>
+                  <div class="color-options">
+                    <button class="color-btn" style="background-color: #000;"></button>
+                    <button class="color-btn active" style="background-color: #5F4B32;"></button>
+                    <button class="color-btn" style="background-color: #1A3263;"></button>
+                  </div>
+                </div>
+                <div class="product-quantity mb-4">
+                  <h6>الكمية:</h6>
+                  <div class="quantity-selector">
+                    <button class="quantity-btn" id="decreaseQuantity">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="10">
+                    <button class="quantity-btn" id="increaseQuantity">+</button>
+                  </div>
+                </div>
+                <div class="product-actions">
+                  <button class="btn btn-primary w-100 mb-2">أضف إلى السلة</button>
+                  <button class="btn btn-outline-secondary w-100">أضف إلى المفضلة</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="searchModalLabel">البحث</h5>
+            <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="searchForm" class="search-form">
+              <div class="input-group">
+                <input type="search" class="form-control" placeholder="ابحث عن منتجات..." aria-label="Search">
+                <button class="btn btn-primary" type="submit">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="تفاصيل المنتج - متجر أحمد عبدة للأزياء">
+
+    <title>أحمد عبدة | تفاصيل المنتج</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex justify-content-center justify-content-md-between align-items-center flex-wrap">
+              <p class="announcement-text mb-0 mx-3 mx-md-0">توصيل مجاني للطلبات فوق ٥٠٠ جنيه</p>
+              <div class="d-flex">
+                <a href="#" class="announcement-link mx-2">تتبع طلبك</a>
+                <span class="mx-1">|</span>
+                <a href="contactus.html" class="announcement-link mx-2">تواصل معنا</a>
+                <span class="mx-1">|</span>
+                <a href="#" class="announcement-link mx-2">English</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg py-3">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+              <span class="brand-name">أحمد عبدة</span>
+            </a>
+            <div class="d-flex d-lg-none ms-auto me-2">
+              <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
+              <a href="cart.html" class="nav-icon mx-2 position-relative">
+                <i class="bi bi-bag"></i>
+                <span class="cart-badge">3</span>
+              </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="men.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    الرجال
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="men.html?category=shirts">قمصان</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=pants">بناطيل</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=shoes">أحذية</a></li>
+                    <li><a class="dropdown-item" href="men.html?category=accessories">إكسسوارات</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="women.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    النساء
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="women.html?category=dresses">فساتين</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=blouses">بلوزات</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=pants">بناطيل</a></li>
+                    <li><a class="dropdown-item" href="women.html?category=bags">حقائب</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="kids.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    الأطفال
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="kids.html?category=boys">ملابس أولاد</a></li>
+                    <li><a class="dropdown-item" href="kids.html?category=girls">ملابس بنات</a></li>
+                    <li><a class="dropdown-item" href="kids.html?category=shoes">أحذية</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="offers.html">العروض</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contactus.html">تواصل معنا</a>
+                </li>
+              </ul>
+              <div class="d-none d-lg-flex">
+                <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
+                <a href="cart.html" class="nav-icon mx-2 position-relative">
+                  <i class="bi bi-bag"></i>
+                  <span class="cart-badge">3</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="py-3 bg-light">
+        <div class="container">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="men.html">رجالي</a></li>
+            <li class="breadcrumb-item active" aria-current="page">قميص كاجوال</li>
+          </ol>
+        </div>
+      </nav>
+
+      <!-- Product Details -->
+      <section class="product-details py-5">
+        <div class="container">
+          <div class="row">
+            <!-- Product Images -->
+            <div class="col-md-6 mb-4">
+              <div class="product-images">
+                <div class="main-image mb-3">
+                  <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg" alt="قميص كاجوال" class="img-fluid rounded" id="mainImage">
+                </div>
+                <div class="thumbnail-images row g-2">
+                  <div class="col-3">
+                    <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg" alt="صورة ١" class="img-fluid rounded thumbnail active" onclick="changeMainImage(this)">
+                  </div>
+                  <div class="col-3">
+                    <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?flip=1" alt="صورة ٢" class="img-fluid rounded thumbnail" onclick="changeMainImage(this)">
+                  </div>
+                  <div class="col-3">
+                    <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?flip=2" alt="صورة ٣" class="img-fluid rounded thumbnail" onclick="changeMainImage(this)">
+                  </div>
+                  <div class="col-3">
+                    <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?flip=3" alt="صورة ٤" class="img-fluid rounded thumbnail" onclick="changeMainImage(this)">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-md-6">
+              <div class="product-info">
+                <h1 class="product-title mb-3">قميص كاجوال</h1>
+                <div class="product-price mb-3">
+                  <span class="current-price">٣٩٩ جنيه</span>
+                  <span class="old-price">٥٩٩ جنيه</span>
+                  <span class="discount-badge">خصم ٣٣٪</span>
+                </div>
+                <div class="product-rating mb-3">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <span class="rating-count">(٢٤ تقييم)</span>
+                </div>
+                <p class="product-description mb-4">
+                  قميص كاجوال عصري مصنوع من القطن المصري ١٠٠٪. مثالي للإطلالات اليومية والمناسبات غير الرسمية. متوفر بعدة ألوان وتصميم أنيق يناسب جميع الأذواق.
+                </p>
+                <div class="product-variants mb-4">
+                  <div class="size-selector mb-3">
+                    <h6 class="variant-title">المقاس:</h6>
+                    <div class="size-options">
+                      <button class="size-btn">S</button>
+                      <button class="size-btn active">M</button>
+                      <button class="size-btn">L</button>
+                      <button class="size-btn">XL</button>
+                      <button class="size-btn">XXL</button>
+                    </div>
+                    <a href="#" class="size-guide-link">دليل المقاسات</a>
+                  </div>
+                  <div class="color-selector mb-4">
+                    <h6 class="variant-title">اللون:</h6>
+                    <div class="color-options">
+                      <button class="color-btn" style="background-color: #1A3263;" title="أزرق"></button>
+                      <button class="color-btn active" style="background-color: #5F4B32;" title="بني"></button>
+                      <button class="color-btn" style="background-color: #000000;" title="أسود"></button>
+                      <button class="color-btn" style="background-color: #FFFFFF;" title="أبيض"></button>
+                    </div>
+                  </div>
+                  <div class="quantity-selector mb-4">
+                    <h6 class="variant-title">الكمية:</h6>
+                    <div class="quantity-wrapper">
+                      <button class="quantity-btn" id="decreaseQuantity">-</button>
+                      <input type="number" class="quantity-input" value="1" min="1" max="10">
+                      <button class="quantity-btn" id="increaseQuantity">+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-actions">
+                  <div class="container">
+                    <button class="btn btn-primary btn-lg w-100 mb-2">
+                      <i class="bi bi-bag-plus"></i>
+                      أضف إلى السلة
+                    </button>
+                    <button class="btn btn-outline-secondary btn-lg w-100">
+                      <i class="bi bi-heart"></i>
+                      أضف إلى المفضلة
+                    </button>
+                  </div>
+                </div>
+                <div class="product-meta mt-4">
+                  <div class="meta-item">
+                    <i class="bi bi-truck"></i>
+                    <span>توصيل مجاني للطلبات فوق ٥٠٠ جنيه</span>
+                  </div>
+                  <div class="meta-item">
+                    <i class="bi bi-arrow-return-left"></i>
+                    <span>إرجاع مجاني خلال ١٤ يوم</span>
+                  </div>
+                  <div class="meta-item">
+                    <i class="bi bi-shield-check"></i>
+                    <span>ضمان جودة المنتج</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Details Tabs -->
+          <div class="product-tabs mt-5">
+            <ul class="nav nav-tabs" id="productTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">الوصف</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button" role="tab" aria-controls="specifications" aria-selected="false">المواصفات</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">التقييمات</button>
+              </li>
+            </ul>
+            <div class="tab-content" id="productTabsContent">
+              <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                <div class="p-4">
+                  <h4>وصف المنتج</h4>
+                  <p>قميص كاجوال عصري مصنوع من القطن المصري عالي الجودة، يتميز بتصميم أنيق وعصري يناسب مختلف المناسبات. القميص مصمم بعناية فائقة ليوفر أقصى درجات الراحة والأناقة.</p>
+                  <h5>المميزات:</h5>
+                  <ul>
+                    <li>قطن مصري ١٠٠٪</li>
+                    <li>تصميم عصري وأنيق</li>
+                    <li>خياطة عالية الجودة</li>
+                    <li>مريح في الارتداء</li>
+                    <li>سهل العناية والغسيل</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
+                <div class="p-4">
+                  <h4>المواصفات</h4>
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th>الخامة</th>
+                        <td>قطن مصري ١٠٠٪</td>
+                      </tr>
+                      <tr>
+                        <th>التصميم</th>
+                        <td>كاجوال</td>
+                      </tr>
+                      <tr>
+                        <th>المقاسات المتوفرة</th>
+                        <td>S, M, L, XL, XXL</td>
+                      </tr>
+                      <tr>
+                        <th>الألوان المتوفرة</th>
+                        <td>أزرق، بني، أسود، أبيض</td>
+                      </tr>
+                      <tr>
+                        <th>تعليمات العناية</th>
+                        <td>غسيل بماء بارد، عدم استخدام المجفف</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                <div class="p-4">
+                  <div class="reviews-summary mb-4">
+                    <h4>تقييمات المنتج</h4>
+                    <div class="row align-items-center">
+                      <div class="col-md-4 text-center">
+                        <div class="overall-rating">
+                          <h2 class="rating-number">٤.٥</h2>
+                          <div class="stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                          </div>
+                          <p class="total-reviews">٢٤ تقييم</p>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="rating-bars">
+                          <div class="rating-bar-item">
+                            <span class="stars">٥ نجوم</span>
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="count">١٨</span>
+                          </div>
+                          <div class="rating-bar-item">
+                            <span class="stars">٤ نجوم</span>
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="count">٤</span>
+                          </div>
+                          <div class="rating-bar-item">
+                            <span class="stars">٣ نجوم</span>
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="count">١</span>
+                          </div>
+                          <div class="rating-bar-item">
+                            <span class="stars">٢ نجوم</span>
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 3%" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="count">١</span>
+                          </div>
+                          <div class="rating-bar-item">
+                            <span class="stars">١ نجمة</span>
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span class="count">٠</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Reviews List -->
+                  <div class="reviews-list">
+                    <div class="review-item">
+                      <div class="review-header">
+                        <div class="reviewer-info">
+                          <h6 class="reviewer-name">أحمد محمد</h6>
+                          <div class="review-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                          </div>
+                        </div>
+                        <span class="review-date">١٥ يناير ٢٠٢٤</span>
+                      </div>
+                      <p class="review-text">قميص رائع وخامة ممتازة. المقاس مضبوط والتصميم أنيق جداً. سعيد جداً بالشراء.</p>
+                    </div>
+                    <div class="review-item">
+                      <div class="review-header">
+                        <div class="reviewer-info">
+                          <h6 class="reviewer-name">محمد علي</h6>
+                          <div class="review-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                          </div>
+                        </div>
+                        <span class="review-date">١٠ يناير ٢٠٢٤</span>
+                      </div>
+                      <p class="review-text">خامة القميص جيدة والتصميم جميل. المقاس مناسب ولكن كنت أتمنى لو كان متوفر بألوان أكثر.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Products -->
+      <section class="related-products py-5 bg-light">
+        <div class="container">
+          <h3 class="section-title text-center mb-4">منتجات مشابهة</h3>
+          <div class="row g-4" id="relatedProducts">
+            <!-- Products will be loaded dynamically from products.js -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer pt-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4 col-lg-3">
+            <div class="footer-info">
+              <h5 class="footer-title">أحمد عبدة</h5>
+              <p class="footer-desc">متجر الأزياء المصرية الرائد، نقدم أحدث صيحات الموضة بجودة عالية وأسعار منافسة.</p>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <h5 class="footer-title">تسوق</h5>
+            <ul class="footer-links">
+              <li><a href="men.html">الرجال</a></li>
+              <li><a href="women.html">النساء</a></li>
+              <li><a href="kids.html">الأطفال</a></li>
+              <li><a href="offers.html">العروض</a></li>
+              <li><a href="#">الجديد</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <h5 class="footer-title">معلومات</h5>
+            <ul class="footer-links">
+              <li><a href="#">من نحن</a></li>
+              <li><a href="#">سياسة الخصوصية</a></li>
+              <li><a href="#">الشروط والأحكام</a></li>
+              <li><a href="#">سياسة الإرجاع</a></li>
+              <li><a href="#">الأسئلة المتكررة</a></li>
+            </ul>
+          </div>
+          <div class="col-md-12 col-lg-5">
+            <div class="row">
+              <div class="col-md-6">
+                <h5 class="footer-title">اتصل بنا</h5>
+                <ul class="footer-contact">
+                  <li><i class="bi bi-geo-alt"></i> شارع التحرير، القاهرة، مصر</li>
+                  <li><i class="bi bi-telephone"></i> +20 123 456 7890</li>
+                  <li><i class="bi bi-envelope"></i> info@alnile.com</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h5 class="footer-title">وسائل الدفع</h5>
+                <div class="payment-methods">
+                  <img src="images/icons/Fawr.webp" alt="فوري" class="payment-icon" title="فوري">
+                  <img src="images/icons/vodafone.png" alt="فودافون كاش" class="payment-icon" title="فودافون كاش">
+                  <img src="images/icons/Instapay" alt="انستا باي" class="payment-icon" title="انستا باي">
+                  <img src="images/icons/e& UAE.jpeg" alt="اتصالات كاش" class="payment-icon" title="اتصالات كاش">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom mt-5 py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p class="mb-0">© 2023 أحمد عبدة - جميع الحقوق محفوظة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html> 
