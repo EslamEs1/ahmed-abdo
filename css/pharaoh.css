@@ -1,0 +1,280 @@
+/* Pharaoh Collection Styles */
+:root {
+    --pharaoh-gold: #D4AF37;
+    --pharaoh-blue: #1A3263;
+    --pharaoh-sand: #E6D7B9;
+    --pharaoh-brown: #8B4513;
+}
+
+/* Hero Section */
+.pharaoh-hero {
+    min-height: 100vh;
+    background-color: var(--sand-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.pharaoh-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/hieroglyphics-pattern.png') repeat;
+    opacity: 0.05;
+    z-index: 1;
+}
+
+.pharaoh-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+    background-color: var(--pharaoh-gold);
+    color: var(--pharaoh-blue);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--pharaoh-blue);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.hero-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    width: 100px;
+    height: 4px;
+    background-color: var(--pharaoh-gold);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--gray-700);
+    margin-bottom: 2rem;
+}
+
+.hero-features {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--pharaoh-blue);
+}
+
+.feature-item i {
+    font-size: 1.5rem;
+    color: var(--pharaoh-gold);
+}
+
+.hero-price {
+    margin-bottom: 2rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--pharaoh-blue);
+    margin-left: 1rem;
+}
+
+.old-price {
+    font-size: 1.5rem;
+    color: var(--gray-500);
+    text-decoration: line-through;
+}
+
+.hero-image {
+    position: relative;
+    padding: 2rem;
+}
+
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--pharaoh-gold);
+    transform: rotate(-2deg);
+    z-index: 1;
+}
+
+.hero-image img {
+    position: relative;
+    z-index: 2;
+    transform: rotate(2deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.feature-card {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--pharaoh-gold);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background-color: var(--sand-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon i {
+    font-size: 2.5rem;
+    color: var(--pharaoh-gold);
+}
+
+.feature-card h3 {
+    color: var(--pharaoh-blue);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+/* Collection Section */
+.collection-section {
+    background-color: var(--sand-light);
+}
+
+/* Sizing Section */
+.size-table-wrapper {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background-color: var(--pharaoh-blue);
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .hero-features {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .feature-item {
+        width: calc(50% - 0.5rem);
+    }
+
+    .hero-image {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .old-price {
+        font-size: 1.25rem;
+    }
+
+    .feature-item {
+        width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.fade-in-delay-1 {
+    animation-delay: 0.2s;
+}
+
+.fade-in-delay-2 {
+    animation-delay: 0.4s;
+}
+
+.fade-in-delay-3 {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

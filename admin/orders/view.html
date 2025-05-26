@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="تفاصيل الطلب | أحمد عبدة">
+
+    <title>تفاصيل الطلب | أحمد عبدة</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../css/admin.css">
+  </head>
+  <body>
+    <div class="admin-wrapper">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <div class="sidebar-header">
+          <h1 class="sidebar-logo">أحمد عبدة</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="../dashboard.html">
+                <i class="bi bi-speedometer2"></i>
+                لوحة التحكم
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="list.html">
+                <i class="bi bi-cart3"></i>
+                الطلبات
+                <span class="badge bg-primary">3</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../products/list.html">
+                <i class="bi bi-box-seam"></i>
+                المنتجات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../categories/list.html">
+                <i class="bi bi-folder"></i>
+                التصنيفات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../collections/list.html">
+                <i class="bi bi-collection"></i>
+                المجموعات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../offers/list.html">
+                <i class="bi bi-tag"></i>
+                العروض
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../banners/list.html">
+                <i class="bi bi-image"></i>
+                البانرات
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+          <div class="header-left">
+            <button class="sidebar-toggle">
+              <i class="bi bi-list"></i>
+            </button>
+          </div>
+          <div class="header-right">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i>
+                المدير
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> الإعدادات</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> تسجيل الخروج</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+          <div class="container-fluid">
+            <!-- Page Title -->
+            <div class="content-header d-flex justify-content-between align-items-center">
+              <div>
+                <h2>تفاصيل الطلب #12345</h2>
+                <p class="text-muted mb-0">تاريخ الطلب: 20 يناير 2024</p>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary">
+                  <i class="bi bi-printer"></i>
+                  طباعة الفاتورة
+                </button>
+                <button type="button" class="btn btn-outline-primary">
+                  <i class="bi bi-truck"></i>
+                  طباعة بوليصة الشحن
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Order Status -->
+              <div class="col-lg-12 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="order-timeline">
+                      <div class="timeline-item active">
+                        <div class="timeline-icon">
+                          <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h4>تم استلام الطلب</h4>
+                          <p>20 يناير 2024، 10:30 صباحاً</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item active">
+                        <div class="timeline-icon">
+                          <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h4>تم تأكيد الطلب</h4>
+                          <p>20 يناير 2024، 11:00 صباحاً</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item current">
+                        <div class="timeline-icon">
+                          <i class="bi bi-box-seam"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h4>قيد التجهيز</h4>
+                          <p>جاري تجهيز الطلب في المستودع</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item">
+                        <div class="timeline-icon">
+                          <i class="bi bi-truck"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h4>تم الشحن</h4>
+                          <p>في انتظار الشحن</p>
+                        </div>
+                      </div>
+                      <div class="timeline-item">
+                        <div class="timeline-icon">
+                          <i class="bi bi-check2-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                          <h4>تم التسليم</h4>
+                          <p>في انتظار التسليم</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order Details -->
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">تفاصيل المنتجات</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>المنتج</th>
+                            <th>السعر</th>
+                            <th>الكمية</th>
+                            <th>الإجمالي</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <img src="../../images/products/pharaoh-white.jpg" alt="قميص فرعون أبيض" class="img-thumbnail" width="60">
+                                <div class="ms-3">
+                                  <div>قميص فرعون - أبيض</div>
+                                  <small class="text-muted">المقاس: M</small>
+                                </div>
+                              </div>
+                            </td>
+                            <td>1,299 جنيه</td>
+                            <td>1</td>
+                            <td>1,299 جنيه</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="3" class="text-start">المجموع</td>
+                            <td>1,299 جنيه</td>
+                          </tr>
+                          <tr>
+                            <td colspan="3" class="text-start">الشحن</td>
+                            <td>50 جنيه</td>
+                          </tr>
+                          <tr>
+                            <td colspan="3" class="text-start fw-bold">الإجمالي</td>
+                            <td class="fw-bold">1,349 جنيه</td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Order Notes -->
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">ملاحظات الطلب</h3>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="mb-3">
+                        <label class="form-label">إضافة ملاحظة</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary">إضافة</button>
+                    </form>
+                    <hr>
+                    <div class="order-notes">
+                      <div class="note">
+                        <div class="note-header">
+                          <span class="note-author">أحمد المدير</span>
+                          <span class="note-date">20 يناير 2024، 11:00 صباحاً</span>
+                        </div>
+                        <div class="note-content">
+                          تم تأكيد الطلب وجاري التجهيز
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customer Details -->
+              <div class="col-lg-4">
+                <!-- Customer Info -->
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">معلومات العميل</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="customer-info">
+                      <p><strong>الاسم:</strong> أحمد محمد</p>
+                      <p><strong>رقم الهاتف:</strong> 01234567890</p>
+                      <p><strong>البريد الإلكتروني:</strong> ahmed@example.com</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h3 class="card-title">عنوان الشحن</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="shipping-address">
+                      <p>شارع 123، حي النصر</p>
+                      <p>مدينة نصر، القاهرة</p>
+                      <p>مصر</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">معلومات الدفع</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="payment-info">
+                      <p><strong>طريقة الدفع:</strong> الدفع عند الاستلام</p>
+                      <p><strong>حالة الدفع:</strong> <span class="badge bg-warning">في انتظار الدفع</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="../js/admin.js"></script>
+  </body>
+</html> 

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="إدارة الطلبات | أحمد عبدة">
+
+    <title>إدارة الطلبات | أحمد عبدة</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../css/admin.css">
+  </head>
+  <body>
+    <div class="admin-wrapper">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <div class="sidebar-header">
+          <h1 class="sidebar-logo">أحمد عبدة</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="../dashboard.html">
+                <i class="bi bi-speedometer2"></i>
+                لوحة التحكم
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="list.html">
+                <i class="bi bi-cart3"></i>
+                الطلبات
+                <span class="badge bg-primary">3</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../products/list.html">
+                <i class="bi bi-box-seam"></i>
+                المنتجات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../categories/list.html">
+                <i class="bi bi-folder"></i>
+                التصنيفات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../collections/list.html">
+                <i class="bi bi-collection"></i>
+                المجموعات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../offers/list.html">
+                <i class="bi bi-tag"></i>
+                العروض
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../banners/list.html">
+                <i class="bi bi-image"></i>
+                البانرات
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+          <div class="header-left">
+            <button class="sidebar-toggle">
+              <i class="bi bi-list"></i>
+            </button>
+          </div>
+          <div class="header-right">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i>
+                المدير
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> الإعدادات</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> تسجيل الخروج</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+          <div class="container-fluid">
+            <!-- Page Title -->
+            <div class="content-header d-flex justify-content-between align-items-center">
+              <h2>إدارة الطلبات</h2>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary">
+                  <i class="bi bi-file-earmark-excel"></i>
+                  تصدير Excel
+                </button>
+                <button type="button" class="btn btn-outline-primary">
+                  <i class="bi bi-printer"></i>
+                  طباعة
+                </button>
+              </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="card mb-4">
+              <div class="card-body">
+                <form class="row g-3">
+                  <div class="col-md-3">
+                    <label class="form-label">حالة الطلب</label>
+                    <select class="form-select">
+                      <option value="">الكل</option>
+                      <option>جديد</option>
+                      <option>قيد التجهيز</option>
+                      <option>تم الشحن</option>
+                      <option>مكتمل</option>
+                      <option>ملغي</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">طريقة الدفع</label>
+                    <select class="form-select">
+                      <option value="">الكل</option>
+                      <option>الدفع عند الاستلام</option>
+                      <option>بطاقة ائتمان</option>
+                      <option>محفظة إلكترونية</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">من تاريخ</label>
+                    <input type="date" class="form-control">
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">إلى تاريخ</label>
+                    <input type="date" class="form-control">
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">تطبيق الفلتر</button>
+                    <button type="reset" class="btn btn-outline-secondary">إعادة تعيين</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>رقم الطلب</th>
+                        <th>العميل</th>
+                        <th>المنتجات</th>
+                        <th>الإجمالي</th>
+                        <th>طريقة الدفع</th>
+                        <th>الحالة</th>
+                        <th>التاريخ</th>
+                        <th>الإجراءات</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <a href="view.html" class="fw-bold text-primary">#12345</a>
+                        </td>
+                        <td>
+                          <div>أحمد محمد</div>
+                          <small class="text-muted">01234567890</small>
+                        </td>
+                        <td>
+                          <div>قميص فرعون - أبيض (M)</div>
+                          <small class="text-muted">الكمية: 1</small>
+                        </td>
+                        <td>1,299 جنيه</td>
+                        <td>الدفع عند الاستلام</td>
+                        <td>
+                          <select class="form-select form-select-sm status-select">
+                            <option value="new" selected>جديد</option>
+                            <option value="processing">قيد التجهيز</option>
+                            <option value="shipped">تم الشحن</option>
+                            <option value="completed">مكتمل</option>
+                            <option value="cancelled">ملغي</option>
+                          </select>
+                        </td>
+                        <td>2024-01-20</td>
+                        <td>
+                          <div class="btn-group">
+                            <a href="view.html" class="btn btn-sm btn-primary">
+                              <i class="bi bi-eye"></i>
+                              عرض
+                            </a>
+                            <button type="button" class="btn btn-sm btn-outline-primary">
+                              <i class="bi bi-printer"></i>
+                              طباعة
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a href="view.html" class="fw-bold text-primary">#12344</a>
+                        </td>
+                        <td>
+                          <div>محمود علي</div>
+                          <small class="text-muted">01234567891</small>
+                        </td>
+                        <td>
+                          <div>قميص فرعون - أزرق (L)</div>
+                          <small class="text-muted">الكمية: 1</small>
+                        </td>
+                        <td>1,299 جنيه</td>
+                        <td>بطاقة ائتمان</td>
+                        <td>
+                          <select class="form-select form-select-sm status-select">
+                            <option value="new">جديد</option>
+                            <option value="processing" selected>قيد التجهيز</option>
+                            <option value="shipped">تم الشحن</option>
+                            <option value="completed">مكتمل</option>
+                            <option value="cancelled">ملغي</option>
+                          </select>
+                        </td>
+                        <td>2024-01-20</td>
+                        <td>
+                          <div class="btn-group">
+                            <a href="view.html" class="btn btn-sm btn-primary">
+                              <i class="bi bi-eye"></i>
+                              عرض
+                            </a>
+                            <button type="button" class="btn btn-sm btn-outline-primary">
+                              <i class="bi bi-printer"></i>
+                              طباعة
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-4">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1">السابق</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">التالي</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="../js/admin.js"></script>
+  </body>
+</html> 

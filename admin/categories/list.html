@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="إدارة التصنيفات | أحمد عبدة">
+
+    <title>إدارة التصنيفات | أحمد عبدة</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../css/admin.css">
+  </head>
+  <body>
+    <div class="admin-wrapper">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <div class="sidebar-header">
+          <h1 class="sidebar-logo">أحمد عبدة</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="../dashboard.html">
+                <i class="bi bi-speedometer2"></i>
+                لوحة التحكم
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../orders/list.html">
+                <i class="bi bi-cart3"></i>
+                الطلبات
+                <span class="badge bg-primary">3</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../products/list.html">
+                <i class="bi bi-box-seam"></i>
+                المنتجات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="list.html">
+                <i class="bi bi-folder"></i>
+                التصنيفات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../collections/list.html">
+                <i class="bi bi-collection"></i>
+                المجموعات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../offers/list.html">
+                <i class="bi bi-tag"></i>
+                العروض
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../banners/list.html">
+                <i class="bi bi-image"></i>
+                البانرات
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+          <div class="header-left">
+            <button class="sidebar-toggle">
+              <i class="bi bi-list"></i>
+            </button>
+          </div>
+          <div class="header-right">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i>
+                المدير
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> الإعدادات</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> تسجيل الخروج</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+          <div class="container-fluid">
+            <!-- Page Title -->
+            <div class="content-header d-flex justify-content-between align-items-center">
+              <h2>إدارة التصنيفات</h2>
+              <a href="add.html" class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i>
+                إضافة تصنيف جديد
+              </a>
+            </div>
+
+            <!-- Categories Tree -->
+            <div class="card">
+              <div class="card-body">
+                <div class="categories-tree">
+                  <!-- Main Category -->
+                  <div class="category-item">
+                    <div class="category-header">
+                      <div class="category-info">
+                        <img src="../../images/categories/men.jpg" alt="رجالي" class="category-image">
+                        <div class="category-details">
+                          <h3>رجالي</h3>
+                          <span class="text-muted">25 منتج</span>
+                        </div>
+                      </div>
+                      <div class="category-actions">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" checked>
+                          <label class="form-check-label">نشط</label>
+                        </div>
+                        <div class="btn-group">
+                          <a href="edit.html" class="btn btn-sm btn-primary">
+                            <i class="bi bi-pencil"></i>
+                            تعديل
+                          </a>
+                          <button type="button" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i>
+                            حذف
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Subcategories -->
+                    <div class="subcategories">
+                      <!-- Subcategory -->
+                      <div class="category-item">
+                        <div class="category-header">
+                          <div class="category-info">
+                            <img src="../../images/categories/shirts.jpg" alt="قمصان" class="category-image">
+                            <div class="category-details">
+                              <h3>قمصان</h3>
+                              <span class="text-muted">15 منتج</span>
+                            </div>
+                          </div>
+                          <div class="category-actions">
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" checked>
+                              <label class="form-check-label">نشط</label>
+                            </div>
+                            <div class="btn-group">
+                              <a href="edit.html" class="btn btn-sm btn-primary">
+                                <i class="bi bi-pencil"></i>
+                                تعديل
+                              </a>
+                              <button type="button" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i>
+                                حذف
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Subcategory -->
+                      <div class="category-item">
+                        <div class="category-header">
+                          <div class="category-info">
+                            <img src="../../images/categories/pants.jpg" alt="بناطيل" class="category-image">
+                            <div class="category-details">
+                              <h3>بناطيل</h3>
+                              <span class="text-muted">10 منتج</span>
+                            </div>
+                          </div>
+                          <div class="category-actions">
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" checked>
+                              <label class="form-check-label">نشط</label>
+                            </div>
+                            <div class="btn-group">
+                              <a href="edit.html" class="btn btn-sm btn-primary">
+                                <i class="bi bi-pencil"></i>
+                                تعديل
+                              </a>
+                              <button type="button" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i>
+                                حذف
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Main Category -->
+                  <div class="category-item">
+                    <div class="category-header">
+                      <div class="category-info">
+                        <img src="../../images/categories/women.jpg" alt="نسائي" class="category-image">
+                        <div class="category-details">
+                          <h3>نسائي</h3>
+                          <span class="text-muted">20 منتج</span>
+                        </div>
+                      </div>
+                      <div class="category-actions">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" checked>
+                          <label class="form-check-label">نشط</label>
+                        </div>
+                        <div class="btn-group">
+                          <a href="edit.html" class="btn btn-sm btn-primary">
+                            <i class="bi bi-pencil"></i>
+                            تعديل
+                          </a>
+                          <button type="button" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i>
+                            حذف
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Main Category -->
+                  <div class="category-item">
+                    <div class="category-header">
+                      <div class="category-info">
+                        <img src="../../images/categories/kids.jpg" alt="أطفال" class="category-image">
+                        <div class="category-details">
+                          <h3>أطفال</h3>
+                          <span class="text-muted">15 منتج</span>
+                        </div>
+                      </div>
+                      <div class="category-actions">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" checked>
+                          <label class="form-check-label">نشط</label>
+                        </div>
+                        <div class="btn-group">
+                          <a href="edit.html" class="btn btn-sm btn-primary">
+                            <i class="bi bi-pencil"></i>
+                            تعديل
+                          </a>
+                          <button type="button" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i>
+                            حذف
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">تأكيد الحذف</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>هل أنت متأكد من حذف هذا التصنيف؟ سيتم حذف جميع التصنيفات الفرعية أيضاً.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+            <button type="button" class="btn btn-danger">حذف</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="../js/admin.js"></script>
+  </body>
+</html> 

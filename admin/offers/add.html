@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="إضافة عرض جديد | أحمد عبدة">
+
+    <title>إضافة عرض جديد | أحمد عبدة</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Cairo Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../css/admin.css">
+  </head>
+  <body>
+    <div class="admin-wrapper">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <div class="sidebar-header">
+          <h1 class="sidebar-logo">أحمد عبدة</h1>
+        </div>
+        <nav class="sidebar-nav">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="../dashboard.html">
+                <i class="bi bi-speedometer2"></i>
+                لوحة التحكم
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../orders/list.html">
+                <i class="bi bi-cart3"></i>
+                الطلبات
+                <span class="badge bg-primary">3</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../products/list.html">
+                <i class="bi bi-box-seam"></i>
+                المنتجات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../categories/list.html">
+                <i class="bi bi-folder"></i>
+                التصنيفات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../collections/list.html">
+                <i class="bi bi-collection"></i>
+                المجموعات
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="list.html">
+                <i class="bi bi-tag"></i>
+                العروض
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../banners/list.html">
+                <i class="bi bi-image"></i>
+                البانرات
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+        <!-- Header -->
+        <header class="admin-header">
+          <div class="header-left">
+            <button class="sidebar-toggle">
+              <i class="bi bi-list"></i>
+            </button>
+          </div>
+          <div class="header-right">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i>
+                المدير
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> الإعدادات</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> تسجيل الخروج</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="admin-content">
+          <div class="container-fluid">
+            <!-- Page Title -->
+            <div class="content-header">
+              <h2>إضافة عرض جديد</h2>
+            </div>
+
+            <!-- Add Offer Form -->
+            <form class="needs-validation" novalidate>
+              <!-- Basic Info -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="form-section-title">المعلومات الأساسية</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">اسم العرض</label>
+                        <input type="text" class="form-control" required>
+                        <div class="invalid-feedback">
+                          يرجى إدخال اسم العرض
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">كود العرض</label>
+                        <input type="text" class="form-control" required>
+                        <div class="invalid-feedback">
+                          يرجى إدخال كود العرض
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <label class="form-label">وصف العرض</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Discount Details -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="form-section-title">تفاصيل الخصم</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">نوع الخصم</label>
+                        <select class="form-select" id="discountType" required>
+                          <option value="">اختر نوع الخصم</option>
+                          <option value="percentage">نسبة مئوية</option>
+                          <option value="fixed">قيمة ثابتة</option>
+                          <option value="shipping">شحن مجاني</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          يرجى اختيار نوع الخصم
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">قيمة الخصم</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control" id="discountValue" required>
+                          <span class="input-group-text" id="discountSymbol">ج.م</span>
+                        </div>
+                        <div class="invalid-feedback">
+                          يرجى إدخال قيمة الخصم
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">الحد الأدنى للطلب</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control" required>
+                          <span class="input-group-text">ج.م</span>
+                        </div>
+                        <div class="invalid-feedback">
+                          يرجى إدخال الحد الأدنى للطلب
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">عدد مرات الاستخدام</label>
+                        <input type="number" class="form-control">
+                        <small class="text-muted">اتركه فارغاً لعدد غير محدود</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Validity Period -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="form-section-title">فترة الصلاحية</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">تاريخ البداية</label>
+                        <input type="date" class="form-control" required>
+                        <div class="invalid-feedback">
+                          يرجى اختيار تاريخ البداية
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">تاريخ النهاية</label>
+                        <input type="date" class="form-control" required>
+                        <div class="invalid-feedback">
+                          يرجى اختيار تاريخ النهاية
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Restrictions -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="form-section-title">القيود</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">التصنيفات المشمولة</label>
+                        <select class="form-select" multiple>
+                          <option>رجالي</option>
+                          <option>نسائي</option>
+                          <option>أطفال</option>
+                        </select>
+                        <small class="text-muted">اتركه فارغاً لتطبيق العرض على جميع التصنيفات</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label class="form-label">المجموعات المشمولة</label>
+                        <select class="form-select" multiple>
+                          <option>مجموعة فرعون</option>
+                          <option>مجموعة الصيف</option>
+                          <option>مجموعة الشتاء</option>
+                        </select>
+                        <small class="text-muted">اتركه فارغاً لتطبيق العرض على جميع المجموعات</small>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="firstOrder">
+                          <label class="form-check-label" for="firstOrder">
+                            تطبيق على الطلب الأول فقط
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Settings -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h3 class="form-section-title">الإعدادات</h3>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="mb-3">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" checked>
+                          <label class="form-check-label">تفعيل العرض</label>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" checked>
+                          <label class="form-check-label">عرض في الصفحة الرئيسية</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Buttons -->
+              <div class="row">
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">حفظ العرض</button>
+                  <a href="list.html" class="btn btn-outline-secondary">إلغاء</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="../js/admin.js"></script>
+    <script>
+      // Handle Discount Type Change
+      document.getElementById('discountType').addEventListener('change', function() {
+        const valueInput = document.getElementById('discountValue');
+        const symbolSpan = document.getElementById('discountSymbol');
+
+        if (this.value === 'percentage') {
+          symbolSpan.textContent = '%';
+          valueInput.setAttribute('max', '100');
+        } else if (this.value === 'fixed') {
+          symbolSpan.textContent = 'ج.م';
+          valueInput.removeAttribute('max');
+        } else if (this.value === 'shipping') {
+          valueInput.value = '';
+          valueInput.disabled = true;
+          symbolSpan.textContent = 'ج.م';
+        } else {
+          valueInput.disabled = false;
+        }
+      });
+
+      // Form Validation
+      (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()
+    </script>
+  </body>
+</html> 
