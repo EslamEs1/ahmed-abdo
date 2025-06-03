@@ -1,0 +1,244 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Hero Banner -->
+<section class="category-hero offers-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="hero-content text-center text-md-end">
+          <span class="hero-badge mb-3">خصومات حتى ٥٠٪</span>
+          <h1 class="hero-title mb-4">العروض والخصومات</h1>
+          <p class="hero-text mb-4">اكتشف أفضل العروض على تشكيلة واسعة من الأزياء. خصومات حصرية على الملابس والإكسسوارات.</p>
+          <div class="category-stats d-flex justify-content-center justify-content-md-start gap-4 mb-4">
+            <div class="stat-item text-center">
+              <span class="stat-number">٥٠٪</span>
+              <span class="stat-label">خصم</span>
+            </div>
+            <div class="stat-item text-center">
+              <span class="stat-number">٢٠٠+</span>
+              <span class="stat-label">منتج</span>
+            </div>
+            <div class="stat-item text-center">
+              <span class="stat-number">٧</span>
+              <span class="stat-label">أيام</span>
+            </div>
+          </div>
+          <a href="#offers" class="btn btn-primary btn-lg">تسوق الآن</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Special Offers -->
+<section id="offers" class="special-offers py-5">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <h2 class="section-title">عروض مميزة</h2>
+      <div class="decorative-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="offer-card">
+          <div class="offer-badge">خصم ٥٠٪</div>
+          <img src="https://images.pexels.com/photos/5868722/pexels-photo-5868722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="عروض الصيف" class="img-fluid">
+          <div class="offer-overlay">
+            <div class="offer-content">
+              <span class="offer-subtitle">حصرياً</span>
+              <h3 class="offer-title">عروض الصيف</h3>
+              <p class="offer-desc">خصومات تصل إلى ٥٠٪ على تشكيلة الصيف</p>
+              <a href="#" class="btn btn-outline-light">تسوق الآن</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="offer-card">
+          <div class="offer-badge">خصم ٣٠٪</div>
+          <img src="https://images.pexels.com/photos/5868728/pexels-photo-5868728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="عروض الإكسسوارات" class="img-fluid">
+          <div class="offer-overlay">
+            <div class="offer-content">
+              <span class="offer-subtitle">لفترة محدودة</span>
+              <h3 class="offer-title">عروض الإكسسوارات</h3>
+              <p class="offer-desc">خصم ٣٠٪ على جميع الإكسسوارات</p>
+              <a href="#" class="btn btn-outline-light">تسوق الآن</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Filters -->
+<section class="category-filters py-4">
+  <div class="container">
+    <div class="row">
+      <div class="product-filter mb-4">
+        <ul class="nav nav-pills category-nav justify-content-center" id="categoryTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">الكل</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="men-tab" data-bs-toggle="pill" data-bs-target="#men" type="button" role="tab" aria-controls="men" aria-selected="false">رجالي</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="women-tab" data-bs-toggle="pill" data-bs-target="#women" type="button" role="tab" aria-controls="women" aria-selected="false">نسائي</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="kids-tab" data-bs-toggle="pill" data-bs-target="#kids" type="button" role="tab" aria-controls="kids" aria-selected="false">أطفال</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Grid -->
+<section class="products-section py-5">
+  <div class="container">
+    <!-- Filter Options -->
+    <div class="filter-options mb-4">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="showing-results">
+            <span>عرض ٢٤ من ٢٠٠ منتج</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-md-end">
+            <div class="dropdown sort-dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                ترتيب حسب
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                <li><a class="dropdown-item" href="#">نسبة الخصم: من الأعلى للأقل</a></li>
+                <li><a class="dropdown-item" href="#">السعر: من الأقل للأعلى</a></li>
+                <li><a class="dropdown-item" href="#">السعر: من الأعلى للأقل</a></li>
+                <li><a class="dropdown-item" href="#">الأكثر مبيعاً</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="tab-content" id="categoryTabsContent">
+      <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+        <div class="row g-4" id="productsGrid">
+          <!-- Products will be loaded dynamically from products.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-section mt-5">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">١</a></li>
+          <li class="page-item"><a class="page-link" href="#">٢</a></li>
+          <li class="page-item"><a class="page-link" href="#">٣</a></li>
+          <li class="page-item"><a class="page-link" href="#">٤</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">التالي</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Promotion Banner -->
+<section class="promotion-banner py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="promotion-card text-center">
+          <div class="promotion-content">
+            <h2 class="promotion-title">اشترك في نشرتنا البريدية</h2>
+            <p class="promotion-text">اشترك الآن واحصل على خصم ١٠٪ على مشترياتك الأولى</p>
+            <form class="newsletter-form">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" aria-label="البريد الإلكتروني">
+                <button class="btn btn-primary" type="submit">اشترك</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Quick View Modal -->
+<div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="quickViewModalLabel">عرض سريع</h5>
+        <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <img id="modalProductImage" src="" alt="Product" class="img-fluid rounded">
+          </div>
+          <div class="col-md-6">
+            <h4 id="modalProductName" class="mb-3"></h4>
+            <div class="product-price mb-3">
+              <span id="modalProductPrice" class="current-price"></span>
+              <span id="modalProductOldPrice" class="old-price"></span>
+            </div>
+            <div class="product-rating mb-3">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+              <span class="rating-count">(24)</span>
+            </div>
+            <p id="modalProductDescription" class="mb-4"></p>
+            <div class="product-size mb-4">
+              <h6>المقاس:</h6>
+              <div class="size-options">
+                <button class="size-btn">S</button>
+                <button class="size-btn active">M</button>
+                <button class="size-btn">L</button>
+                <button class="size-btn">XL</button>
+              </div>
+            </div>
+            <div class="product-color mb-4">
+              <h6>اللون:</h6>
+              <div class="color-options">
+                <button class="color-btn" style="background-color: #000;"></button>
+                <button class="color-btn active" style="background-color: #5F4B32;"></button>
+                <button class="color-btn" style="background-color: #1A3263;"></button>
+              </div>
+            </div>
+            <div class="product-quantity mb-4">
+              <h6>الكمية:</h6>
+              <div class="quantity-selector">
+                <button class="quantity-btn" id="decreaseQuantity">-</button>
+                <input type="number" class="quantity-input" value="1" min="1" max="10">
+                <button class="quantity-btn" id="increaseQuantity">+</button>
+              </div>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-primary w-100 mb-2">أضف إلى السلة</button>
+              <button class="btn btn-outline-secondary w-100">أضف إلى المفضلة</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+
+<!-- Bootstrap JS -->

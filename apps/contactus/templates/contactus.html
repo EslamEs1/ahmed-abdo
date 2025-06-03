@@ -1,0 +1,107 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Contact Hero Section -->
+<section class="contact-hero py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto text-center">
+        <h1 class="section-title mb-3">تواصل معنا</h1>
+        <p class="section-desc mb-4">نحن هنا لمساعدتك. يمكنك التواصل معنا عبر أي من الوسائل التالية أو ملء النموذج
+          أدناه.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Information -->
+<section class="contact-info py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="contact-card text-center">
+          <div class="contact-icon mb-3">
+            <i class="bi bi-geo-alt"></i>
+          </div>
+          <h4 class="contact-title">العنوان</h4>
+          <p class="contact-text">شارع التحرير، القاهرة، مصر</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card text-center">
+          <div class="contact-icon mb-3">
+            <i class="bi bi-telephone"></i>
+          </div>
+          <h4 class="contact-title">الهاتف</h4>
+          <p class="contact-text">+20 123 456 7890</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-card text-center">
+          <div class="contact-icon mb-3">
+            <i class="bi bi-envelope"></i>
+          </div>
+          <h4 class="contact-title">البريد الإلكتروني</h4>
+          <p class="contact-text">info@alnile.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form -->
+<section class="contact-form py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="form-wrapper bg-white p-4 rounded shadow-sm">
+          <h3 class="form-title text-center mb-4">أرسل لنا رسالة</h3>
+          <form id="contactForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name" class="form-label">الاسم</label>
+                  <input type="text" class="form-control" id="name" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email" class="form-label">البريد الإلكتروني</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="subject" class="form-label">الموضوع</label>
+                  <input type="text" class="form-control" id="subject" required>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="message" class="form-label">الرسالة</label>
+                  <textarea class="form-control" id="message" rows="5" required></textarea>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg w-100">إرسال الرسالة</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map Section -->
+<section class="map-section">
+  <div class="container-fluid p-0">
+    <div class="map-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3418.0940461667!2d31.235774!3d30.044420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAyJzM5LjkiTiAzMcKwMTQnMDguOCJF!5e0!3m2!1sen!2seg!4v1635959877964!5m2!1sen!2seg"
+        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+{% endblock content %}

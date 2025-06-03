@@ -1,0 +1,259 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Hero Banner -->
+<section class="category-hero kids-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="hero-content">
+          <span class="hero-subtitle">تشكيلة الأطفال</span>
+          <h1 class="hero-title mb-4">أزياء مريحة لأطفالك</h1>
+          <p class="hero-text mb-4">اختر لأطفالك أجمل الملابس العصرية المريحة. تشكيلة متنوعة من الملابس والأحذية للأولاد والبنات مصممة من أجود الخامات الآمنة والمريحة.</p>
+          <div class="hero-features mb-4">
+            <div class="hero-feature">
+              <i class="bi bi-shield-check"></i>
+              <span>خامات آمنة</span>
+            </div>
+            <div class="hero-feature">
+              <i class="bi bi-emoji-smile"></i>
+              <span>تصاميم مريحة</span>
+            </div>
+            <div class="hero-feature">
+              <i class="bi bi-palette"></i>
+              <span>ألوان جذابة</span>
+            </div>
+          </div>
+          <div class="hero-buttons">
+            <a href="#boys" class="btn btn-primary btn-lg me-2">ملابس أولاد</a>
+            <a href="#girls" class="btn btn-outline-light btn-lg">ملابس بنات</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Filters -->
+<section class="category-filters py-4">
+  <div class="container">
+    <div class="row">
+      <div class="product-filter mb-4">
+        <ul class="nav nav-pills category-nav justify-content-center" id="categoryTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">الكل</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="boys-tab" data-bs-toggle="pill" data-bs-target="#boys" type="button" role="tab" aria-controls="boys" aria-selected="false">ملابس أولاد</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="girls-tab" data-bs-toggle="pill" data-bs-target="#girls" type="button" role="tab" aria-controls="girls" aria-selected="false">ملابس بنات</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="shoes-tab" data-bs-toggle="pill" data-bs-target="#shoes" type="button" role="tab" aria-controls="shoes" aria-selected="false">أحذية</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Grid -->
+<section class="products-section py-5">
+  <div class="container">
+    <!-- Filter Options -->
+    <div class="filter-options mb-4">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="showing-results">
+            <span>عرض ٢٤ من ٧٢ منتج</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-md-end">
+            <div class="dropdown sort-dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                ترتيب حسب
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                <li><a class="dropdown-item" href="#">الأحدث</a></li>
+                <li><a class="dropdown-item" href="#">السعر: من الأقل للأعلى</a></li>
+                <li><a class="dropdown-item" href="#">السعر: من الأعلى للأقل</a></li>
+                <li><a class="dropdown-item" href="#">الأكثر مبيعاً</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="tab-content" id="categoryTabsContent">
+      <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+        <div class="row g-4" id="productsGrid">
+          <!-- Products will be loaded dynamically from products.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-section mt-5">
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">١</a></li>
+          <li class="page-item"><a class="page-link" href="#">٢</a></li>
+          <li class="page-item"><a class="page-link" href="#">٣</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">التالي</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Collections -->
+<section class="featured-collections py-5 bg-light">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="collection-card">
+          <img src="https://images.pexels.com/photos/5905700/pexels-photo-5905700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="ملابس المدرسة" class="img-fluid">
+          <div class="collection-overlay">
+            <div class="collection-content">
+              <h3 class="collection-title">ملابس المدرسة</h3>
+              <p class="collection-desc">تشكيلة متكاملة من الزي المدرسي بخامات مريحة ومتينة</p>
+              <a href="#" class="btn btn-outline-light">تسوق الآن</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="collection-card">
+          <img src="https://images.pexels.com/photos/8365688/pexels-photo-8365688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="ملابس الحفلات" class="img-fluid">
+          <div class="collection-overlay">
+            <div class="collection-content">
+              <h3 class="collection-title">ملابس الحفلات</h3>
+              <p class="collection-desc">أزياء مميزة للمناسبات السعيدة بتصاميم عصرية</p>
+              <a href="#" class="btn btn-outline-light">تسوق الآن</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Parents Guide -->
+<section class="style-guide py-5">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <h2 class="section-title">دليل الأهل</h2>
+      <div class="decorative-line"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="style-card text-center">
+          <div class="style-icon mb-3">
+            <i class="bi bi-rulers"></i>
+          </div>
+          <h4 class="style-title">دليل المقاسات</h4>
+          <p class="style-text">تعرف على المقاس المناسب لطفلك حسب العمر والقياسات</p>
+          <a href="#" class="btn btn-link">اكتشف المزيد</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="style-card text-center">
+          <div class="style-icon mb-3">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h4 class="style-title">جودة وأمان</h4>
+          <p class="style-text">معلومات عن خامات ملابسنا الآمنة والمريحة للأطفال</p>
+          <a href="#" class="btn btn-link">اكتشف المزيد</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="style-card text-center">
+          <div class="style-icon mb-3">
+            <i class="bi bi-heart"></i>
+          </div>
+          <h4 class="style-title">نصائح العناية</h4>
+          <p class="style-text">إرشادات للعناية بملابس الأطفال للحفاظ على جودتها</p>
+          <a href="#" class="btn btn-link">اكتشف المزيد</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="quickViewModalLabel">عرض سريع</h5>
+            <button type="button" class="btn-close ms-0 me-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <img id="modalProductImage" src="" alt="Product" class="img-fluid rounded">
+              </div>
+              <div class="col-md-6">
+                <h4 id="modalProductName" class="mb-3"></h4>
+                <div class="product-price mb-3">
+                  <span id="modalProductPrice" class="current-price"></span>
+                  <span id="modalProductOldPrice" class="old-price"></span>
+                </div>
+                <div class="product-rating mb-3">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <span class="rating-count">(24)</span>
+                </div>
+                <p id="modalProductDescription" class="mb-4"></p>
+                <div class="product-size mb-4">
+                  <h6>المقاس:</h6>
+                  <div class="size-options">
+                    <button class="size-btn">4</button>
+                    <button class="size-btn active">6</button>
+                    <button class="size-btn">8</button>
+                    <button class="size-btn">10</button>
+                    <button class="size-btn">12</button>
+                  </div>
+                </div>
+                <div class="product-color mb-4">
+                  <h6>اللون:</h6>
+                  <div class="color-options">
+                    <button class="color-btn" style="background-color: #FF6B6B;"></button>
+                    <button class="color-btn active" style="background-color: #4ECDC4;"></button>
+                    <button class="color-btn" style="background-color: #FFE66D;"></button>
+                  </div>
+                </div>
+                <div class="product-quantity mb-4">
+                  <h6>الكمية:</h6>
+                  <div class="quantity-selector">
+                    <button class="quantity-btn" id="decreaseQuantity">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" max="10">
+                    <button class="quantity-btn" id="increaseQuantity">+</button>
+                  </div>
+                </div>
+                <div class="product-actions">
+                  <button class="btn btn-primary w-100 mb-2">أضف إلى السلة</button>
+                  <button class="btn btn-outline-secondary w-100">أضف إلى المفضلة</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+
+
