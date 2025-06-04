@@ -1,5 +1,6 @@
 {% extends 'website/base.html' %}
 {% load static %}
+{% load product_tags %}
 {% block content %}
 
 <!-- Hero Banner -->
@@ -44,6 +45,11 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button" role="tab" aria-controls="all" aria-selected="true">الكل</button>
           </li>
+          {% for subcategory in category.children.all %}
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="{{ subcategory.slug }}-tab" data-bs-toggle="pill" data-bs-target="#{{ subcategory.slug }}" type="button" role="tab" aria-controls="{{ subcategory.slug }}" aria-selected="false">{{ subcategory.name_ar }}</button>
+          </li>
+          {% empty %}
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="boys-tab" data-bs-toggle="pill" data-bs-target="#boys" type="button" role="tab" aria-controls="boys" aria-selected="false">ملابس أولاد</button>
           </li>
@@ -53,6 +59,7 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="shoes-tab" data-bs-toggle="pill" data-bs-target="#shoes" type="button" role="tab" aria-controls="shoes" aria-selected="false">أحذية</button>
           </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
@@ -67,7 +74,7 @@
       <div class="row align-items-center">
         <div class="col-md-6">
           <div class="showing-results">
-            <span>عرض ٢٤ من ٧٢ منتج</span>
+            <span>عرض {{ page_obj.start_index }} - {{ page_obj.end_index }} من {{ page_obj.paginator.count }} منتج</span>
           </div>
         </div>
         <div class="col-md-6">
@@ -77,10 +84,10 @@
                 ترتيب حسب
               </button>
               <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                <li><a class="dropdown-item" href="#">الأحدث</a></li>
-                <li><a class="dropdown-item" href="#">السعر: من الأقل للأعلى</a></li>
-                <li><a class="dropdown-item" href="#">السعر: من الأعلى للأقل</a></li>
-                <li><a class="dropdown-item" href="#">الأكثر مبيعاً</a></li>
+                <li><a class="dropdown-item {% if sort_by == 'newest' %}active{% endif %}" href="?sort=newest">الأحدث</a></li>
+                <li><a class="dropdown-item {% if sort_by == 'price_low' %}active{% endif %}" href="?sort=price_low">السعر: من الأقل للأعلى</a></li>
+                <li><a class="dropdown-item {% if sort_by == 'price_high' %}active{% endif %}" href="?sort=price_high">السعر: من الأعلى للأقل</a></li>
+                <li><a class="dropdown-item {% if sort_by == 'popular' %}active{% endif %}" href="?sort=popular">الأكثر مبيعاً</a></li>
               </ul>
             </div>
           </div>
@@ -92,27 +99,153 @@
     <div class="tab-content" id="categoryTabsContent">
       <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
         <div class="row g-4" id="productsGrid">
-          <!-- Products will be loaded dynamically from products.js -->
+          {% for product in products %}
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="product-card" data-description="{{ product.description_ar }}">
+              {% if product.badge or product.is_new or product.is_on_sale %}
+                <div class="product-badge">
+                  {% if product.badge %}
+                    {{ product.get_badge_display }}
+                  {% elif product.is_new %}
+                    جديد
+                  {% elif product.is_on_sale %}
+                    خصم {{ product.get_discount_percentage }}%
+                  {% endif %}
+                </div>
+              {% endif %}
+              <div class="product-img-container">
+                <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
+                <div class="product-actions">
+                  <button class="action-btn quick-view-btn">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                  <button class="action-btn">
+                    <i class="bi bi-heart"></i>
+                  </button>
+                  <button class="action-btn">
+                    <i class="bi bi-bag-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">{{ product.category.name_ar }}</div>
+                <h3 class="product-title">
+                  <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
+                </h3>
+                <div class="product-price">
+                  <span class="current-price">{{ product.price }} ج.م</span>
+                  {% if product.old_price %}
+                    <span class="old-price">{{ product.old_price }} ج.م</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="col-12 text-center py-5">
+            <p>لا توجد منتجات متاحة حالياً</p>
+          </div>
+          {% endfor %}
         </div>
       </div>
+      
+      {% for subcategory in category.children.all %}
+      <div class="tab-pane fade" id="{{ subcategory.slug }}" role="tabpanel" aria-labelledby="{{ subcategory.slug }}-tab">
+        <div class="row g-4">
+          {% for product in products %}
+            {% if product.category == subcategory %}
+              <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card" data-description="{{ product.description_ar }}">
+                  {% if product.badge or product.is_new or product.is_on_sale %}
+                    <div class="product-badge">
+                      {% if product.badge %}
+                        {{ product.get_badge_display }}
+                      {% elif product.is_new %}
+                        جديد
+                      {% elif product.is_on_sale %}
+                        خصم {{ product.get_discount_percentage }}%
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                  <div class="product-img-container">
+                    <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
+                    <div class="product-actions">
+                      <button class="action-btn quick-view-btn">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-heart"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-bag-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">{{ product.category.name_ar }}</div>
+                    <h3 class="product-title">
+                      <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
+                    </h3>
+                    <div class="product-price">
+                      <span class="current-price">{{ product.price }} ج.م</span>
+                      {% if product.old_price %}
+                        <span class="old-price">{{ product.old_price }} ج.م</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% empty %}
+            <div class="col-12 text-center py-5">
+              <p>لا توجد منتجات متاحة حالياً</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
     </div>
 
     <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
     <div class="pagination-section mt-5">
       <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if sort_by %}&sort={{ sort_by }}{% endif %}" aria-label="Previous">
+              <span aria-hidden="true">السابق</span>
+            </a>
+          </li>
+          {% else %}
           <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1" aria-disabled="true">السابق</a>
           </li>
-          <li class="page-item active"><a class="page-link" href="#">١</a></li>
-          <li class="page-item"><a class="page-link" href="#">٢</a></li>
-          <li class="page-item"><a class="page-link" href="#">٣</a></li>
+          {% endif %}
+          
+          {% for i in page_obj.paginator.page_range %}
+            {% if page_obj.number == i %}
+              <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
+            {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+              <li class="page-item"><a class="page-link" href="?page={{ i }}{% if sort_by %}&sort={{ sort_by }}{% endif %}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          
+          {% if page_obj.has_next %}
           <li class="page-item">
-            <a class="page-link" href="#">التالي</a>
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if sort_by %}&sort={{ sort_by }}{% endif %}" aria-label="Next">
+              <span aria-hidden="true">التالي</span>
+            </a>
           </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">التالي</a>
+          </li>
+          {% endif %}
         </ul>
       </nav>
     </div>
+    {% endif %}
   </div>
 </section>
 
@@ -120,6 +253,20 @@
 <section class="featured-collections py-5 bg-light">
   <div class="container">
     <div class="row g-4">
+      {% for collection in active_collections|slice:":2" %}
+      <div class="col-md-6">
+        <div class="collection-card">
+          <img src="{{ collection.image.url }}" alt="{{ collection.name_ar }}" class="img-fluid">
+          <div class="collection-overlay">
+            <div class="collection-content">
+              <h3 class="collection-title">{{ collection.name_ar }}</h3>
+              <p class="collection-desc">{{ collection.description_ar }}</p>
+              <a href="{% url 'product:collection_detail' collection.slug %}" class="btn btn-outline-light">تسوق الآن</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
       <div class="col-md-6">
         <div class="collection-card">
           <img src="https://images.pexels.com/photos/5905700/pexels-photo-5905700.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="ملابس المدرسة" class="img-fluid">
@@ -144,6 +291,7 @@
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </section>

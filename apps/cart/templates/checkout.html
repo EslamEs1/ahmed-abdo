@@ -1,460 +1,348 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="إتمام الشراء - متجر أحمد عبدة للأزياء">
+{% extends 'website/base.html' %}
+{% load static %}
+{% load product_tags %}
 
-    <title>أحمد عبدة | إتمام الشراء</title>
-    <!-- Bootstrap RTL CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <!-- Cairo Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar py-2">
+{% block content %}
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="py-3 bg-light">
+      <div class="container">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="{% url 'main:home' %}">الرئيسية</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'cart:cart' %}">سلة التسوق</a></li>
+          <li class="breadcrumb-item active" aria-current="page">إتمام الشراء</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section py-5">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="d-flex justify-content-center justify-content-md-between align-items-center flex-wrap">
-              <p class="announcement-text mb-0 mx-3 mx-md-0">توصيل مجاني للطلبات فوق ٥٠٠ جنيه</p>
-              <div class="d-flex">
-                <a href="#" class="announcement-link mx-2">تتبع طلبك</a>
-                <span class="mx-1">|</span>
-                <a href="contactus.html" class="announcement-link mx-2">تواصل معنا</a>
-                <span class="mx-1">|</span>
-                <a href="#" class="announcement-link mx-2">English</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <!-- Checkout Form -->
+          <div class="col-lg-8">
+            <div class="checkout-form">
+              <h2 class="section-title mb-4">إتمام الشراء</h2>
 
-    <!-- Header -->
-    <header class="main-header" id="main-header">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg py-3">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-              <span class="brand-name">أحمد عبدة</span>
-            </a>
-            <div class="d-flex d-lg-none ms-auto me-2">
-              <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
-              <a href="cart.html" class="nav-icon mx-2 position-relative">
-                <i class="bi bi-bag"></i>
-                <span class="cart-badge">3</span>
-              </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mx-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="men.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    الرجال
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="men.html?category=shirts">قمصان</a></li>
-                    <li><a class="dropdown-item" href="men.html?category=pants">بناطيل</a></li>
-                    <li><a class="dropdown-item" href="men.html?category=shoes">أحذية</a></li>
-                    <li><a class="dropdown-item" href="men.html?category=accessories">إكسسوارات</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="women.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    النساء
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="women.html?category=dresses">فساتين</a></li>
-                    <li><a class="dropdown-item" href="women.html?category=blouses">بلوزات</a></li>
-                    <li><a class="dropdown-item" href="women.html?category=pants">بناطيل</a></li>
-                    <li><a class="dropdown-item" href="women.html?category=bags">حقائب</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="kids.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    الأطفال
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="kids.html?category=boys">ملابس أولاد</a></li>
-                    <li><a class="dropdown-item" href="kids.html?category=girls">ملابس بنات</a></li>
-                    <li><a class="dropdown-item" href="kids.html?category=shoes">أحذية</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="offers.html">العروض</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contactus.html">تواصل معنا</a>
-                </li>
-              </ul>
-              <div class="d-none d-lg-flex">
-                <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
-                <a href="cart.html" class="nav-icon mx-2 position-relative">
-                  <i class="bi bi-bag"></i>
-                  <span class="cart-badge">3</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb" class="py-3 bg-light">
-        <div class="container">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
-            <li class="breadcrumb-item"><a href="cart.html">سلة التسوق</a></li>
-            <li class="breadcrumb-item active" aria-current="page">إتمام الشراء</li>
-          </ol>
-        </div>
-      </nav>
-
-      <!-- Checkout Section -->
-      <section class="checkout-section py-5">
-        <div class="container">
-          <div class="row">
-            <!-- Checkout Form -->
-            <div class="col-lg-8">
-              <div class="checkout-form">
-                <h2 class="section-title mb-4">إتمام الشراء</h2>
-
-                <!-- Progress Steps -->
-                <div class="checkout-steps mb-5">
-                  <div class="row">
-                    <div class="col-4">
-                      <div class="step active">
-                        <div class="step-icon">
-                          <i class="bi bi-person"></i>
-                        </div>
-                        <div class="step-text">البيانات الشخصية</div>
+              <!-- Progress Steps -->
+              <div class="checkout-steps mb-5">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="step active">
+                      <div class="step-icon">
+                        <i class="bi bi-person"></i>
                       </div>
+                      <div class="step-text">البيانات الشخصية</div>
                     </div>
-                    <div class="col-4">
-                      <div class="step">
-                        <div class="step-icon">
-                          <i class="bi bi-truck"></i>
-                        </div>
-                        <div class="step-text">الشحن</div>
+                  </div>
+                  <div class="col-4">
+                    <div class="step">
+                      <div class="step-icon">
+                        <i class="bi bi-truck"></i>
                       </div>
+                      <div class="step-text">الشحن</div>
                     </div>
-                    <div class="col-4">
-                      <div class="step">
-                        <div class="step-icon">
-                          <i class="bi bi-credit-card"></i>
-                        </div>
-                        <div class="step-text">الدفع</div>
+                  </div>
+                  <div class="col-4">
+                    <div class="step">
+                      <div class="step-icon">
+                        <i class="bi bi-credit-card"></i>
                       </div>
+                      <div class="step-text">الدفع</div>
                     </div>
                   </div>
                 </div>
+              </div>
 
+              <!-- Checkout Form -->
+              <form id="checkoutForm" action="{% url 'order:place_order' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <!-- Personal Information Form -->
-                <form id="checkoutForm">
-                  <div class="form-section mb-5">
-                    <h4 class="form-section-title mb-4">البيانات الشخصية</h4>
-                    <div class="row g-3">
-                      <div class="col-md-6">
-                        <label for="firstName" class="form-label">الاسم الأول</label>
-                        <input type="text" class="form-control" id="firstName" required>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="lastName" class="form-label">الاسم الأخير</label>
-                        <input type="text" class="form-control" id="lastName" required>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="email" class="form-label">البريد الإلكتروني</label>
-                        <input type="email" class="form-control" id="email" required>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="phone" class="form-label">رقم الهاتف</label>
-                        <input type="tel" class="form-control" id="phone" required>
-                      </div>
+                <div class="form-section mb-5">
+                  <h4 class="form-section-title mb-4">البيانات الشخصية</h4>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="firstName" class="form-label">الاسم الأول</label>
+                      <input type="text" class="form-control" id="firstName" name="first_name" required {% if user.is_authenticated %}value="{{ user.first_name }}"{% endif %}>
                     </div>
-                  </div>
-
-                  <!-- Shipping Information -->
-                  <div class="form-section mb-5">
-                    <h4 class="form-section-title mb-4">عنوان الشحن</h4>
-                    <div class="row g-3">
-                      <div class="col-md-6">
-                        <label for="city" class="form-label">المدينة</label>
-                        <select class="form-select" id="city" required>
-                          <option value="">اختر المدينة</option>
-                          <option value="cairo">القاهرة</option>
-                          <option value="alexandria">الإسكندرية</option>
-                          <option value="giza">الجيزة</option>
-                        </select>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="area" class="form-label">المنطقة</label>
-                        <select class="form-select" id="area" required>
-                          <option value="">اختر المنطقة</option>
-                        </select>
-                      </div>
-                      <div class="col-12">
-                        <label for="address" class="form-label">العنوان بالتفصيل</label>
-                        <input type="text" class="form-control" id="address" required>
-                      </div>
-                      <div class="col-12">
-                        <label for="addressNotes" class="form-label">ملاحظات إضافية</label>
-                        <textarea class="form-control" id="addressNotes" rows="3"></textarea>
-                      </div>
+                    <div class="col-md-6">
+                      <label for="lastName" class="form-label">الاسم الأخير</label>
+                      <input type="text" class="form-control" id="lastName" name="last_name" required {% if user.is_authenticated %}value="{{ user.last_name }}"{% endif %}>
                     </div>
-                  </div>
-
-                  <!-- Payment Method -->
-                  <div class="form-section mb-5">
-                    <h4 class="form-section-title mb-4">طريقة الدفع</h4>
-                    <div class="payment-options mb-4">
-                      <div class="form-check payment-option mb-3">
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="fawry" checked>
-                        <label class="form-check-label d-flex align-items-center" for="fawry">
-                          <img src="images/icons/Fawr.webp" alt="فوري" class="payment-icon me-2" title="فوري">
-                          <span>فوري</span>
-                        </label>
-                      </div>
-                      <div class="form-check payment-option mb-3">
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="vodafoneCash">
-                        <label class="form-check-label d-flex align-items-center" for="vodafoneCash">
-                          <img src="images/icons/vodafone.png" alt="فودافون كاش" class="payment-icon me-2" title="فودافون كاش">
-                          <span>فودافون كاش</span>
-                        </label>
-                      </div>
-                      <div class="form-check payment-option mb-3">
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="instapay">
-                        <label class="form-check-label d-flex align-items-center" for="instapay">
-                          <img src="images/icons/Instapay" alt="انستا باي" class="payment-icon me-2" title="انستا باي">
-                          <span>انستا باي</span>
-                        </label>
-                      </div>
-                      <div class="form-check payment-option mb-3">
-                        <input class="form-check-input" type="radio" name="paymentMethod" id="etisalatCash">
-                        <label class="form-check-label d-flex align-items-center" for="etisalatCash">
-                          <img src="images/icons/e& UAE.jpeg" alt="اتصالات كاش" class="payment-icon me-2" title="اتصالات كاش">
-                          <span>اتصالات كاش</span>
-                        </label>
-                      </div>
+                    <div class="col-md-6">
+                      <label for="email" class="form-label">البريد الإلكتروني</label>
+                      <input type="email" class="form-control" id="email" name="email" required {% if user.is_authenticated %}value="{{ user.email }}"{% endif %}>
                     </div>
-
-                    <!-- Payment Instructions -->
-                    <div class="payment-instructions alert alert-info mb-4">
-                      <h5 class="alert-heading mb-3">تعليمات الدفع:</h5>
-                      <ol class="mb-0">
-                        <li>قم باختيار طريقة الدفع المناسبة</li>
-                        <li>سيتم عرض رقم المحفظة الخاص بنا</li>
-                        <li>قم بتحويل المبلغ المطلوب</li>
-                        <li>التقط صورة لإيصال الدفع</li>
-                        <li>قم برفع الصورة في الخانة المخصصة أدناه</li>
-                      </ol>
-                    </div>
-
-                    <!-- Payment Screenshot Upload -->
-                    <div class="payment-upload mb-4">
-                      <label class="form-label">صورة إيصال الدفع</label>
-                      <div class="upload-area p-4 text-center border rounded">
-                        <i class="bi bi-cloud-arrow-up fs-1 text-primary mb-2"></i>
-                        <p class="mb-2">اسحب وأفلت صورة الإيصال هنا</p>
-                        <p class="text-muted small mb-3">أو</p>
-                        <input type="file" class="d-none" id="paymentScreenshot" accept="image/*">
-                        <label for="paymentScreenshot" class="btn btn-outline-primary">اختر الصورة</label>
-                        <p class="text-muted small mt-2">الصيغ المدعومة: JPG, PNG, JPEG. الحد الأقصى للحجم: 5MB</p>
-                      </div>
-                      <div id="previewArea" class="mt-3 d-none">
-                        <div class="preview-container position-relative d-inline-block">
-                          <img id="screenshotPreview" class="img-thumbnail" style="max-width: 200px;">
-                          <button type="button" class="btn-close position-absolute top-0 end-0 m-1" id="removeScreenshot"></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Terms and Conditions -->
-                  <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" id="terms" required>
-                    <label class="form-check-label" for="terms">
-                      أوافق على <a href="#">الشروط والأحكام</a> و <a href="#">سياسة الخصوصية</a>
-                    </label>
-                  </div>
-
-                  <!-- Submit Button -->
-                  <button type="submit" class="btn btn-primary btn-lg w-100">
-                    <i class="bi bi-lock"></i>
-                    إتمام الطلب
-                  </button>
-                </form>
-              </div>
-            </div>
-
-            <!-- Order Summary -->
-            <div class="col-lg-4">
-              <div class="order-summary">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title mb-4">ملخص الطلب</h3>
-                    <!-- Order Items -->
-                    <div class="order-items mb-4">
-                      <div class="order-item d-flex justify-content-between align-items-center mb-3">
-                        <div class="item-info d-flex align-items-center">
-                          <div class="item-image-wrapper">
-                            <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg" alt="قميص كاجوال" class="item-image rounded">
-                          </div>
-                          <div class="item-details me-3">
-                            <h6 class="item-title mb-0">قميص كاجوال</h6>
-                            <small class="text-muted">المقاس: L | اللون: أزرق</small>
-                          </div>
-                        </div>
-                        <span class="item-price">٣٩٩ جنيه</span>
-                      </div>
-                      <div class="order-item d-flex justify-content-between align-items-center mb-3">
-                        <div class="item-info d-flex align-items-center">
-                          <img src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg" alt="بنطلون جينز" class="item-image rounded">
-                          <div class="item-details ms-3">
-                            <h6 class="item-title mb-0">بنطلون جينز</h6>
-                            <small class="text-muted">المقاس: 32 | اللون: أزرق داكن</small>
-                          </div>
-                        </div>
-                        <span class="item-price">٤٩٩ جنيه</span>
-                      </div>
-                      <div class="order-item d-flex justify-content-between align-items-center">
-                        <div class="item-info d-flex align-items-center">
-                          <img src="https://images.pexels.com/photos/19090/pexels-photo.jpg" alt="حذاء رياضي" class="item-image rounded">
-                          <div class="item-details ms-3">
-                            <h6 class="item-title mb-0">حذاء رياضي</h6>
-                            <small class="text-muted">المقاس: 42 | اللون: أسود</small>
-                          </div>
-                        </div>
-                        <span class="item-price">٧٩٩ جنيه</span>
-                      </div>
-                    </div>
-                    <!-- Order Totals -->
-                    <div class="order-totals">
-                      <div class="d-flex justify-content-between mb-2">
-                        <span>إجمالي المنتجات</span>
-                        <span>١,٦٩٧ جنيه</span>
-                      </div>
-                      <div class="d-flex justify-content-between mb-2">
-                        <span>الخصم</span>
-                        <span class="text-success">- ٤٠٠ جنيه</span>
-                      </div>
-                      <div class="d-flex justify-content-between mb-3">
-                        <span>التوصيل</span>
-                        <span>مجاني</span>
-                      </div>
-                      <hr>
-                      <div class="d-flex justify-content-between total">
-                        <strong>الإجمالي</strong>
-                        <strong>١,٢٩٧ جنيه</strong>
-                      </div>
+                    <div class="col-md-6">
+                      <label for="phone" class="form-label">رقم الهاتف</label>
+                      <input type="tel" class="form-control" id="phone" name="phone" required>
                     </div>
                   </div>
                 </div>
-                <!-- Secure Checkout -->
-                <div class="secure-checkout text-center mt-3">
-                  <i class="bi bi-shield-check text-success"></i>
-                  <small class="ms-2">الدفع آمن ١٠٠٪ مع أفضل وسائل الدفع المحلية</small>
+
+                <!-- Shipping Information -->
+                <div class="form-section mb-5">
+                  <h4 class="form-section-title mb-4">عنوان الشحن</h4>
+                  
+                  {% if addresses %}
+                    <div class="saved-addresses mb-4">
+                      <h5 class="mb-3">العناوين المحفوظة</h5>
+                      <div class="row g-3">
+                        {% for address in addresses %}
+                          <div class="col-md-6">
+                            <div class="card address-card {% if address.is_default %}border-primary{% endif %}">
+                              <div class="card-body">
+                                <h6 class="card-title">{{ address.first_name }} {{ address.last_name }}</h6>
+                                <p class="card-text">{{ address.address }}</p>
+                                <p class="card-text">{{ address.city }}, {{ address.area }}</p>
+                                <p class="card-text">{{ address.phone }}</p>
+                                <button type="button" class="btn btn-sm btn-outline-primary use-address-btn" 
+                                        data-first-name="{{ address.first_name }}"
+                                        data-last-name="{{ address.last_name }}"
+                                        data-phone="{{ address.phone }}"
+                                        data-address="{{ address.address }}"
+                                        data-city="{{ address.city }}"
+                                        data-area="{{ address.area }}">
+                                  استخدم هذا العنوان
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="city" class="form-label">المدينة</label>
+                      <select class="form-select" id="city" name="city" required>
+                        <option value="">اختر المدينة</option>
+                        <option value="القاهرة">القاهرة</option>
+                        <option value="الإسكندرية">الإسكندرية</option>
+                        <option value="الجيزة">الجيزة</option>
+                        <option value="شرم الشيخ">شرم الشيخ</option>
+                        <option value="الغردقة">الغردقة</option>
+                        <option value="المنصورة">المنصورة</option>
+                        <option value="طنطا">طنطا</option>
+                        <option value="أسيوط">أسيوط</option>
+                        <option value="المنيا">المنيا</option>
+                        <option value="سوهاج">سوهاج</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="area" class="form-label">المنطقة</label>
+                      <input type="text" class="form-control" id="area" name="area" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="address" class="form-label">العنوان بالتفصيل</label>
+                      <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="addressNotes" class="form-label">ملاحظات إضافية</label>
+                      <textarea class="form-control" id="addressNotes" name="order_note" rows="3"></textarea>
+                    </div>
+                  </div>
                 </div>
-                <!-- Payment Methods -->
-                <div class="payment-methods mt-3 text-center">
-                  <img src="images/payment/fawry.png" alt="فوري" class="payment-icon" title="فوري">
-                  <img src="images/payment/vodafone-cash.png" alt="فودافون كاش" class="payment-icon" title="فودافون كاش">
-                  <img src="images/payment/etisalat-cash.png" alt="اتصالات كاش" class="payment-icon" title="اتصالات كاش">
-                  <img src="images/payment/instapay.png" alt="انستا باي" class="payment-icon" title="انستا باي">
+
+                <!-- Payment Method -->
+                <div class="form-section mb-5">
+                  <h4 class="form-section-title mb-4">طريقة الدفع</h4>
+                  <div class="payment-options mb-4">
+                    <div class="form-check payment-option mb-3">
+                      <input class="form-check-input" type="radio" name="payment_method" id="fawry" value="fawry" checked>
+                      <label class="form-check-label d-flex align-items-center" for="fawry">
+                        <img src="{% static 'images/payment/fawry.png' %}" alt="فوري" class="payment-icon me-2" title="فوري">
+                        <span>فوري</span>
+                      </label>
+                    </div>
+                    <div class="form-check payment-option mb-3">
+                      <input class="form-check-input" type="radio" name="payment_method" id="vodafoneCash" value="vodafone_cash">
+                      <label class="form-check-label d-flex align-items-center" for="vodafoneCash">
+                        <img src="{% static 'images/payment/vodafone-cash.png' %}" alt="فودافون كاش" class="payment-icon me-2" title="فودافون كاش">
+                        <span>فودافون كاش</span>
+                      </label>
+                    </div>
+                    <div class="form-check payment-option mb-3">
+                      <input class="form-check-input" type="radio" name="payment_method" id="instapay" value="instapay">
+                      <label class="form-check-label d-flex align-items-center" for="instapay">
+                        <img src="{% static 'images/payment/instapay.png' %}" alt="انستا باي" class="payment-icon me-2" title="انستا باي">
+                        <span>انستا باي</span>
+                      </label>
+                    </div>
+                    <div class="form-check payment-option mb-3">
+                      <input class="form-check-input" type="radio" name="payment_method" id="etisalatCash" value="etisalat_cash">
+                      <label class="form-check-label d-flex align-items-center" for="etisalatCash">
+                        <img src="{% static 'images/payment/etisalat-cash.png' %}" alt="اتصالات كاش" class="payment-icon me-2" title="اتصالات كاش">
+                        <span>اتصالات كاش</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Payment Instructions -->
+                  <div class="payment-instructions alert alert-info mb-4">
+                    <h5 class="alert-heading mb-3">تعليمات الدفع:</h5>
+                    <ol class="mb-0">
+                      <li>قم باختيار طريقة الدفع المناسبة</li>
+                      <li>سيتم عرض رقم المحفظة الخاص بنا بعد إكمال الطلب</li>
+                      <li>قم بتحويل المبلغ المطلوب</li>
+                      <li>التقط صورة لإيصال الدفع</li>
+                      <li>قم برفع الصورة في الصفحة التالية</li>
+                    </ol>
+                  </div>
                 </div>
-              </div>
+
+                <!-- Terms and Conditions -->
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="terms" required>
+                  <label class="form-check-label" for="terms">
+                    أوافق على <a href="#">الشروط والأحكام</a> و <a href="#">سياسة الخصوصية</a>
+                  </label>
+                </div>
+
+                <!-- Save Address Option (for logged in users) -->
+                {% if user.is_authenticated %}
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="saveAddress" name="save_address">
+                  <label class="form-check-label" for="saveAddress">
+                    حفظ هذا العنوان للطلبات المستقبلية
+                  </label>
+                </div>
+                <div class="form-check mb-4" id="defaultAddressDiv" style="display: none;">
+                  <input class="form-check-input" type="checkbox" id="defaultAddress" name="is_default">
+                  <label class="form-check-label" for="defaultAddress">
+                    اجعل هذا العنوان الافتراضي
+                  </label>
+                </div>
+                {% endif %}
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <i class="bi bi-lock"></i>
+                  إتمام الطلب
+                </button>
+              </form>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
 
-   <!-- Footer -->
-    <footer class="footer pt-5">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-md-4 col-lg-3">
-            <div class="footer-info">
-              <h5 class="footer-title">أحمد عبدة</h5>
-              <p class="footer-desc">متجر الأزياء المصرية الرائد، نقدم أحدث صيحات الموضة بجودة عالية وأسعار منافسة.</p>
-              <div class="social-links">
-                <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <h5 class="footer-title">تسوق</h5>
-            <ul class="footer-links">
-              <li><a href="men.html">الرجال</a></li>
-              <li><a href="women.html">النساء</a></li>
-              <li><a href="kids.html">الأطفال</a></li>
-              <li><a href="offers.html">العروض</a></li>
-              <li><a href="#">الجديد</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <h5 class="footer-title">معلومات</h5>
-            <ul class="footer-links">
-              <li><a href="#">من نحن</a></li>
-              <li><a href="#">سياسة الخصوصية</a></li>
-              <li><a href="#">الشروط والأحكام</a></li>
-              <li><a href="#">سياسة الإرجاع</a></li>
-              <li><a href="#">الأسئلة المتكررة</a></li>
-            </ul>
-          </div>
-          <div class="col-md-12 col-lg-5">
-            <div class="row">
-              <div class="col-md-6">
-                <h5 class="footer-title">اتصل بنا</h5>
-                <ul class="footer-contact">
-                  <li><i class="bi bi-geo-alt"></i> شارع التحرير، القاهرة، مصر</li>
-                  <li><i class="bi bi-telephone"></i> +20 123 456 7890</li>
-                  <li><i class="bi bi-envelope"></i> info@alnile.com</li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <h5 class="footer-title">وسائل الدفع</h5>
-                <div class="payment-methods">
-                  <img src="images/icons/Fawr.webp" alt="فوري" class="payment-icon" title="فوري">
-                  <img src="images/icons/vodafone.png" alt="فودافون كاش" class="payment-icon" title="فودافون كاش">
-                  <img src="images/icons/Instapay" alt="انستا باي" class="payment-icon" title="انستا باي">
-                  <img src="images/icons/e& UAE.jpeg" alt="اتصالات كاش" class="payment-icon" title="اتصالات كاش">
+          <!-- Order Summary -->
+          <div class="col-lg-4">
+            <div class="order-summary">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title mb-4">ملخص الطلب</h3>
+                  <!-- Order Items -->
+                  <div class="order-items mb-4">
+                    {% for item in cart_items %}
+                    <div class="order-item d-flex justify-content-between align-items-center mb-3">
+                      <div class="item-info d-flex align-items-center">
+                        <div class="item-image-wrapper">
+                          <img src="{% get_product_image_url item.product %}" alt="{{ item.product.name_ar }}" class="item-image rounded">
+                        </div>
+                        <div class="item-details me-3">
+                          <h6 class="item-title mb-0">{{ item.product.name_ar }}</h6>
+                          <small class="text-muted">
+                            {% if item.variant %}
+                              المقاس: {{ item.variant.size.name_ar }} | اللون: {{ item.variant.color.name_ar }}
+                            {% endif %}
+                          </small>
+                        </div>
+                      </div>
+                      <span class="item-price">{{ item.total_price }} ج.م</span>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <!-- Order Totals -->
+                  <div class="order-totals">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>إجمالي المنتجات</span>
+                      <span>{{ cart.total_price }} ج.م</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>الخصم</span>
+                      <span class="text-success">- {{ cart.total_discount }} ج.م</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                      <span>التوصيل</span>
+                      <span>{% if cart.total_price >= 500 %}مجاني{% else %}50 ج.م{% endif %}</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between total">
+                      <strong>الإجمالي</strong>
+                      <strong>
+                        {% if cart.total_price >= 500 %}
+                          {{ cart.final_price }} ج.م
+                        {% else %}
+                          {{ cart.final_price|add:50 }} ج.م
+                        {% endif %}
+                      </strong>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <!-- Secure Checkout -->
+              <div class="secure-checkout text-center mt-3">
+                <i class="bi bi-shield-check text-success"></i>
+                <small class="ms-2">الدفع آمن ١٠٠٪ مع أفضل وسائل الدفع المحلية</small>
+              </div>
+              <!-- Payment Methods -->
+              <div class="payment-methods mt-3 text-center">
+                <img src="{% static 'images/payment/fawry.png' %}" alt="فوري" class="payment-icon" title="فوري">
+                <img src="{% static 'images/payment/vodafone-cash.png' %}" alt="فودافون كاش" class="payment-icon" title="فودافون كاش">
+                <img src="{% static 'images/payment/etisalat-cash.png' %}" alt="اتصالات كاش" class="payment-icon" title="اتصالات كاش">
+                <img src="{% static 'images/payment/instapay.png' %}" alt="انستا باي" class="payment-icon" title="انستا باي">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="footer-bottom mt-5 py-3">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <p class="mb-0">© 2023 أحمد عبدة - جميع الحقوق محفوظة</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    </section>
+{% endblock %}
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom Scripts -->
-    <script src="js/products.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/payment.js"></script>
-  </body>
-</html> 
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Handle saved addresses
+    const useAddressBtns = document.querySelectorAll('.use-address-btn');
+    useAddressBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.getElementById('firstName').value = this.dataset.firstName;
+        document.getElementById('lastName').value = this.dataset.lastName;
+        document.getElementById('phone').value = this.dataset.phone;
+        document.getElementById('address').value = this.dataset.address;
+        document.getElementById('city').value = this.dataset.city;
+        document.getElementById('area').value = this.dataset.area;
+      });
+    });
+    
+    // Show default address option if save address is checked
+    const saveAddressCheckbox = document.getElementById('saveAddress');
+    const defaultAddressDiv = document.getElementById('defaultAddressDiv');
+    
+    if (saveAddressCheckbox && defaultAddressDiv) {
+      saveAddressCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          defaultAddressDiv.style.display = 'block';
+        } else {
+          defaultAddressDiv.style.display = 'none';
+          document.getElementById('defaultAddress').checked = false;
+        }
+      });
+    }
+    
+    // Form validation
+    const checkoutForm = document.getElementById('checkoutForm');
+    if (checkoutForm) {
+      checkoutForm.addEventListener('submit', function(e) {
+        if (!this.checkValidity()) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        
+        // Add your own validation logic here if needed
+        
+        this.classList.add('was-validated');
+      });
+    }
+  });
+</script>
+{% endblock %} 

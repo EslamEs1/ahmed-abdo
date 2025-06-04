@@ -39,7 +39,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "apps.system",
+    # "apps.system",
     "apps.main",
     "apps.order",
     "apps.product",

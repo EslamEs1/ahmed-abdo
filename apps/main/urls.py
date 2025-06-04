@@ -1,9 +1,9 @@
 from django.urls import path
-# from .views import ()
+from . import views
 
 app_name = "main"
 
 urlpatterns = [
-    # path("", lambda request: None, name="home"),  # Placeholder for home view
+    path("", views.home, name="home"),  # Placeholder for home view 
 
 ]

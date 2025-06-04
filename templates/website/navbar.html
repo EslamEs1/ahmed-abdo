@@ -9,7 +9,7 @@
                     <div class="d-flex">
                         <a href="#" class="announcement-link mx-2">تتبع طلبك</a>
                         <span class="mx-1">|</span>
-                        <a href="contactus.html" class="announcement-link mx-2">تواصل معنا</a>
+                        <a href="#" class="announcement-link mx-2">تواصل معنا</a>
                         <span class="mx-1">|</span>
                         <a href="#" class="announcement-link mx-2">English</a>
                     </div>
@@ -24,13 +24,13 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg py-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="/">
                     <span class="brand-name">أحمد عبدة</span>
                 </a>
                 <div class="d-flex d-lg-none ms-auto me-2">
                     <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i
                             class="bi bi-search"></i></a>
-                    <a href="cart.html" class="nav-icon mx-2 position-relative">
+                    <a href="#" class="nav-icon mx-2 position-relative">
                         <i class="bi bi-bag"></i>
                         <span class="cart-badge">3</span>
                     </a>
@@ -42,51 +42,54 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="men.html" role="button"
+                            <a class="nav-link dropdown-toggle" href="{% url 'product:men_category' %}" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 الرجال
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="men.html?category=shirts">قمصان</a></li>
-                                <li><a class="dropdown-item" href="men.html?category=pants">بناطيل</a></li>
-                                <li><a class="dropdown-item" href="men.html?category=shoes">أحذية</a></li>
-                                <li><a class="dropdown-item" href="men.html?category=accessories">إكسسوارات</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='shirts' %}">قمصان</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='pants' %}">بناطيل</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='shoes' %}">أحذية</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='accessories' %}">إكسسوارات</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="women.html" role="button"
+                            <a class="nav-link dropdown-toggle" href="{% url 'product:women_category' %}" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 النساء
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="women.html?category=dresses">فساتين</a></li>
-                                <li><a class="dropdown-item" href="women.html?category=blouses">بلوزات</a></li>
-                                <li><a class="dropdown-item" href="women.html?category=pants">بناطيل</a></li>
-                                <li><a class="dropdown-item" href="women.html?category=bags">حقائب</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='dresses' %}">فساتين</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='blouses' %}">بلوزات</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='women-pants' %}">بناطيل</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='bags' %}">حقائب</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="kids.html" role="button"
+                            <a class="nav-link dropdown-toggle" href="{% url 'product:kids_category' %}" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 الأطفال
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="kids.html?category=boys">ملابس أولاد</a></li>
-                                <li><a class="dropdown-item" href="kids.html?category=girls">ملابس بنات</a></li>
-                                <li><a class="dropdown-item" href="kids.html?category=shoes">أحذية</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='boys' %}">ملابس أولاد</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='girls' %}">ملابس بنات</a></li>
+                                <li><a class="dropdown-item" href="{% url 'product:category_list' category_slug='kids-shoes' %}">أحذية</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="offers.html">العروض</a>
+                            <a class="nav-link" href="{% url 'product:collection' %}">المجموعات</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contactus.html">تواصل معنا</a>
+                            <a class="nav-link" href="{% url 'product:offers_list' %}">العروض</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contactus:contact' %}">تواصل معنا</a>
                         </li>
                     </ul>
                     <div class="d-none d-lg-flex">
                         <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                 class="bi bi-search"></i></a>
-                        <a href="cart.html" class="nav-icon mx-2 position-relative">
+                        <a href="#" class="nav-icon mx-2 position-relative">
                             <i class="bi bi-bag"></i>
                             <span class="cart-badge">3</span>
                         </a>

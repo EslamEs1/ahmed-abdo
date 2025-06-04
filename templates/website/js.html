@@ -2,5 +2,52 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom Scripts -->
-<script src="{% static 'js/products.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+<script>
+  // Quick View Functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add event listeners to all quick view buttons
+    document.querySelectorAll('.quick-view-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Get product data from the parent card
+        const card = this.closest('.product-card');
+        const productImg = card.querySelector('.product-img').src;
+        const productName = card.querySelector('.product-title a').textContent;
+        const productPrice = card.querySelector('.current-price').textContent;
+        const productOldPrice = card.querySelector('.old-price')?.textContent || '';
+        
+        // Try to get description if available (might be in data attribute or hidden element)
+        let productDescription = '';
+        if (card.dataset.description) {
+          productDescription = card.dataset.description;
+        } else if (card.querySelector('.product-description')) {
+          productDescription = card.querySelector('.product-description').textContent;
+        }
+        
+        // Set modal content
+        document.getElementById('modalProductImage').src = productImg;
+        document.getElementById('modalProductName').textContent = productName;
+        document.getElementById('modalProductPrice').textContent = productPrice;
+        
+        const modalDescription = document.getElementById('modalProductDescription');
+        if (modalDescription) {
+          modalDescription.textContent = productDescription || 'منتج مميز من تشكيلة أحمد عبدة.';
+        }
+        
+        const modalOldPrice = document.getElementById('modalProductOldPrice');
+        if (productOldPrice) {
+          modalOldPrice.textContent = productOldPrice;
+          modalOldPrice.style.display = 'inline';
+        } else {
+          modalOldPrice.style.display = 'none';
+        }
+        
+        // Open modal
+        const quickViewModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
+        quickViewModal.show();
+      });
+    });
+  });
+</script>

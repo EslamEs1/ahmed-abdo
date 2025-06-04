@@ -3,12 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize header scroll effect
   initHeaderScroll();
   
-  // Render all products initially
-  window.appProducts.renderProducts('#productsGrid', window.appProducts.products);
-  
-  // Initialize product tabs
-  window.appProducts.initProductTabs();
-  
   // Initialize quantity selectors in modal
   initQuantitySelectors();
   

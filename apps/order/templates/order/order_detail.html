@@ -1,0 +1,324 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% load product_tags %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="py-3 bg-light">
+  <div class="container">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item"><a href="{% url 'main:home' %}">الرئيسية</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'order:order_history' %}">طلباتي</a></li>
+      <li class="breadcrumb-item active" aria-current="page">تفاصيل الطلب</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Order Detail Section -->
+<section class="order-detail-section py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 mb-4 mb-lg-0">
+        <div class="account-sidebar">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">حسابي</h5>
+              <ul class="nav flex-column account-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="bi bi-person"></i>
+                    الملف الشخصي
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'order:order_history' %}">
+                    <i class="bi bi-bag"></i>
+                    طلباتي
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="bi bi-heart"></i>
+                    المفضلة
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="bi bi-geo-alt"></i>
+                    العناوين
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="bi bi-box-arrow-right"></i>
+                    تسجيل الخروج
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Order Detail -->
+      <div class="col-lg-9">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h4 class="card-title">تفاصيل الطلب</h4>
+              <a href="{% url 'order:order_history' %}" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-arrow-right"></i>
+                العودة إلى الطلبات
+              </a>
+            </div>
+            
+            <!-- Order Overview -->
+            <div class="row mb-4">
+              <div class="col-md-3 mb-2">
+                <div class="order-info-item">
+                  <small class="text-muted d-block">رقم الطلب</small>
+                  <span class="fw-bold">{{ order.order_number }}</span>
+                </div>
+              </div>
+              <div class="col-md-3 mb-2">
+                <div class="order-info-item">
+                  <small class="text-muted d-block">تاريخ الطلب</small>
+                  <span class="fw-bold">{{ order.created_at|date:"d/m/Y" }}</span>
+                </div>
+              </div>
+              <div class="col-md-3 mb-2">
+                <div class="order-info-item">
+                  <small class="text-muted d-block">حالة الطلب</small>
+                  <span class="badge bg-{% if order.status == 'pending' %}warning{% elif order.status == 'processing' %}info{% elif order.status == 'shipped' %}primary{% elif order.status == 'delivered' %}success{% elif order.status == 'cancelled' %}danger{% elif order.status == 'refunded' %}secondary{% endif %}">
+                    {{ order.get_status_display }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-3 mb-2">
+                <div class="order-info-item">
+                  <small class="text-muted d-block">حالة الدفع</small>
+                  <span class="badge bg-{% if order.payment_status == 'pending' %}warning{% elif order.payment_status == 'processing' %}info{% elif order.payment_status == 'completed' %}success{% elif order.payment_status == 'failed' %}danger{% elif order.payment_status == 'refunded' %}secondary{% endif %}">
+                    {{ order.get_payment_status_display }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Order Tracking -->
+            <div class="order-tracking mb-4">
+              <h5 class="mb-3">تتبع الطلب</h5>
+              <div class="timeline">
+                {% for track in order_tracking %}
+                <div class="timeline-item">
+                  <div class="timeline-marker {% if forloop.first %}active{% endif %}"></div>
+                  <div class="timeline-content">
+                    <h6 class="mb-1">{{ track.get_status_display }}</h6>
+                    <p class="mb-0">{{ track.description }}</p>
+                    <small class="text-muted">{{ track.created_at|date:"d/m/Y - h:i a" }}</small>
+                  </div>
+                </div>
+                {% empty %}
+                <p class="text-muted">لا توجد معلومات تتبع متاحة حالياً.</p>
+                {% endfor %}
+              </div>
+            </div>
+            
+            <!-- Payment Details -->
+            <div class="payment-details mb-4">
+              <h5 class="mb-3">معلومات الدفع</h5>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <strong>طريقة الدفع:</strong>
+                  <span>
+                    {% if order.payment_method == 'fawry' %}
+                      فوري
+                    {% elif order.payment_method == 'vodafone_cash' %}
+                      فودافون كاش
+                    {% elif order.payment_method == 'etisalat_cash' %}
+                      اتصالات كاش
+                    {% elif order.payment_method == 'instapay' %}
+                      انستا باي
+                    {% endif %}
+                  </span>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <strong>المبلغ الإجمالي:</strong>
+                  <span>{{ order.order_total }} ج.م</span>
+                </div>
+                {% if order.payment_reference %}
+                <div class="col-md-6 mb-3">
+                  <strong>الرقم المرجعي للدفع:</strong>
+                  <span>{{ order.payment_reference }}</span>
+                </div>
+                {% endif %}
+                {% if order.payment_screenshot %}
+                <div class="col-md-6 mb-3">
+                  <strong>إيصال الدفع:</strong>
+                  <a href="{{ order.payment_screenshot.url }}" target="_blank" class="btn btn-sm btn-outline-primary ms-2">
+                    <i class="bi bi-eye"></i>
+                    عرض الإيصال
+                  </a>
+                </div>
+                {% endif %}
+              </div>
+              
+              {% if order.payment_status == 'pending' and order.payment_method != 'cod' and not order.payment_screenshot %}
+              <div class="mt-3">
+                <a href="{% url 'order:payment' order_number=order.order_number %}" class="btn btn-primary">
+                  <i class="bi bi-upload"></i>
+                  رفع إيصال الدفع
+                </a>
+              </div>
+              {% endif %}
+            </div>
+            
+            <!-- Shipping Details -->
+            <div class="shipping-details mb-4">
+              <h5 class="mb-3">معلومات الشحن</h5>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <strong>الاسم:</strong>
+                  <span>{{ order.first_name }} {{ order.last_name }}</span>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <strong>البريد الإلكتروني:</strong>
+                  <span>{{ order.email }}</span>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <strong>رقم الهاتف:</strong>
+                  <span>{{ order.phone }}</span>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <strong>المدينة:</strong>
+                  <span>{{ order.city }}, {{ order.area }}</span>
+                </div>
+                <div class="col-12">
+                  <strong>العنوان:</strong>
+                  <span>{{ order.address }}</span>
+                </div>
+                {% if order.order_note %}
+                <div class="col-12 mt-2">
+                  <strong>ملاحظات:</strong>
+                  <span>{{ order.order_note }}</span>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Order Items -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title mb-4">المنتجات المطلوبة</h5>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>المنتج</th>
+                    <th>السعر</th>
+                    <th>الكمية</th>
+                    <th>الإجمالي</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in order_items %}
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <img src="{% get_product_image_url item.product %}" alt="{{ item.product.name_ar }}" class="rounded" width="50">
+                        <div class="ms-3">
+                          <div class="fw-bold">{{ item.product.name_ar }}</div>
+                          {% if item.size or item.color %}
+                            <small class="text-muted">
+                              {% if item.size %}المقاس: {{ item.size }}{% endif %}
+                              {% if item.size and item.color %}, {% endif %}
+                              {% if item.color %}اللون: {{ item.color }}{% endif %}
+                            </small>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </td>
+                    <td>{{ item.price }} ج.م</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.total_price }} ج.م</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3" class="text-end">المجموع الفرعي:</td>
+                    <td>{{ order.total_price }} ج.م</td>
+                  </tr>
+                  {% if order.discount > 0 %}
+                  <tr>
+                    <td colspan="3" class="text-end">الخصم:</td>
+                    <td class="text-success">- {{ order.discount }} ج.م</td>
+                  </tr>
+                  {% endif %}
+                  <tr>
+                    <td colspan="3" class="text-end">الشحن:</td>
+                    <td>
+                      {% if order.shipping_cost > 0 %}
+                        {{ order.shipping_cost }} ج.م
+                      {% else %}
+                        مجاني
+                      {% endif %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="text-end fw-bold">الإجمالي:</td>
+                    <td class="fw-bold">{{ order.final_price }} ج.م</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Timeline Styles */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    width: 2px;
+    background-color: #e9ecef;
+    z-index: 1;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .timeline-marker {
+    position: absolute;
+    left: -30px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #e9ecef;
+    z-index: 2;
+  }
+  .timeline-marker.active {
+    background-color: #0d6efd;
+    box-shadow: 0 0 0 2px #0d6efd;
+  }
+  .timeline-content {
+    padding-bottom: 10px;
+  }
+</style>
+{% endblock %} 

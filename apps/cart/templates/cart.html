@@ -1,387 +1,494 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="سلة التسوق - متجر أحمد عبدة للأزياء">
+{% extends 'website/base.html' %}
+{% load static %}
+{% load product_tags %}
 
-    <title>أحمد عبدة | سلة التسوق</title>
-    <!-- Bootstrap RTL CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <!-- Cairo Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <!-- Announcement Bar -->
-    <div class="announcement-bar py-2">
+{% block content %}
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="py-3 bg-light">
+      <div class="container">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="{% url 'main:home' %}">الرئيسية</a></li>
+          <li class="breadcrumb-item active" aria-current="page">سلة التسوق</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="cart-section py-5">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="d-flex justify-content-center justify-content-md-between align-items-center flex-wrap">
-              <p class="announcement-text mb-0 mx-3 mx-md-0">توصيل مجاني للطلبات فوق ٥٠٠ جنيه</p>
-              <div class="d-flex">
-                <a href="#" class="announcement-link mx-2">تتبع طلبك</a>
-                <span class="mx-1">|</span>
-                <a href="contactus.html" class="announcement-link mx-2">تواصل معنا</a>
-                <span class="mx-1">|</span>
-                <a href="#" class="announcement-link mx-2">English</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Header -->
-    <header class="main-header" id="main-header">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg py-3">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-              <span class="brand-name">أحمد عبدة</span>
-            </a>
-            <div class="d-flex d-lg-none ms-auto me-2">
-              <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
-              <a href="cart.html" class="nav-icon mx-2 position-relative">
-                <i class="bi bi-bag"></i>
-                <span class="cart-badge">3</span>
-              </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mx-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="men.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    الرجال
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="men.html?category=shirts">قمصان</a></li>
-                    <li><a class="dropdown-item" href="men.html?category=pants">بناطيل</a></li>
-                    <li><a class="dropdown-item" href="men.html?category=shoes">أحذية</a></li>
-                    <li><a class="dropdown-item" href="men.html?category=accessories">إكسسوارات</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="women.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    النساء
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="women.html?category=dresses">فساتين</a></li>
-                    <li><a class="dropdown-item" href="women.html?category=blouses">بلوزات</a></li>
-                    <li><a class="dropdown-item" href="women.html?category=pants">بناطيل</a></li>
-                    <li><a class="dropdown-item" href="women.html?category=bags">حقائب</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="kids.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    الأطفال
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="kids.html?category=boys">ملابس أولاد</a></li>
-                    <li><a class="dropdown-item" href="kids.html?category=girls">ملابس بنات</a></li>
-                    <li><a class="dropdown-item" href="kids.html?category=shoes">أحذية</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="offers.html">العروض</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contactus.html">تواصل معنا</a>
-                </li>
-              </ul>
-              <div class="d-none d-lg-flex">
-                <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="bi bi-search"></i></a>
-                <a href="cart.html" class="nav-icon mx-2 position-relative">
-                  <i class="bi bi-bag"></i>
-                  <span class="cart-badge">3</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb" class="py-3 bg-light">
-        <div class="container">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
-            <li class="breadcrumb-item active" aria-current="page">سلة التسوق</li>
-          </ol>
-        </div>
-      </nav>
-
-      <!-- Cart Section -->
-      <section class="cart-section py-5">
-        <div class="container">
-          <div class="row">
-            <!-- Cart Items -->
-            <div class="col-lg-8">
-              <div class="cart-items">
-                <h2 class="section-title mb-4">سلة التسوق (٣ منتجات)</h2>
-                
+          <!-- Cart Items -->
+          <div class="col-lg-8">
+            <div class="cart-items">
+              <h2 class="section-title mb-4">سلة التسوق ({{ cart.items_count }} منتج)</h2>
+              
+              {% if cart_items %}
+                {% for item in cart_items %}
                 <!-- Cart Item -->
-                <div class="cart-item mb-4">
+                <div class="cart-item mb-4" data-item-id="{{ item.id }}">
                   <div class="row align-items-center">
                     <div class="col-md-3">
-                      <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg" alt="قميص كاجوال" class="img-fluid rounded">
+                      <img src="{% get_product_image_url item.product %}" alt="{{ item.product.name_ar }}" class="img-fluid rounded">
                     </div>
                     <div class="col-md-9">
                       <div class="cart-item-details">
                         <div class="d-flex justify-content-between align-items-start">
                           <div>
-                            <h5 class="cart-item-title">قميص كاجوال</h5>
-                            <p class="cart-item-variant">المقاس: L | اللون: أزرق</p>
+                            <h5 class="cart-item-title">{{ item.product.name_ar }}</h5>
+                            <p class="cart-item-variant">
+                              {% if item.variant %}
+                                المقاس: {{ item.variant.size.name_ar }} | اللون: {{ item.variant.color.name_ar }}
+                              {% endif %}
+                            </p>
                           </div>
-                          <button class="btn btn-link text-danger remove-item">
+                          <button class="btn btn-link text-danger remove-item" data-item-id="{{ item.id }}">
                             <i class="bi bi-trash"></i>
                           </button>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                           <div class="quantity-selector">
-                            <button class="quantity-btn">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1" max="10">
-                            <button class="quantity-btn">+</button>
+                            <button class="quantity-btn decrease-qty">-</button>
+                            <input type="number" class="quantity-input" value="{{ item.quantity }}" min="1" max="10">
+                            <button class="quantity-btn increase-qty">+</button>
                           </div>
                           <div class="cart-item-price">
-                            <span class="current-price">٣٩٩ جنيه</span>
-                            <span class="old-price">٥٩٩ جنيه</span>
+                            <span class="current-price">{{ item.unit_price }} ج.م</span>
+                            {% if item.product.old_price %}
+                              <span class="old-price">{{ item.old_unit_price }} ج.م</span>
+                            {% endif %}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <!-- Cart Item -->
-                <div class="cart-item mb-4">
-                  <div class="row align-items-center">
-                    <div class="col-md-3">
-                      <img src="https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg" alt="بنطلون جينز" class="img-fluid rounded">
-                    </div>
-                    <div class="col-md-9">
-                      <div class="cart-item-details">
-                        <div class="d-flex justify-content-between align-items-start">
-                          <div>
-                            <h5 class="cart-item-title">بنطلون جينز</h5>
-                            <p class="cart-item-variant">المقاس: 32 | اللون: أزرق داكن</p>
-                          </div>
-                          <button class="btn btn-link text-danger remove-item">
-                            <i class="bi bi-trash"></i>
-                          </button>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                          <div class="quantity-selector">
-                            <button class="quantity-btn">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1" max="10">
-                            <button class="quantity-btn">+</button>
-                          </div>
-                          <div class="cart-item-price">
-                            <span class="current-price">٤٩٩ جنيه</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Cart Item -->
-                <div class="cart-item mb-4">
-                  <div class="row align-items-center">
-                    <div class="col-md-3">
-                      <img src="https://images.pexels.com/photos/19090/pexels-photo.jpg" alt="حذاء رياضي" class="img-fluid rounded">
-                    </div>
-                    <div class="col-md-9">
-                      <div class="cart-item-details">
-                        <div class="d-flex justify-content-between align-items-start">
-                          <div>
-                            <h5 class="cart-item-title">حذاء رياضي</h5>
-                            <p class="cart-item-variant">المقاس: 42 | اللون: أسود</p>
-                          </div>
-                          <button class="btn btn-link text-danger remove-item">
-                            <i class="bi bi-trash"></i>
-                          </button>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                          <div class="quantity-selector">
-                            <button class="quantity-btn">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1" max="10">
-                            <button class="quantity-btn">+</button>
-                          </div>
-                          <div class="cart-item-price">
-                            <span class="current-price">٧٩٩ جنيه</span>
-                            <span class="old-price">٩٩٩ جنيه</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
 
                 <!-- Cart Actions -->
                 <div class="cart-actions d-flex justify-content-between align-items-center">
-                  <a href="index.html" class="btn btn-outline-primary">
+                  <a href="{% url 'main:home' %}" class="btn btn-outline-primary">
                     <i class="bi bi-arrow-right"></i>
                     متابعة التسوق
                   </a>
-                  <button class="btn btn-outline-danger">
+                  <button class="btn btn-outline-danger" id="clear-cart">
                     <i class="bi bi-trash"></i>
                     إفراغ السلة
                   </button>
                 </div>
-              </div>
+              {% else %}
+                <div class="empty-cart text-center py-5">
+                  <i class="bi bi-cart-x" style="font-size: 5rem;"></i>
+                  <h3 class="mt-3">سلة التسوق فارغة</h3>
+                  <p class="text-muted">لم تقم بإضافة أي منتجات إلى سلة التسوق بعد</p>
+                  <a href="{% url 'main:home' %}" class="btn btn-primary mt-3">تسوق الآن</a>
+                </div>
+              {% endif %}
             </div>
+          </div>
 
-            <!-- Cart Summary -->
-            <div class="col-lg-4">
-              <div class="cart-summary">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title mb-4">ملخص الطلب</h3>
-                    <div class="summary-item d-flex justify-content-between mb-2">
-                      <span>إجمالي المنتجات</span>
-                      <span>١,٦٩٧ جنيه</span>
-                    </div>
-                    <div class="summary-item d-flex justify-content-between mb-2">
-                      <span>الخصم</span>
-                      <span class="text-success">- ٤٠٠ جنيه</span>
-                    </div>
-                    <div class="summary-item d-flex justify-content-between mb-3">
-                      <span>التوصيل</span>
-                      <span>مجاني</span>
-                    </div>
-                    <hr>
-                    <div class="summary-total d-flex justify-content-between mb-4">
-                      <strong>الإجمالي</strong>
-                      <strong>١,٢٩٧ جنيه</strong>
-                    </div>
-                    <!-- Coupon Code -->
-                    <div class="coupon-section mb-4">
+          <!-- Cart Summary -->
+          <div class="col-lg-4">
+            <div class="cart-summary">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title mb-4">ملخص الطلب</h3>
+                  <div class="summary-item d-flex justify-content-between mb-2">
+                    <span>إجمالي المنتجات</span>
+                    <span id="cart-total">{{ cart.total_price }} ج.م</span>
+                  </div>
+                  <div class="summary-item d-flex justify-content-between mb-2">
+                    <span>الخصم</span>
+                    <span class="text-success" id="cart-discount">- {{ cart.total_discount }} ج.م</span>
+                  </div>
+                  <div class="summary-item d-flex justify-content-between mb-3">
+                    <span>التوصيل</span>
+                    <span id="shipping-cost">{% if cart.total_price >= 500 %}مجاني{% else %}50 ج.م{% endif %}</span>
+                  </div>
+                  <hr>
+                  <div class="summary-total d-flex justify-content-between mb-4">
+                    <strong>الإجمالي</strong>
+                    <strong id="cart-final">
+                      {% if cart.total_price >= 500 %}
+                        {{ cart.final_price }} ج.م
+                      {% else %}
+                        {{ cart.final_price|add:50 }} ج.م
+                      {% endif %}
+                    </strong>
+                  </div>
+                  <!-- Coupon Code -->
+                  <div class="coupon-section mb-4">
+                    <form id="coupon-form">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="كود الخصم">
-                        <button class="btn btn-outline-primary" type="button">تطبيق</button>
+                        <input type="text" class="form-control" id="coupon-code" placeholder="كود الخصم">
+                        <button class="btn btn-outline-primary" type="submit">تطبيق</button>
                       </div>
-                    </div>
-                    <!-- Checkout Button -->
-                    <a href="checkout.html" class="btn btn-primary w-100">
+                      <div id="coupon-message" class="mt-2 small"></div>
+                    </form>
+                  </div>
+                  <!-- Checkout Button -->
+                  {% if cart_items %}
+                    <a href="{% url 'cart:checkout' %}" class="btn btn-primary w-100">
                       <i class="bi bi-credit-card"></i>
                       إتمام الشراء
                     </a>
-                    <!-- Secure Checkout -->
-                    <div class="secure-checkout text-center mt-3">
-                      <i class="bi bi-shield-check"></i>
-                      <small>الدفع آمن ١٠٠٪</small>
-                    </div>
+                  {% else %}
+                    <button class="btn btn-primary w-100" disabled>
+                      <i class="bi bi-credit-card"></i>
+                      إتمام الشراء
+                    </button>
+                  {% endif %}
+                  <!-- Secure Checkout -->
+                  <div class="secure-checkout text-center mt-3">
+                    <i class="bi bi-shield-check"></i>
+                    <small>الدفع آمن ١٠٠٪</small>
                   </div>
                 </div>
-                <!-- Payment Methods -->
-                <div class="payment-methods mt-3 text-center">
-                  <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa" class="payment-icon">
-                  <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="MasterCard" class="payment-icon">
-                  <img src="https://cdn-icons-png.flaticon.com/512/196/196565.png" alt="PayPal" class="payment-icon">
-                  <img src="https://cdn-icons-png.flaticon.com/512/6124/6124998.png" alt="Fawry" class="payment-icon">
-                </div>
+              </div>
+              <!-- Payment Methods -->
+              <div class="payment-methods mt-3 text-center">
+                <img src="{% static 'images/payment/fawry.png' %}" alt="فوري" class="payment-icon">
+                <img src="{% static 'images/payment/vodafone-cash.png' %}" alt="فودافون كاش" class="payment-icon">
+                <img src="{% static 'images/payment/etisalat-cash.png' %}" alt="اتصالات كاش" class="payment-icon">
+                <img src="{% static 'images/payment/instapay.png' %}" alt="انستا باي" class="payment-icon">
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Recommended Products -->
-      <section class="recommended-products py-5 bg-light">
-        <div class="container">
-          <h3 class="section-title text-center mb-4">قد يعجبك أيضاً</h3>
-          <div class="row g-4" id="recommendedProducts">
-            <!-- Products will be loaded dynamically from products.js -->
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer pt-5">
+    <!-- Recommended Products -->
+    <section class="recommended-products py-5 bg-light">
       <div class="container">
+        <h3 class="section-title text-center mb-4">قد يعجبك أيضاً</h3>
         <div class="row g-4">
-          <div class="col-md-4 col-lg-3">
-            <div class="footer-info">
-              <h5 class="footer-title">أحمد عبدة</h5>
-              <p class="footer-desc">متجر الأزياء المصرية الرائد، نقدم أحدث صيحات الموضة بجودة عالية وأسعار منافسة.</p>
-              <div class="social-links">
-                <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <h5 class="footer-title">تسوق</h5>
-            <ul class="footer-links">
-              <li><a href="men.html">الرجال</a></li>
-              <li><a href="women.html">النساء</a></li>
-              <li><a href="kids.html">الأطفال</a></li>
-              <li><a href="offers.html">العروض</a></li>
-              <li><a href="#">الجديد</a></li>
-            </ul>
-          </div>
-          <div class="col-6 col-md-4 col-lg-2">
-            <h5 class="footer-title">معلومات</h5>
-            <ul class="footer-links">
-              <li><a href="#">من نحن</a></li>
-              <li><a href="#">سياسة الخصوصية</a></li>
-              <li><a href="#">الشروط والأحكام</a></li>
-              <li><a href="#">سياسة الإرجاع</a></li>
-              <li><a href="#">الأسئلة المتكررة</a></li>
-            </ul>
-          </div>
-          <div class="col-md-12 col-lg-5">
-            <div class="row">
-              <div class="col-md-6">
-                <h5 class="footer-title">اتصل بنا</h5>
-                <ul class="footer-contact">
-                  <li><i class="bi bi-geo-alt"></i> شارع التحرير، القاهرة، مصر</li>
-                  <li><i class="bi bi-telephone"></i> +20 123 456 7890</li>
-                  <li><i class="bi bi-envelope"></i> info@alnile.com</li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <h5 class="footer-title">وسائل الدفع</h5>
-                <div class="payment-methods">
-                  <img src="images/icons/Fawr.webp" alt="فوري" class="payment-icon" title="فوري">
-                  <img src="images/icons/vodafone.png" alt="فودافون كاش" class="payment-icon" title="فودافون كاش">
-                  <img src="images/icons/Instapay" alt="انستا باي" class="payment-icon" title="انستا باي">
-                  <img src="images/icons/e& UAE.jpeg" alt="اتصالات كاش" class="payment-icon" title="اتصالات كاش">
+          {% for product in recommended_products|slice:":4" %}
+            <div class="col-6 col-md-3">
+              <div class="product-card">
+                {% if product.badge or product.is_new or product.is_on_sale %}
+                  <div class="product-badge">
+                    {% if product.badge %}
+                      {{ product.get_badge_display }}
+                    {% elif product.is_new %}
+                      جديد
+                    {% elif product.is_on_sale %}
+                      خصم {{ product.get_discount_percentage }}%
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="product-img-container">
+                  <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
+                  <div class="product-actions">
+                    <button class="action-btn quick-view-btn">
+                      <i class="bi bi-eye"></i>
+                    </button>
+                    <button class="action-btn">
+                      <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="action-btn add-to-cart-btn" data-product-id="{{ product.id }}">
+                      <i class="bi bi-bag-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">{{ product.category.name_ar }}</div>
+                  <h3 class="product-title">
+                    <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
+                  </h3>
+                  <div class="product-price">
+                    <span class="current-price">{{ product.price }} ج.م</span>
+                    {% if product.old_price %}
+                      <span class="old-price">{{ product.old_price }} ج.م</span>
+                    {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          {% empty %}
+            <!-- No recommended products available -->
+          {% endfor %}
         </div>
       </div>
-      <div class="footer-bottom mt-5 py-3">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <p class="mb-0">© 2023 أحمد عبدة - جميع الحقوق محفوظة</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    </section>
+{% endblock %}
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom Scripts -->
-    <script src="js/products.js"></script>
-    <script src="js/main.js"></script>
-  </body>
-</html> 
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Quantity Buttons
+    document.querySelectorAll('.increase-qty').forEach(button => {
+      button.addEventListener('click', function() {
+        const input = this.parentElement.querySelector('.quantity-input');
+        let value = parseInt(input.value);
+        if (value < 10) {
+          input.value = value + 1;
+          updateCartItem(this.closest('.cart-item'));
+        }
+      });
+    });
+
+    document.querySelectorAll('.decrease-qty').forEach(button => {
+      button.addEventListener('click', function() {
+        const input = this.parentElement.querySelector('.quantity-input');
+        let value = parseInt(input.value);
+        if (value > 1) {
+          input.value = value - 1;
+          updateCartItem(this.closest('.cart-item'));
+        }
+      });
+    });
+
+    document.querySelectorAll('.quantity-input').forEach(input => {
+      input.addEventListener('change', function() {
+        const value = parseInt(this.value);
+        if (isNaN(value) || value < 1) {
+          this.value = 1;
+        } else if (value > 10) {
+          this.value = 10;
+        }
+        updateCartItem(this.closest('.cart-item'));
+      });
+    });
+
+    // Remove Item Button
+    document.querySelectorAll('.remove-item').forEach(button => {
+      button.addEventListener('click', function() {
+        const cartItem = this.closest('.cart-item');
+        const itemId = cartItem.dataset.itemId;
+        
+        if (confirm('هل أنت متأكد من حذف هذا المنتج من السلة؟')) {
+          removeCartItem(itemId, cartItem);
+        }
+      });
+    });
+
+    // Clear Cart Button
+    const clearCartBtn = document.getElementById('clear-cart');
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener('click', function() {
+        if (confirm('هل أنت متأكد من إفراغ السلة بالكامل؟')) {
+          clearCart();
+        }
+      });
+    }
+
+    // Apply Coupon Form
+    const couponForm = document.getElementById('coupon-form');
+    if (couponForm) {
+      couponForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        applyCoupon();
+      });
+    }
+
+    // Add to Cart Buttons (for recommended products)
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const productId = this.dataset.productId;
+        addToCart(productId, 1);
+      });
+    });
+  });
+
+  // Update cart item quantity
+  function updateCartItem(cartItem) {
+    const itemId = cartItem.dataset.itemId;
+    const quantity = cartItem.querySelector('.quantity-input').value;
+    
+    const formData = new FormData();
+    formData.append('item_id', itemId);
+    formData.append('quantity', quantity);
+    
+    fetch('{% url "cart:update_cart" %}', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Update UI
+        document.getElementById('cart-total').textContent = data.cart_total + ' ج.م';
+        document.getElementById('cart-discount').textContent = '- ' + data.cart_discount + ' ج.م';
+        document.getElementById('cart-final').textContent = data.cart_final + ' ج.م';
+        
+        // Update shipping if needed
+        if (data.cart_total >= 500) {
+          document.getElementById('shipping-cost').textContent = 'مجاني';
+        } else {
+          document.getElementById('shipping-cost').textContent = '50 ج.م';
+          // Add shipping cost to final price
+          document.getElementById('cart-final').textContent = (parseFloat(data.cart_final) + 50) + ' ج.م';
+        }
+      } else {
+        alert(data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  // Remove item from cart
+  function removeCartItem(itemId, cartItem) {
+    const formData = new FormData();
+    formData.append('item_id', itemId);
+    
+    fetch('{% url "cart:remove_from_cart" %}', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Remove item from UI
+        cartItem.remove();
+        
+        // Update cart summary
+        document.getElementById('cart-total').textContent = data.cart_total + ' ج.م';
+        document.getElementById('cart-discount').textContent = '- ' + data.cart_discount + ' ج.م';
+        
+        // Update shipping if needed
+        if (data.cart_total >= 500) {
+          document.getElementById('shipping-cost').textContent = 'مجاني';
+          document.getElementById('cart-final').textContent = data.cart_final + ' ج.م';
+        } else {
+          document.getElementById('shipping-cost').textContent = '50 ج.م';
+          // Add shipping cost to final price
+          document.getElementById('cart-final').textContent = (parseFloat(data.cart_final) + 50) + ' ج.م';
+        }
+        
+        // If cart is empty, reload page
+        if (data.cart_count === 0) {
+          location.reload();
+        }
+      } else {
+        alert(data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  // Clear all items from cart
+  function clearCart() {
+    fetch('{% url "cart:clear_cart" %}', {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Reload page to show empty cart
+        location.reload();
+      } else {
+        alert(data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  // Apply coupon code
+  function applyCoupon() {
+    const couponCode = document.getElementById('coupon-code').value;
+    const couponMessage = document.getElementById('coupon-message');
+    
+    if (!couponCode) {
+      couponMessage.textContent = 'الرجاء إدخال كود الخصم';
+      couponMessage.className = 'mt-2 small text-danger';
+      return;
+    }
+    
+    const formData = new FormData();
+    formData.append('coupon_code', couponCode);
+    
+    fetch('{% url "cart:apply_coupon" %}', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        couponMessage.textContent = data.message;
+        couponMessage.className = 'mt-2 small text-success';
+        
+        // Update cart summary with discount
+        document.getElementById('cart-discount').textContent = '- ' + data.discount + ' ج.م';
+        
+        // Update final price
+        if (parseFloat(document.getElementById('cart-total').textContent) >= 500) {
+          document.getElementById('cart-final').textContent = data.cart_final + ' ج.م';
+        } else {
+          // Add shipping cost
+          document.getElementById('cart-final').textContent = (parseFloat(data.cart_final) + 50) + ' ج.م';
+        }
+      } else {
+        couponMessage.textContent = data.error;
+        couponMessage.className = 'mt-2 small text-danger';
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      couponMessage.textContent = 'حدث خطأ أثناء تطبيق الكوبون';
+      couponMessage.className = 'mt-2 small text-danger';
+    });
+  }
+
+  // Add product to cart (for recommended products)
+  function addToCart(productId, quantity) {
+    const formData = new FormData();
+    formData.append('product_id', productId);
+    formData.append('quantity', quantity);
+    
+    fetch('{% url "cart:add_to_cart" %}', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': getCookie('csrftoken')
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert(data.message);
+        // Reload page to show updated cart
+        location.reload();
+      } else {
+        alert(data.error);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  // Get CSRF token
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+</script>
+{% endblock %} 

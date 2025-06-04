@@ -1,13 +1,27 @@
 {% extends 'website/base.html' %}
 {% load static %}
+{% load product_tags %}
 {% block content %}
 <!-- Breadcrumb -->
 <nav aria-label="breadcrumb" class="py-3 bg-light">
   <div class="container">
     <ol class="breadcrumb mb-0">
-      <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
-      <li class="breadcrumb-item"><a href="men.html">رجالي</a></li>
-      <li class="breadcrumb-item active" aria-current="page">قميص كاجوال</li>
+      <li class="breadcrumb-item"><a href="/">الرئيسية</a></li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'product:category_list' category_slug=product.category.parent.slug|default:product.category.slug %}">
+          {% if product.category.parent %}
+            {{ product.category.parent.name_ar }}
+          {% else %}
+            {{ product.category.name_ar }}
+          {% endif %}
+        </a>
+      </li>
+      {% if product.category.parent %}
+        <li class="breadcrumb-item">
+          <a href="{% url 'product:category_list' category_slug=product.category.slug %}">{{ product.category.name_ar }}</a>
+        </li>
+      {% endif %}
+      <li class="breadcrumb-item active" aria-current="page">{{ product.name_ar }}</li>
     </ol>
   </div>
 </nav>
@@ -20,21 +34,20 @@
       <div class="col-md-6 mb-4">
         <div class="product-images">
           <div class="main-image mb-3">
-            <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg" alt="قميص كاجوال" class="img-fluid rounded" id="mainImage">
+            <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="img-fluid rounded" id="mainImage">
           </div>
           <div class="thumbnail-images row g-2">
+            {% for image in images %}
             <div class="col-3">
-              <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg" alt="صورة ١" class="img-fluid rounded thumbnail active" onclick="changeMainImage(this)">
+              <img src="{{ image.image.url }}" alt="{{ product.name_ar }} - صورة {{ forloop.counter }}" 
+                   class="img-fluid rounded thumbnail {% if image.is_main %}active{% endif %}" 
+                   onclick="changeMainImage(this)">
             </div>
+            {% empty %}
             <div class="col-3">
-              <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?flip=1" alt="صورة ٢" class="img-fluid rounded thumbnail" onclick="changeMainImage(this)">
+              <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="img-fluid rounded thumbnail active" onclick="changeMainImage(this)">
             </div>
-            <div class="col-3">
-              <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?flip=2" alt="صورة ٣" class="img-fluid rounded thumbnail" onclick="changeMainImage(this)">
-            </div>
-            <div class="col-3">
-              <img src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?flip=3" alt="صورة ٤" class="img-fluid rounded thumbnail" onclick="changeMainImage(this)">
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -42,60 +55,58 @@
       <!-- Product Info -->
       <div class="col-md-6">
         <div class="product-info">
-          <h1 class="product-title mb-3">قميص كاجوال</h1>
+          <h1 class="product-title mb-3">{{ product.name_ar }}</h1>
           <div class="product-price mb-3">
-            <span class="current-price">٣٩٩ جنيه</span>
-            <span class="old-price">٥٩٩ جنيه</span>
-            <span class="discount-badge">خصم ٣٣٪</span>
+            <span class="current-price">{{ product.price }} ج.م</span>
+            {% if product.old_price %}
+              <span class="old-price">{{ product.old_price }} ج.م</span>
+              <span class="discount-badge">خصم {{ product.get_discount_percentage }}%</span>
+            {% endif %}
           </div>
           <div class="product-rating mb-3">
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-half"></i>
-            <span class="rating-count">(٢٤ تقييم)</span>
+            {{ avg_rating|star_rating }}
+            <span class="rating-count">({{ review_count }} تقييم)</span>
           </div>
           <p class="product-description mb-4">
-            قميص كاجوال عصري مصنوع من القطن المصري ١٠٠٪. مثالي للإطلالات اليومية والمناسبات غير الرسمية. متوفر بعدة ألوان وتصميم أنيق يناسب جميع الأذواق.
+            {{ product.description_ar }}
           </p>
           <div class="product-variants mb-4">
             <div class="size-selector mb-3">
               <h6 class="variant-title">المقاس:</h6>
               <div class="size-options">
-                <button class="size-btn">S</button>
-                <button class="size-btn active">M</button>
-                <button class="size-btn">L</button>
-                <button class="size-btn">XL</button>
-                <button class="size-btn">XXL</button>
+                {% for size in sizes %}
+                <button class="size-btn {% if forloop.first %}active{% endif %}" data-size="{{ size.id }}">{{ size.name_ar }}</button>
+                {% endfor %}
               </div>
-              <a href="#" class="size-guide-link">دليل المقاسات</a>
+              <a href="#sizing" class="size-guide-link">دليل المقاسات</a>
             </div>
             <div class="color-selector mb-4">
               <h6 class="variant-title">اللون:</h6>
               <div class="color-options">
-                <button class="color-btn" style="background-color: #1A3263;" title="أزرق"></button>
-                <button class="color-btn active" style="background-color: #5F4B32;" title="بني"></button>
-                <button class="color-btn" style="background-color: #000000;" title="أسود"></button>
-                <button class="color-btn" style="background-color: #FFFFFF;" title="أبيض"></button>
+                {% for color in colors %}
+                <button class="color-btn {% if forloop.first %}active{% endif %}" 
+                        style="background-color: {{ color.code }};" 
+                        title="{{ color.name_ar }}"
+                        data-color="{{ color.id }}"></button>
+                {% endfor %}
               </div>
             </div>
             <div class="quantity-selector mb-4">
               <h6 class="variant-title">الكمية:</h6>
               <div class="quantity-wrapper">
                 <button class="quantity-btn" id="decreaseQuantity">-</button>
-                <input type="number" class="quantity-input" value="1" min="1" max="10">
+                <input type="number" class="quantity-input" value="1" min="1" max="10" id="productQuantity">
                 <button class="quantity-btn" id="increaseQuantity">+</button>
               </div>
             </div>
           </div>
           <div class="product-actions">
             <div class="container">
-              <button class="btn btn-primary btn-lg w-100 mb-2">
+              <button class="btn btn-primary btn-lg w-100 mb-2" id="addToCartBtn">
                 <i class="bi bi-bag-plus"></i>
                 أضف إلى السلة
               </button>
-              <button class="btn btn-outline-secondary btn-lg w-100">
+              <button class="btn btn-outline-secondary btn-lg w-100" id="addToWishlistBtn">
                 <i class="bi bi-heart"></i>
                 أضف إلى المفضلة
               </button>
@@ -136,7 +147,7 @@
         <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
           <div class="p-4">
             <h4>وصف المنتج</h4>
-            <p>قميص كاجوال عصري مصنوع من القطن المصري عالي الجودة، يتميز بتصميم أنيق وعصري يناسب مختلف المناسبات. القميص مصمم بعناية فائقة ليوفر أقصى درجات الراحة والأناقة.</p>
+            <p>{{ product.description_ar }}</p>
             <h5>المميزات:</h5>
             <ul>
               <li>قطن مصري ١٠٠٪</li>
@@ -158,15 +169,15 @@
                 </tr>
                 <tr>
                   <th>التصميم</th>
-                  <td>كاجوال</td>
+                  <td>{{ product.category.name_ar }}</td>
                 </tr>
                 <tr>
                   <th>المقاسات المتوفرة</th>
-                  <td>S, M, L, XL, XXL</td>
+                  <td>{% for size in sizes %}{{ size.name_ar }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                 </tr>
                 <tr>
                   <th>الألوان المتوفرة</th>
-                  <td>أزرق، بني، أسود، أبيض</td>
+                  <td>{% for color in colors %}{{ color.name_ar }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                 </tr>
                 <tr>
                   <th>تعليمات العناية</th>
@@ -183,92 +194,92 @@
               <div class="row align-items-center">
                 <div class="col-md-4 text-center">
                   <div class="overall-rating">
-                    <h2 class="rating-number">٤.٥</h2>
+                    <h2 class="rating-number">{{ avg_rating|floatformat:1 }}</h2>
                     <div class="stars">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-half"></i>
+                      {{ avg_rating|star_rating }}
                     </div>
-                    <p class="total-reviews">٢٤ تقييم</p>
+                    <p class="total-reviews">{{ review_count }} تقييم</p>
                   </div>
                 </div>
                 <div class="col-md-8">
                   <div class="rating-bars">
+                    {% for i in '54321'|make_list %}
+                    {% with i|add:"0" as rating %}
                     <div class="rating-bar-item">
-                      <span class="stars">٥ نجوم</span>
+                      <span class="stars">{{ rating }} نجوم</span>
                       <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" 
+                             style="width: {% widthratio reviews|filter_by_rating:rating|length review_count 100 %}%" 
+                             aria-valuenow="{% widthratio reviews|filter_by_rating:rating|length review_count 100 %}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100"></div>
                       </div>
-                      <span class="count">١٨</span>
+                      <span class="count">{{ reviews|filter_by_rating:rating|length }}</span>
                     </div>
-                    <div class="rating-bar-item">
-                      <span class="stars">٤ نجوم</span>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <span class="count">٤</span>
-                    </div>
-                    <div class="rating-bar-item">
-                      <span class="stars">٣ نجوم</span>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <span class="count">١</span>
-                    </div>
-                    <div class="rating-bar-item">
-                      <span class="stars">٢ نجوم</span>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 3%" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <span class="count">١</span>
-                    </div>
-                    <div class="rating-bar-item">
-                      <span class="stars">١ نجمة</span>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <span class="count">٠</span>
-                    </div>
+                    {% endwith %}
+                    {% endfor %}
                   </div>
                 </div>
               </div>
             </div>
             <!-- Reviews List -->
             <div class="reviews-list">
+              {% for review in reviews %}
               <div class="review-item">
                 <div class="review-header">
                   <div class="reviewer-info">
-                    <h6 class="reviewer-name">أحمد محمد</h6>
+                    <h6 class="reviewer-name">{{ review.name }}</h6>
                     <div class="review-rating">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
+                      {{ review.rating|star_rating }}
                     </div>
                   </div>
-                  <span class="review-date">١٥ يناير ٢٠٢٤</span>
+                  <span class="review-date">{{ review.created_at|date:"d F Y" }}</span>
                 </div>
-                <p class="review-text">قميص رائع وخامة ممتازة. المقاس مضبوط والتصميم أنيق جداً. سعيد جداً بالشراء.</p>
+                <p class="review-text">{{ review.comment }}</p>
               </div>
-              <div class="review-item">
-                <div class="review-header">
-                  <div class="reviewer-info">
-                    <h6 class="reviewer-name">محمد علي</h6>
-                    <div class="review-rating">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star"></i>
+              {% empty %}
+              <div class="text-center py-4">
+                <p>لا توجد تقييمات حتى الآن. كن أول من يقيم هذا المنتج.</p>
+              </div>
+              {% endfor %}
+            </div>
+            
+            <!-- Add Review Form -->
+            <div class="add-review mt-5">
+              <h4 class="mb-4">أضف تقييمك</h4>
+              <form action="{% url 'product:add_review' product.id %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="reviewName" class="form-label">الاسم</label>
+                  <input type="text" class="form-control" id="reviewName" name="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="reviewEmail" class="form-label">البريد الإلكتروني</label>
+                  <input type="email" class="form-control" id="reviewEmail" name="email" required>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">التقييم</label>
+                  <div class="rating-select">
+                    <div class="stars">
+                      <input type="radio" id="star5" name="rating" value="5" required>
+                      <label for="star5"><i class="bi bi-star-fill"></i></label>
+                      <input type="radio" id="star4" name="rating" value="4">
+                      <label for="star4"><i class="bi bi-star-fill"></i></label>
+                      <input type="radio" id="star3" name="rating" value="3">
+                      <label for="star3"><i class="bi bi-star-fill"></i></label>
+                      <input type="radio" id="star2" name="rating" value="2">
+                      <label for="star2"><i class="bi bi-star-fill"></i></label>
+                      <input type="radio" id="star1" name="rating" value="1">
+                      <label for="star1"><i class="bi bi-star-fill"></i></label>
                     </div>
                   </div>
-                  <span class="review-date">١٠ يناير ٢٠٢٤</span>
                 </div>
-                <p class="review-text">خامة القميص جيدة والتصميم جميل. المقاس مناسب ولكن كنت أتمنى لو كان متوفر بألوان أكثر.</p>
-              </div>
+                <div class="mb-3">
+                  <label for="reviewComment" class="form-label">التعليق</label>
+                  <textarea class="form-control" id="reviewComment" name="comment" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">إرسال التقييم</button>
+              </form>
             </div>
           </div>
         </div>
@@ -282,8 +293,87 @@
   <div class="container">
     <h3 class="section-title text-center mb-4">منتجات مشابهة</h3>
     <div class="row g-4" id="relatedProducts">
-      <!-- Products will be loaded dynamically from products.js -->
+      {% for related_product in related_products %}
+      <div class="col-6 col-md-3">
+        <div class="product-card">
+          {% if related_product.badge or related_product.is_new or related_product.is_on_sale %}
+            <div class="product-badge">
+              {% if related_product.badge %}
+                {{ related_product.get_badge_display }}
+              {% elif related_product.is_new %}
+                جديد
+              {% elif related_product.is_on_sale %}
+                خصم {{ related_product.get_discount_percentage }}%
+              {% endif %}
+            </div>
+          {% endif %}
+          <div class="product-img-container">
+            <img src="{% get_product_image_url related_product %}" alt="{{ related_product.name_ar }}" class="product-img">
+            <div class="product-actions">
+              <a href="{{ related_product.get_absolute_url }}" class="action-btn">
+                <i class="bi bi-eye"></i>
+              </a>
+              <button class="action-btn">
+                <i class="bi bi-heart"></i>
+              </button>
+              <button class="action-btn">
+                <i class="bi bi-bag-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">{{ related_product.category.name_ar }}</div>
+            <h3 class="product-title">
+              <a href="{{ related_product.get_absolute_url }}" class="product-link">{{ related_product.name_ar }}</a>
+            </h3>
+            <div class="product-price">
+              <span class="current-price">{{ related_product.price }} ج.م</span>
+              {% if related_product.old_price %}
+                <span class="old-price">{{ related_product.old_price }} ج.م</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+
+<script>
+  // Function to change main product image
+  function changeMainImage(thumbnail) {
+    const mainImage = document.getElementById('mainImage');
+    mainImage.src = thumbnail.src;
+    
+    // Remove active class from all thumbnails
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+      thumb.classList.remove('active');
+    });
+    
+    // Add active class to clicked thumbnail
+    thumbnail.classList.add('active');
+  }
+  
+  // Quantity selector
+  document.addEventListener('DOMContentLoaded', function() {
+    const decreaseBtn = document.getElementById('decreaseQuantity');
+    const increaseBtn = document.getElementById('increaseQuantity');
+    const quantityInput = document.getElementById('productQuantity');
+    
+    decreaseBtn.addEventListener('click', function() {
+      let value = parseInt(quantityInput.value);
+      if (value > 1) {
+        quantityInput.value = value - 1;
+      }
+    });
+    
+    increaseBtn.addEventListener('click', function() {
+      let value = parseInt(quantityInput.value);
+      if (value < 10) {
+        quantityInput.value = value + 1;
+      }
+    });
+  });
+</script>
 {% endblock content %}

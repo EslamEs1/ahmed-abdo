@@ -1,4 +1,6 @@
 {% extends 'website/base.html' %}
+{% load static %}
+{% load product_tags %}
 {% block content %}
 <!-- Hero Banner -->
 <section class="hero-slider">
@@ -191,22 +193,200 @@
     <div class="tab-content" id="productTabsContent">
       <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
         <div class="row g-4" id="productsGrid">
-          <!-- Products will be loaded from JavaScript -->
+          {% for product in featured_products %}
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="product-card" data-description="{{ product.description_ar }}">
+              {% if product.badge or product.is_new or product.is_on_sale %}
+                <div class="product-badge">
+                  {% if product.badge %}
+                    {{ product.get_badge_display }}
+                  {% elif product.is_new %}
+                    جديد
+                  {% elif product.is_on_sale %}
+                    خصم {{ product.get_discount_percentage }}%
+                  {% endif %}
+                </div>
+              {% endif %}
+              <div class="product-img-container">
+                <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
+                <div class="product-actions">
+                  <button class="action-btn quick-view-btn">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                  <button class="action-btn">
+                    <i class="bi bi-heart"></i>
+                  </button>
+                  <button class="action-btn">
+                    <i class="bi bi-bag-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-info">
+                <div class="product-category">{{ product.category.name_ar }}</div>
+                <h3 class="product-title">
+                  <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
+                </h3>
+                <div class="product-price">
+                  <span class="current-price">{{ product.price }} ج.م</span>
+                  {% if product.old_price %}
+                    <span class="old-price">{{ product.old_price }} ج.م</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="col-12 text-center">
+            <p>لا توجد منتجات متاحة حالياً</p>
+          </div>
+          {% endfor %}
         </div>
       </div>
       <div class="tab-pane fade" id="men" role="tabpanel" aria-labelledby="men-tab">
         <div class="row g-4">
-          <!-- Men's products will be loaded from JavaScript -->
+          {% for product in featured_products %}
+            {% if product.category.slug == 'men' or product.category.parent.slug == 'men' %}
+              <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card" data-description="{{ product.description_ar }}">
+                  {% if product.badge or product.is_new or product.is_on_sale %}
+                    <div class="product-badge">
+                      {% if product.badge %}
+                        {{ product.get_badge_display }}
+                      {% elif product.is_new %}
+                        جديد
+                      {% elif product.is_on_sale %}
+                        خصم {{ product.get_discount_percentage }}%
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                  <div class="product-img-container">
+                    <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
+                    <div class="product-actions">
+                      <button class="action-btn quick-view-btn">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-heart"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-bag-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">{{ product.category.name_ar }}</div>
+                    <h3 class="product-title">
+                      <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
+                    </h3>
+                    <div class="product-price">
+                      <span class="current-price">{{ product.price }} ج.م</span>
+                      {% if product.old_price %}
+                        <span class="old-price">{{ product.old_price }} ج.م</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
       <div class="tab-pane fade" id="women" role="tabpanel" aria-labelledby="women-tab">
         <div class="row g-4">
-          <!-- Women's products will be loaded from JavaScript -->
+          {% for product in featured_products %}
+            {% if product.category.slug == 'women' or product.category.parent.slug == 'women' %}
+              <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card" data-description="{{ product.description_ar }}">
+                  {% if product.badge or product.is_new or product.is_on_sale %}
+                    <div class="product-badge">
+                      {% if product.badge %}
+                        {{ product.get_badge_display }}
+                      {% elif product.is_new %}
+                        جديد
+                      {% elif product.is_on_sale %}
+                        خصم {{ product.get_discount_percentage }}%
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                  <div class="product-img-container">
+                    <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
+                    <div class="product-actions">
+                      <button class="action-btn quick-view-btn">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-heart"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-bag-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">{{ product.category.name_ar }}</div>
+                    <h3 class="product-title">
+                      <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
+                    </h3>
+                    <div class="product-price">
+                      <span class="current-price">{{ product.price }} ج.م</span>
+                      {% if product.old_price %}
+                        <span class="old-price">{{ product.old_price }} ج.م</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
       <div class="tab-pane fade" id="kids" role="tabpanel" aria-labelledby="kids-tab">
         <div class="row g-4">
-          <!-- Kids' products will be loaded from JavaScript -->
+          {% for product in featured_products %}
+            {% if product.category.slug == 'kids' or product.category.parent.slug == 'kids' %}
+              <div class="col-6 col-md-4 col-lg-3">
+                <div class="product-card" data-description="{{ product.description_ar }}">
+                  {% if product.badge or product.is_new or product.is_on_sale %}
+                    <div class="product-badge">
+                      {% if product.badge %}
+                        {{ product.get_badge_display }}
+                      {% elif product.is_new %}
+                        جديد
+                      {% elif product.is_on_sale %}
+                        خصم {{ product.get_discount_percentage }}%
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                  <div class="product-img-container">
+                    <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
+                    <div class="product-actions">
+                      <button class="action-btn quick-view-btn">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-heart"></i>
+                      </button>
+                      <button class="action-btn">
+                        <i class="bi bi-bag-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">{{ product.category.name_ar }}</div>
+                    <h3 class="product-title">
+                      <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
+                    </h3>
+                    <div class="product-price">
+                      <span class="current-price">{{ product.price }} ج.م</span>
+                      {% if product.old_price %}
+                        <span class="old-price">{{ product.old_price }} ج.م</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
     </div>
