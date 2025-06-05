@@ -15,6 +15,22 @@
       <div class="decorative-line"></div>
     </div>
     <div class="row g-4">
+      {% for category in main_categories %}
+      <div class="col-6 col-md-3">
+        <a href="{% url 'product:category_list' category.slug %}" class="category-card">
+          <div class="category-img-container">
+            {% if category.image %}
+            <img src="{{ category.image.url }}" alt="{{ category.name_ar }}" class="img-fluid">
+            {% else %}
+            <img src="{% static 'images/placeholder.jpg' %}" alt="{{ category.name_ar }}" class="img-fluid">
+            {% endif %}
+          </div>
+          <div class="category-overlay">
+            <h3 class="category-title">{{ category.name_ar }}</h3>
+          </div>
+        </a>
+      </div>
+      {% empty %}
       <div class="col-6 col-md-3">
         <a href="men.html" class="category-card">
           <div class="category-img-container">
@@ -62,6 +78,7 @@
           </div>
         </a>
       </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -80,18 +97,12 @@
           <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all" type="button"
             role="tab" aria-controls="all" aria-selected="true">الكل</button>
         </li>
+        {% for category in main_categories %}
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="men-tab" data-bs-toggle="pill" data-bs-target="#men" type="button" role="tab"
-            aria-controls="men" aria-selected="false">رجالي</button>
+          <button class="nav-link" id="{{ category.slug }}-tab" data-bs-toggle="pill" data-bs-target="#{{ category.slug }}" type="button" role="tab"
+            aria-controls="{{ category.slug }}" aria-selected="false">{{ category.name_ar }}</button>
         </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="women-tab" data-bs-toggle="pill" data-bs-target="#women" type="button" role="tab"
-            aria-controls="women" aria-selected="false">نسائي</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="kids-tab" data-bs-toggle="pill" data-bs-target="#kids" type="button" role="tab"
-            aria-controls="kids" aria-selected="false">أطفال</button>
-        </li>
+        {% endfor %}
       </ul>
     </div>
 
@@ -147,10 +158,12 @@
           {% endfor %}
         </div>
       </div>
-      <div class="tab-pane fade" id="men" role="tabpanel" aria-labelledby="men-tab">
+      
+      {% for category in main_categories %}
+      <div class="tab-pane fade" id="{{ category.slug }}" role="tabpanel" aria-labelledby="{{ category.slug }}-tab">
         <div class="row g-4">
           {% for product in featured_products %}
-            {% if product.category.slug == 'men' or product.category.parent.slug == 'men' %}
+            {% if product.category.slug == category.slug or product.category.parent.slug == category.slug %}
               <div class="col-6 col-md-4 col-lg-3">
                 <div class="product-card" data-description="{{ product.description_ar }}">
                   {% if product.badge or product.is_new or product.is_on_sale %}
@@ -196,116 +209,30 @@
           {% endfor %}
         </div>
       </div>
-      <div class="tab-pane fade" id="women" role="tabpanel" aria-labelledby="women-tab">
-        <div class="row g-4">
-          {% for product in featured_products %}
-            {% if product.category.slug == 'women' or product.category.parent.slug == 'women' %}
-              <div class="col-6 col-md-4 col-lg-3">
-                <div class="product-card" data-description="{{ product.description_ar }}">
-                  {% if product.badge or product.is_new or product.is_on_sale %}
-                    <div class="product-badge">
-                      {% if product.badge %}
-                        {{ product.get_badge_display }}
-                      {% elif product.is_new %}
-                        جديد
-                      {% elif product.is_on_sale %}
-                        خصم {{ product.get_discount_percentage }}%
-                      {% endif %}
-                    </div>
-                  {% endif %}
-                  <div class="product-img-container">
-                    <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
-                    <div class="product-actions">
-                      <button class="action-btn quick-view-btn">
-                        <i class="bi bi-eye"></i>
-                      </button>
-                      <button class="action-btn">
-                        <i class="bi bi-heart"></i>
-                      </button>
-                      <button class="action-btn">
-                        <i class="bi bi-bag-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">{{ product.category.name_ar }}</div>
-                    <h3 class="product-title">
-                      <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
-                    </h3>
-                    <div class="product-price">
-                      <span class="current-price">{{ product.price }} ج.م</span>
-                      {% if product.old_price %}
-                        <span class="old-price">{{ product.old_price }} ج.م</span>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
-      <div class="tab-pane fade" id="kids" role="tabpanel" aria-labelledby="kids-tab">
-        <div class="row g-4">
-          {% for product in featured_products %}
-            {% if product.category.slug == 'kids' or product.category.parent.slug == 'kids' %}
-              <div class="col-6 col-md-4 col-lg-3">
-                <div class="product-card" data-description="{{ product.description_ar }}">
-                  {% if product.badge or product.is_new or product.is_on_sale %}
-                    <div class="product-badge">
-                      {% if product.badge %}
-                        {{ product.get_badge_display }}
-                      {% elif product.is_new %}
-                        جديد
-                      {% elif product.is_on_sale %}
-                        خصم {{ product.get_discount_percentage }}%
-                      {% endif %}
-                    </div>
-                  {% endif %}
-                  <div class="product-img-container">
-                    <img src="{% get_product_image_url product %}" alt="{{ product.name_ar }}" class="product-img">
-                    <div class="product-actions">
-                      <button class="action-btn quick-view-btn">
-                        <i class="bi bi-eye"></i>
-                      </button>
-                      <button class="action-btn">
-                        <i class="bi bi-heart"></i>
-                      </button>
-                      <button class="action-btn">
-                        <i class="bi bi-bag-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <div class="product-category">{{ product.category.name_ar }}</div>
-                    <h3 class="product-title">
-                      <a href="{{ product.get_absolute_url }}" class="product-link">{{ product.name_ar }}</a>
-                    </h3>
-                    <div class="product-price">
-                      <span class="current-price">{{ product.price }} ج.م</span>
-                      {% if product.old_price %}
-                        <span class="old-price">{{ product.old_price }} ج.م</span>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
     <div class="text-center mt-5">
-      <a href="#" class="btn btn-outline-primary btn-lg">عرض المزيد</a>
+      <a href="{% url 'product:offers_list' %}" class="btn btn-outline-primary btn-lg">عرض المزيد</a>
     </div>
   </div>
 </section>
 
-<!-- Banner -->
+<!-- Featured Collections -->
 <section class="promo-banner py-5">
   <div class="container">
     <div class="row">
+      {% for collection in collections %}
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="promo-card {% cycle 'promo-card-1' 'promo-card-2' %}">
+          <div class="promo-content">
+            <h3 class="promo-title">{{ collection.name_ar }}</h3>
+            <p class="promo-text">{{ collection.description_ar|truncatechars:60 }}</p>
+            <a href="{% url 'product:collection' %}" class="btn btn-outline-light">اكتشف المجموعة</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
       <div class="col-md-6 mb-4 mb-md-0">
         <div class="promo-card promo-card-1">
           <div class="promo-content">
@@ -324,9 +251,44 @@
           </div>
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 </section>
+
+<!-- Special Offers Section -->
+{% if offers %}
+<section class="special-offers py-5 bg-light">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <h2 class="section-title">عروض خاصة</h2>
+      <div class="decorative-line"></div>
+    </div>
+    <div class="row g-4">
+      {% for offer in offers %}
+      <div class="col-md-6">
+        <div class="offer-card">
+          <div class="offer-badge">خصم {{ offer.discount_percentage }}٪</div>
+          {% if offer.image %}
+            <img src="{{ offer.image.url }}" alt="{{ offer.title_ar }}" class="img-fluid">
+          {% else %}
+            <img src="{% static 'images/default-offer.jpg' %}" alt="{{ offer.title_ar }}" class="img-fluid">
+          {% endif %}
+          <div class="offer-overlay">
+            <div class="offer-content">
+              <span class="offer-subtitle">حصرياً</span>
+              <h3 class="offer-title">{{ offer.title_ar }}</h3>
+              <p class="offer-desc">{{ offer.description_ar|truncatechars:100 }}</p>
+              <a href="{% url 'product:offers_list' %}" class="btn btn-outline-light">تسوق الآن</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
 
 <!-- Testimonials -->
 <section class="testimonials-section py-5">
