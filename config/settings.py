@@ -132,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ar'
 
 TIME_ZONE = 'Africa/Cairo'
 
@@ -156,7 +156,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
     "site_title": "متجر أحمد عبده",
-    "site_logo": "https://example.com/logo.png",  # Replace with your logo URL
+    # "site_logo": "https://example.com/logo.png",  # Replace with your logo URL
     "site_header": "إدارة متجر أحمد عبده",
     "site_brand": "متجر أحمد عبده",
     "welcome_sign": "مرحباً بك في لوحة التحكم",
