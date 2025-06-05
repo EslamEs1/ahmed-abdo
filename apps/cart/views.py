@@ -42,7 +42,7 @@ def cart_view(request):
         'cart': cart,
         'cart_items': cart_items,
     }
-    return render(request, 'cart/cart.html', context)
+    return render(request, 'cart.html', context)
 
 @require_POST
 def add_to_cart(request):
@@ -249,4 +249,4 @@ def checkout_view(request):
         'final_price': cart.total_price - coupon_discount
     }
     
-    return render(request, 'cart/checkout.html', context)
+    return render(request, 'checkout.html', context)

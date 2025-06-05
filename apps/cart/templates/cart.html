@@ -20,8 +20,9 @@
           <!-- Cart Items -->
           <div class="col-lg-8">
             <div class="cart-items">
-              <h2 class="section-title mb-4">سلة التسوق ({{ cart.items_count }} منتج)</h2>
+              <h2 class="section-title mb-4">سلة التسوق (<span id="cart-count">{{ cart.items_count }}</span> منتج)</h2>
               
+              <div id="server-cart-items">
               {% if cart_items %}
                 {% for item in cart_items %}
                 <!-- Cart Item -->
@@ -76,13 +77,25 @@
                   </button>
                 </div>
               {% else %}
-                <div class="empty-cart text-center py-5">
+                <div id="empty-cart-message" class="empty-cart text-center py-5">
                   <i class="bi bi-cart-x" style="font-size: 5rem;"></i>
                   <h3 class="mt-3">سلة التسوق فارغة</h3>
                   <p class="text-muted">لم تقم بإضافة أي منتجات إلى سلة التسوق بعد</p>
                   <a href="{% url 'main:home' %}" class="btn btn-primary mt-3">تسوق الآن</a>
                 </div>
+                <div id="local-cart-items"></div>
+                <div id="local-cart-actions" class="cart-actions d-flex justify-content-between align-items-center" style="display: none !important;">
+                  <a href="{% url 'main:home' %}" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-right"></i>
+                    متابعة التسوق
+                  </a>
+                  <button class="btn btn-outline-danger" id="local-clear-cart">
+                    <i class="bi bi-trash"></i>
+                    إفراغ السلة
+                  </button>
+                </div>
               {% endif %}
+              </div>
             </div>
           </div>
 
@@ -132,10 +145,10 @@
                       إتمام الشراء
                     </a>
                   {% else %}
-                    <button class="btn btn-primary w-100" disabled>
+                    <a id="checkout-btn" href="{% url 'cart:checkout' %}" class="btn btn-primary w-100" disabled>
                       <i class="bi bi-credit-card"></i>
                       إتمام الشراء
-                    </button>
+                    </a>
                   {% endif %}
                   <!-- Secure Checkout -->
                   <div class="secure-checkout text-center mt-3">
@@ -215,6 +228,102 @@
 {% block extra_js %}
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Check if server cart is empty
+    const cartCount = {{ cart.items_count|default:0 }};
+    
+    if (cartCount === 0) {
+      // Load cart from localStorage
+      const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      if (localCart.length > 0) {
+        // Hide empty cart message
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        if (emptyCartMessage) {
+          emptyCartMessage.style.display = 'none';
+        }
+        
+        // Update cart count
+        const cartCountElement = document.getElementById('cart-count');
+        if (cartCountElement) {
+          cartCountElement.textContent = localCart.length;
+        }
+        
+        // Show local cart items
+        const localCartItems = document.getElementById('local-cart-items');
+        if (localCartItems) {
+          let localCartHTML = '';
+          let totalPrice = 0;
+          
+          localCart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            totalPrice += itemTotal;
+            
+            localCartHTML += `
+              <div class="cart-item mb-4" data-id="${item.id}">
+                <div class="row align-items-center">
+                  <div class="col-md-3">
+                    <img src="${item.image}" alt="${item.name}" class="img-fluid rounded">
+                  </div>
+                  <div class="col-md-9">
+                    <div class="cart-item-details">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                          <h5 class="cart-item-title">${item.name}</h5>
+                        </div>
+                        <button class="btn btn-link text-danger local-remove-item" data-id="${item.id}">
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="quantity-selector">
+                          <button class="quantity-btn local-decrease-qty">-</button>
+                          <input type="number" class="quantity-input" value="${item.quantity}" min="1" max="10">
+                          <button class="quantity-btn local-increase-qty">+</button>
+                        </div>
+                        <div class="cart-item-price">
+                          <span class="current-price">${item.price} ج.م</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+          });
+          
+          localCartItems.innerHTML = localCartHTML;
+          
+          // Show cart actions
+          const localCartActions = document.getElementById('local-cart-actions');
+          if (localCartActions) {
+            localCartActions.style.display = 'flex !important';
+          }
+          
+          // Update cart summary
+          document.getElementById('cart-total').textContent = totalPrice + ' ج.م';
+          document.getElementById('cart-discount').textContent = '- 0 ج.م';
+          
+          // Update shipping cost
+          if (totalPrice >= 500) {
+            document.getElementById('shipping-cost').textContent = 'مجاني';
+            document.getElementById('cart-final').textContent = totalPrice + ' ج.م';
+          } else {
+            document.getElementById('shipping-cost').textContent = '50 ج.م';
+            document.getElementById('cart-final').textContent = (totalPrice + 50) + ' ج.م';
+          }
+          
+          // Enable checkout button
+          const checkoutBtn = document.getElementById('checkout-btn');
+          if (checkoutBtn) {
+            checkoutBtn.removeAttribute('disabled');
+          }
+          
+          // Setup local cart event handlers
+          setupLocalCartHandlers();
+        }
+      }
+    }
+    
     // Quantity Buttons
     document.querySelectorAll('.increase-qty').forEach(button => {
       button.addEventListener('click', function() {
@@ -290,7 +399,131 @@
     });
   });
 
-  // Update cart item quantity
+  // Setup local cart event handlers
+  function setupLocalCartHandlers() {
+    // Local Quantity Buttons
+    document.querySelectorAll('.local-increase-qty').forEach(button => {
+      button.addEventListener('click', function() {
+        const cartItem = this.closest('.cart-item');
+        const productId = cartItem.dataset.id;
+        const input = cartItem.querySelector('.quantity-input');
+        let value = parseInt(input.value);
+        
+        if (value < 10) {
+          value += 1;
+          input.value = value;
+          updateLocalCartItem(productId, value);
+        }
+      });
+    });
+    
+    document.querySelectorAll('.local-decrease-qty').forEach(button => {
+      button.addEventListener('click', function() {
+        const cartItem = this.closest('.cart-item');
+        const productId = cartItem.dataset.id;
+        const input = cartItem.querySelector('.quantity-input');
+        let value = parseInt(input.value);
+        
+        if (value > 1) {
+          value -= 1;
+          input.value = value;
+          updateLocalCartItem(productId, value);
+        }
+      });
+    });
+    
+    // Local Remove Item Button
+    document.querySelectorAll('.local-remove-item').forEach(button => {
+      button.addEventListener('click', function() {
+        const cartItem = this.closest('.cart-item');
+        const productId = cartItem.dataset.id;
+        
+        if (confirm('هل أنت متأكد من حذف هذا المنتج من السلة؟')) {
+          removeLocalCartItem(productId);
+        }
+      });
+    });
+    
+    // Local Clear Cart Button
+    const localClearCartBtn = document.getElementById('local-clear-cart');
+    if (localClearCartBtn) {
+      localClearCartBtn.addEventListener('click', function() {
+        if (confirm('هل أنت متأكد من إفراغ السلة بالكامل؟')) {
+          clearLocalCart();
+        }
+      });
+    }
+  }
+
+  // Update local cart item
+  function updateLocalCartItem(productId, quantity) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const itemIndex = cart.findIndex(item => item.id === productId);
+    
+    if (itemIndex !== -1) {
+      cart[itemIndex].quantity = quantity;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Update UI
+      updateLocalCartTotal();
+    }
+  }
+
+  // Remove local cart item
+  function removeLocalCartItem(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Remove item from UI
+    const cartItem = document.querySelector(`.cart-item[data-id="${productId}"]`);
+    if (cartItem) {
+      cartItem.remove();
+    }
+    
+    // Update UI
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+      cartCountElement.textContent = cart.length;
+    }
+    
+    updateLocalCartTotal();
+    
+    // If cart is empty, reload page
+    if (cart.length === 0) {
+      location.reload();
+    }
+  }
+
+  // Clear local cart
+  function clearLocalCart() {
+    localStorage.removeItem('cart');
+    location.reload();
+  }
+
+  // Update local cart total
+  function updateLocalCartTotal() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalPrice = 0;
+    
+    cart.forEach(item => {
+      totalPrice += item.price * item.quantity;
+    });
+    
+    // Update UI
+    document.getElementById('cart-total').textContent = totalPrice + ' ج.م';
+    
+    // Update shipping cost
+    if (totalPrice >= 500) {
+      document.getElementById('shipping-cost').textContent = 'مجاني';
+      document.getElementById('cart-final').textContent = totalPrice + ' ج.م';
+    } else {
+      document.getElementById('shipping-cost').textContent = '50 ج.م';
+      document.getElementById('cart-final').textContent = (totalPrice + 50) + ' ج.م';
+    }
+  }
+
+  // Update cart item
   function updateCartItem(cartItem) {
     const itemId = cartItem.dataset.itemId;
     const quantity = cartItem.querySelector('.quantity-input').value;

@@ -9,7 +9,7 @@
                     <div class="d-flex">
                         <a href="#" class="announcement-link mx-2">تتبع طلبك</a>
                         <span class="mx-1">|</span>
-                        <a href="#" class="announcement-link mx-2">تواصل معنا</a>
+                        <a href="{% url 'contactus:contact' %}" class="announcement-link mx-2">تواصل معنا</a>
                         <span class="mx-1">|</span>
                         <a href="#" class="announcement-link mx-2">English</a>
                     </div>
@@ -30,9 +30,13 @@
                 <div class="d-flex d-lg-none ms-auto me-2">
                     <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i
                             class="bi bi-search"></i></a>
-                    <a href="#" class="nav-icon mx-2 position-relative">
+                    <a href="#" class="nav-icon mx-2 position-relative" id="mobile-cart-btn">
                         <i class="bi bi-bag"></i>
-                        <span class="cart-badge">3</span>
+                        <span class="cart-badge cart-count">0</span>
+                    </a>
+                    <a href="#" class="nav-icon mx-2 position-relative" id="mobile-favorites-btn">
+                        <i class="bi bi-heart"></i>
+                        <span class="favorites-badge favorites-count">0</span>
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -89,9 +93,13 @@
                     <div class="d-none d-lg-flex">
                         <a href="#" class="nav-icon mx-2" data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                 class="bi bi-search"></i></a>
-                        <a href="#" class="nav-icon mx-2 position-relative">
+                        <a href="#" class="nav-icon mx-2 position-relative" id="desktop-cart-btn">
                             <i class="bi bi-bag"></i>
-                            <span class="cart-badge">3</span>
+                            <span class="cart-badge cart-count">0</span>
+                        </a>
+                        <a href="#" class="nav-icon mx-2 position-relative" id="desktop-favorites-btn">
+                            <i class="bi bi-heart"></i>
+                            <span class="favorites-badge favorites-count">0</span>
                         </a>
                     </div>
                 </div>

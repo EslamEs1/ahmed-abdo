@@ -215,6 +215,9 @@
                 </div>
                 {% endif %}
 
+                <!-- Hidden input fields for local cart data -->
+                <input type="hidden" id="local_cart_data" name="local_cart_data" value="">
+
                 <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary btn-lg w-100">
                   <i class="bi bi-lock"></i>
@@ -231,7 +234,7 @@
                 <div class="card-body">
                   <h3 class="card-title mb-4">ملخص الطلب</h3>
                   <!-- Order Items -->
-                  <div class="order-items mb-4">
+                  <div id="server-order-items" class="order-items mb-4">
                     {% for item in cart_items %}
                     <div class="order-item d-flex justify-content-between align-items-center mb-3">
                       <div class="item-info d-flex align-items-center">
@@ -251,24 +254,27 @@
                     </div>
                     {% endfor %}
                   </div>
+                  <div id="local-order-items" class="order-items mb-4" style="display: none;">
+                    <!-- Local cart items will be added here via JavaScript -->
+                  </div>
                   <!-- Order Totals -->
                   <div class="order-totals">
                     <div class="d-flex justify-content-between mb-2">
                       <span>إجمالي المنتجات</span>
-                      <span>{{ cart.total_price }} ج.م</span>
+                      <span id="cart-total">{{ cart.total_price }} ج.م</span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                       <span>الخصم</span>
-                      <span class="text-success">- {{ cart.total_discount }} ج.م</span>
+                      <span id="cart-discount" class="text-success">- {{ cart.total_discount }} ج.م</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                       <span>التوصيل</span>
-                      <span>{% if cart.total_price >= 500 %}مجاني{% else %}50 ج.م{% endif %}</span>
+                      <span id="shipping-cost">{% if cart.total_price >= 500 %}مجاني{% else %}50 ج.م{% endif %}</span>
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between total">
                       <strong>الإجمالي</strong>
-                      <strong>
+                      <strong id="cart-final">
                         {% if cart.total_price >= 500 %}
                           {{ cart.final_price }} ج.م
                         {% else %}
@@ -301,6 +307,65 @@
 {% block extra_js %}
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Check if server cart is empty
+    const cartItemsCount = {{ cart_items|length|default:0 }};
+    
+    if (cartItemsCount === 0) {
+      // Load cart from localStorage
+      const localCart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      if (localCart.length > 0) {
+        // Show local cart items
+        const localOrderItems = document.getElementById('local-order-items');
+        if (localOrderItems) {
+          let localOrderHTML = '';
+          let totalPrice = 0;
+          
+          localCart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            totalPrice += itemTotal;
+            
+            localOrderHTML += `
+              <div class="order-item d-flex justify-content-between align-items-center mb-3">
+                <div class="item-info d-flex align-items-center">
+                  <div class="item-image-wrapper">
+                    <img src="${item.image}" alt="${item.name}" class="item-image rounded">
+                  </div>
+                  <div class="item-details me-3">
+                    <h6 class="item-title mb-0">${item.name}</h6>
+                    <small class="text-muted">الكمية: ${item.quantity}</small>
+                  </div>
+                </div>
+                <span class="item-price">${itemTotal} ج.م</span>
+              </div>
+            `;
+          });
+          
+          localOrderItems.innerHTML = localOrderHTML;
+          localOrderItems.style.display = 'block';
+          
+          // Update order totals
+          document.getElementById('cart-total').textContent = totalPrice + ' ج.م';
+          document.getElementById('cart-discount').textContent = '- 0 ج.م';
+          
+          // Update shipping cost
+          if (totalPrice >= 500) {
+            document.getElementById('shipping-cost').textContent = 'مجاني';
+            document.getElementById('cart-final').textContent = totalPrice + ' ج.م';
+          } else {
+            document.getElementById('shipping-cost').textContent = '50 ج.م';
+            document.getElementById('cart-final').textContent = (totalPrice + 50) + ' ج.م';
+          }
+          
+          // Add local cart data to hidden input
+          document.getElementById('local_cart_data').value = JSON.stringify(localCart);
+        }
+      } else {
+        // Redirect to cart page if no items in cart
+        window.location.href = '{% url "cart:cart" %}';
+      }
+    }
+    
     // Handle saved addresses
     const useAddressBtns = document.querySelectorAll('.use-address-btn');
     useAddressBtns.forEach(btn => {
@@ -341,6 +406,11 @@
         // Add your own validation logic here if needed
         
         this.classList.add('was-validated');
+        
+        // Clear localStorage cart on successful submission
+        if (this.checkValidity()) {
+          // We'll clear the cart in the backend after successful order
+        }
       });
     }
   });

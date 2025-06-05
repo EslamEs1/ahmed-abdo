@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Footer -->
 <footer class="footer pt-5">
 <div class="container">
@@ -18,11 +19,11 @@
         <div class="col-6 col-md-4 col-lg-2">
             <h5 class="footer-title">تسوق</h5>
             <ul class="footer-links">
-                <li><a href="men.html">الرجال</a></li>
-                <li><a href="women.html">النساء</a></li>
-                <li><a href="kids.html">الأطفال</a></li>
-                <li><a href="offers.html">العروض</a></li>
-                <li><a href="#">الجديد</a></li>
+                <li><a href="{% url 'product:men_category' %}">الرجال</a></li>
+                <li><a href="{% url 'product:women_category' %}">النساء</a></li>
+                <li><a href="{% url 'product:kids_category' %}">الأطفال</a></li>
+                <li><a href="{% url 'product:offers_list' %}">العروض</a></li>
+                <li><a href="{% url 'product:collection' %}">المجموعات</a></li>
             </ul>
         </div>
         <div class="col-6 col-md-4 col-lg-2">
@@ -48,11 +49,11 @@
                 <div class="col-md-6">
                     <h5 class="footer-title">وسائل الدفع</h5>
                     <div class="payment-methods">
-                        <img src="images/icons/Fawr.webp" alt="فوري" class="payment-icon" title="فوري">
-                        <img src="images/icons/vodafone.png" alt="فودافون كاش" class="payment-icon"
+                        <img src="{% static 'images/icons/Fawr.webp' %}" alt="فوري" class="payment-icon" title="فوري">
+                        <img src="{% static 'images/icons/vodafone.png' %}" alt="فودافون كاش" class="payment-icon"
                             title="فودافون كاش">
-                        <img src="images/icons/Instapay" alt="انستا باي" class="payment-icon" title="انستا باي">
-                        <img src="images/icons/e& UAE.jpeg" alt="اتصالات كاش" class="payment-icon"
+                        <img src="{% static 'images/icons/Instapay' %}" alt="انستا باي" class="payment-icon" title="انستا باي">
+                        <img src="{% static 'images/icons/e& UAE.jpeg' %}" alt="اتصالات كاش" class="payment-icon"
                             title="اتصالات كاش">
                     </div>
                 </div>
