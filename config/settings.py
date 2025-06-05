@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.main.context_processors.sliders',
             ],
         },
     },
@@ -154,17 +155,82 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Ahmed Abdo Store",
+    "site_title": "متجر أحمد عبده",
     "site_logo": "https://example.com/logo.png",  # Replace with your logo URL
-    "site_header": "Ahmed Abdo Store Admin",
-    "site_brand": "Ahmed Abdo Store",
-    "welcome_sign": "Welcome ",
-    "copyright": "by :Eslam Es",
+    "site_header": "إدارة متجر أحمد عبده",
+    "site_brand": "متجر أحمد عبده",
+    "welcome_sign": "مرحباً بك في لوحة التحكم",
+    "copyright": "تطوير: إسلام",
     "topmenu_links": [
-        {"name": "Home", "url": "/"},
+        {"name": "الموقع", "url": "/"},
     ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["product", "cart", "order"],
+    "custom_css": "css/admin.css",
+    "custom_js": None,
+    "icons": {
+        "product.Category": "fas fa-tags",
+        "product.Product": "fas fa-tshirt",
+        "product.Collection": "fas fa-layer-group",
+        "product.Offer": "fas fa-percent",
+        "product.Review": "fas fa-star",
+        "cart.Cart": "fas fa-shopping-cart",
+        "cart.CartItem": "fas fa-shopping-basket",
+        "cart.Coupon": "fas fa-ticket-alt",
+        "order.Order": "fas fa-file-invoice",
+        "order.OrderItem": "fas fa-box",
+        "order.ShippingAddress": "fas fa-map-marker-alt",
+        "contactus.ContactMessage": "fas fa-envelope",
+        "contactus.ContactInfo": "fas fa-info-circle",
+        "contactus.Newsletter": "fas fa-paper-plane",
+        "main.Slider": "fas fa-images",
+    },
+    "related_modal_active": True,
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {
+        "product.Product": "horizontal_tabs",
+        "product.Offer": "horizontal_tabs",
+        "product.Collection": "horizontal_tabs",
+    },
+    "language_chooser": False,
+    "search_model": ["product.Product", "product.Category"],
+    "show_ui_builder": False
 }
 
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-success",
+    "accent": "accent-teal",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": False,
+    "navbar_fixed": True,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": True,
+    "sidebar": "sidebar-dark-success",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "default",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
 
 MESSAGE_TAGS = {
     messages.DEBUG: "alert",

@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import contact_view, submit_contact
+from . import views
 
-app_name = "contactus"
+app_name = 'contactus'
+
 urlpatterns = [
-    path('', contact_view, name='contact'),
-    path('submit/', submit_contact, name='submit_contact'),
+    path('', views.contact_view, name='contact'),
+    path('newsletter/subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
 ]

@@ -1,6 +1,7 @@
 {% extends 'website/base.html' %}
 {% load static %}
 {% load product_tags %}
+{% load contactus_tags %}
 {% block content %}
 <!-- Hero Section -->
 <section class="pharaoh-hero">
@@ -276,24 +277,7 @@
 </section>
 
 <!-- Newsletter Section -->
-<section class="newsletter-section py-5 bg-light">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 text-center">
-        <div class="newsletter-content">
-          <h2 class="newsletter-title">اشترك للحصول على العروض الحصرية</h2>
-          <p class="newsletter-text">كن أول من يعلم عن أحدث العروض والمنتجات الجديدة</p>
-          <form class="newsletter-form">
-            <div class="input-group">
-              <input type="email" class="form-control" placeholder="أدخل بريدك الإلكتروني">
-              <button class="btn btn-primary" type="submit">اشترك</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% render_newsletter_form %}
 
 <!-- Quick View Modal -->
 <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">

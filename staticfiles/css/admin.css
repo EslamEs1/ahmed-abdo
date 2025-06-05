@@ -1,0 +1,287 @@
+/* Custom Admin CSS for First-time Users 
+ * Designed to simplify the Django Admin interface with Jazzmin
+ * Includes RTL support and UI improvements
+ */
+
+:root {
+    --primary-color: #1A3263;
+    --secondary-color: #D4AF37;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --gray-color: #6c757d;
+    --border-color: #dee2e6;
+}
+
+/* ========== RTL SUPPORT ========== */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl .select2-container--default .select2-selection--single .select2-selection__arrow {
+    left: 1px;
+    right: auto;
+}
+
+.rtl .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+}
+
+/* ========== GENERAL IMPROVEMENTS ========== */
+/* Larger font size for better readability */
+body {
+    font-size: 14px;
+}
+
+/* Make action buttons more visible */
+.btn {
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+}
+
+/* More visible save buttons */
+.submit-row input[type=submit],
+.submit-row input[type=button],
+.submit-row a.deletelink {
+    font-weight: bold;
+    padding: 8px 15px;
+}
+
+.submit-row {
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+/* ========== DASHBOARD SIMPLIFICATION ========== */
+/* Simplify the admin index page */
+.app-list {
+    margin-top: 20px;
+}
+
+.model-list {
+    margin-top: 10px;
+    padding-right: 10px;
+}
+
+/* Hide complex Django documentation links that might confuse first-time users */
+.viewsitelink,
+a[href^="http://docs.djangoproject.com"],
+a[href^="https://docs.djangoproject.com"] {
+    display: none !important;
+}
+
+/* ========== FORM SIMPLIFICATION ========== */
+/* Enhance form field visibility */
+.form-row {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-row:last-child {
+    border-bottom: none;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.help {
+    font-size: 0.85rem;
+    color: var(--gray-color);
+    margin-top: 5px;
+}
+
+/* Make required fields more obvious */
+.required label::after {
+    content: "*";
+    color: var(--danger-color);
+    margin-right: 5px;
+}
+
+/* Image preview improvements */
+img[src^="/media/"] {
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* ========== LIST VIEW IMPROVEMENTS ========== */
+#changelist {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#changelist-filter {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+#changelist-filter h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#changelist-filter ul {
+    margin-bottom: 15px;
+}
+
+#changelist-filter li {
+    padding: 5px 0;
+}
+
+/* Highlight current filter selection */
+#changelist-filter li.selected {
+    font-weight: bold;
+}
+
+/* ========== TABLE IMPROVEMENTS ========== */
+/* More compact and readable tables */
+#result_list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#result_list thead th {
+    padding: 12px 8px;
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+#result_list tbody td {
+    padding: 12px 8px;
+    vertical-align: middle;
+}
+
+#result_list tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Even/odd row styling for better readability */
+#result_list tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Better styling for action checkboxes */
+.action-checkbox {
+    text-align: center;
+}
+
+/* ========== INLINE FORMS IMPROVEMENTS ========== */
+.inline-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--light-color);
+}
+
+.inline-group h2 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.add-row {
+    margin-top: 10px;
+}
+
+.inline-deletelink {
+    color: var(--danger-color) !important;
+}
+
+/* ========== PRODUCT-SPECIFIC IMPROVEMENTS ========== */
+/* Special styling for product images */
+.field-product_image img,
+.field-category_image img,
+.field-collection_image img,
+.field-offer_image img,
+.field-image_preview img {
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Color preview enhancements */
+.field-color_preview div {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Rating stars styling */
+.field-rating_stars {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--warning-color);
+}
+
+/* ========== DASHBOARD WIDGETS ========== */
+.dashboard-tools {
+    margin-bottom: 20px;
+}
+
+/* Make Recent Actions more visible */
+.module h2 {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 4px 4px 0 0;
+}
+
+.module {
+    margin-bottom: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.module table {
+    width: 100%;
+}
+
+.module table th,
+.module table td {
+    padding: 8px 12px;
+}
+
+/* ========== MOBILE RESPONSIVENESS ========== */
+@media (max-width: 767px) {
+    .form-row {
+        padding: 10px 0;
+    }
+
+    .form-row>div {
+        padding: 0;
+    }
+
+    /* Stack fields on mobile */
+    .form-row>div.field-box {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    #changelist-filter {
+        position: relative;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .change-list .filtered .results {
+        width: 100%;
+        margin-right: 0;
+    }
+}

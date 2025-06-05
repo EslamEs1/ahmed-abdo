@@ -1,6 +1,7 @@
 {% extends 'website/base.html' %}
 {% load static %}
 {% load product_tags %}
+{% load contactus_tags %}
 {% block content %}
 <!-- Hero Banner -->
 <section class="category-hero offers-hero">
@@ -373,27 +374,9 @@
   </div>
 </section>
 
-<!-- Promotion Banner -->
-<section class="promotion-banner py-5 bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="promotion-card text-center">
-          <div class="promotion-content">
-            <h2 class="promotion-title">اشترك في نشرتنا البريدية</h2>
-            <p class="promotion-text">اشترك الآن واحصل على خصم ١٠٪ على مشترياتك الأولى</p>
-            <form class="newsletter-form">
-              <div class="input-group">
-                <input type="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" aria-label="البريد الإلكتروني">
-                <button class="btn btn-primary" type="submit">اشترك</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Newsletter -->
+{% render_newsletter_form %}
+
 <!-- Quick View Modal -->
 <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">

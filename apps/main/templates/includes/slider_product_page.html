@@ -1,0 +1,166 @@
+<!-- Hero Banner for product pages -->
+<section class="category-hero {% if page_type == 'men' %}men-hero{% elif page_type == 'women' %}women-hero{% elif page_type == 'kids' %}kids-hero{% endif %}">
+  {% for slider in sliders %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="hero-content">
+            {% if slider.subtitle_ar %}<span class="hero-subtitle">{{ slider.subtitle_ar }}</span>{% endif %}
+            <h1 class="hero-title mb-4">{{ slider.title_ar }}</h1>
+            {% if slider.description_ar %}<p class="hero-text mb-4">{{ slider.description_ar }}</p>{% endif %}
+            
+            <!-- Hero features based on page type -->
+            <div class="hero-features mb-4">
+              {% if page_type == 'men' %}
+                <div class="hero-feature">
+                  <i class="bi bi-stars"></i>
+                  <span>قطن مصري ١٠٠٪</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-rulers"></i>
+                  <span>مقاسات مثالية</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-arrow-repeat"></i>
+                  <span>استبدال مجاني</span>
+                </div>
+              {% elif page_type == 'women' %}
+                <div class="hero-feature">
+                  <i class="bi bi-gem"></i>
+                  <span>تصاميم حصرية</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-heart"></i>
+                  <span>خامات فاخرة</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-truck"></i>
+                  <span>توصيل سريع</span>
+                </div>
+              {% elif page_type == 'kids' %}
+                <div class="hero-feature">
+                  <i class="bi bi-shield-check"></i>
+                  <span>خامات آمنة</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-emoji-smile"></i>
+                  <span>تصاميم مريحة</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-palette"></i>
+                  <span>ألوان جذابة</span>
+                </div>
+              {% else %}
+                <div class="hero-feature">
+                  <i class="bi bi-truck"></i>
+                  <span>توصيل مجاني</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-shield-check"></i>
+                  <span>ضمان الجودة</span>
+                </div>
+              {% endif %}
+            </div>
+            
+            <!-- Action buttons -->
+            <div class="hero-buttons">
+              {% if slider.link %}
+                <a href="{{ slider.link }}" class="btn btn-primary btn-lg me-2">{{ slider.link_text_ar|default:"تسوق الآن" }}</a>
+              {% else %}
+                <a href="#categories" class="btn btn-primary btn-lg me-2">تسوق الآن</a>
+              {% endif %}
+              
+              {% if page_type == 'men' or page_type == 'women' %}
+                <a href="#size-guide" class="btn btn-outline-light btn-lg">دليل المقاسات</a>
+              {% elif page_type == 'kids' %}
+                {% if page_type == 'kids' %}
+                  <a href="#boys" class="btn btn-outline-light btn-lg">ملابس أولاد</a>
+                {% else %}
+                  <a href="#collections" class="btn btn-outline-light btn-lg">المجموعات</a>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <!-- Default content if no sliders are defined -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="hero-content">
+            {% if page_type == 'men' %}
+              <span class="hero-subtitle">تشكيلة الرجال</span>
+              <h1 class="hero-title mb-4">أناقة عصرية بلمسة مصرية</h1>
+              <p class="hero-text mb-4">اكتشف مجموعة متميزة من الأزياء الرجالية العصرية. تشكيلة واسعة من القمصان والبناطيل والأحذية والإكسسوارات المصممة خصيصاً للرجل المصري العصري.</p>
+              <div class="hero-features mb-4">
+                <div class="hero-feature">
+                  <i class="bi bi-stars"></i>
+                  <span>قطن مصري ١٠٠٪</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-rulers"></i>
+                  <span>مقاسات مثالية</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-arrow-repeat"></i>
+                  <span>استبدال مجاني</span>
+                </div>
+              </div>
+            {% elif page_type == 'women' %}
+              <span class="hero-subtitle">تشكيلة النساء</span>
+              <h1 class="hero-title mb-4">أزياء تعكس جمالك</h1>
+              <p class="hero-text mb-4">اكتشفي مجموعتنا المميزة من الأزياء النسائية العصرية. تشكيلة متنوعة من الفساتين والبلوزات والحقائب والإكسسوارات المصممة لتناسب ذوقك وأسلوبك.</p>
+              <div class="hero-features mb-4">
+                <div class="hero-feature">
+                  <i class="bi bi-gem"></i>
+                  <span>تصاميم حصرية</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-heart"></i>
+                  <span>خامات فاخرة</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-truck"></i>
+                  <span>توصيل سريع</span>
+                </div>
+              </div>
+            {% elif page_type == 'kids' %}
+              <span class="hero-subtitle">تشكيلة الأطفال</span>
+              <h1 class="hero-title mb-4">أزياء مريحة لأطفالك</h1>
+              <p class="hero-text mb-4">اختر لأطفالك أجمل الملابس العصرية المريحة. تشكيلة متنوعة من الملابس والأحذية للأولاد والبنات مصممة من أجود الخامات الآمنة والمريحة.</p>
+              <div class="hero-features mb-4">
+                <div class="hero-feature">
+                  <i class="bi bi-shield-check"></i>
+                  <span>خامات آمنة</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-emoji-smile"></i>
+                  <span>تصاميم مريحة</span>
+                </div>
+                <div class="hero-feature">
+                  <i class="bi bi-palette"></i>
+                  <span>ألوان جذابة</span>
+                </div>
+              </div>
+            {% endif %}
+            
+            <div class="hero-buttons">
+              {% if page_type == 'men' %}
+                <a href="#categories" class="btn btn-primary btn-lg me-2">تسوق الآن</a>
+                <a href="#size-guide" class="btn btn-outline-light btn-lg">دليل المقاسات</a>
+              {% elif page_type == 'women' %}
+                <a href="#new-arrivals" class="btn btn-primary btn-lg me-2">تسوقي الآن</a>
+                <a href="#collections" class="btn btn-outline-light btn-lg">المجموعات</a>
+              {% elif page_type == 'kids' %}
+                <a href="#boys" class="btn btn-primary btn-lg me-2">ملابس أولاد</a>
+                <a href="#girls" class="btn btn-outline-light btn-lg">ملابس بنات</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</section>
